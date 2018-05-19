@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24139a2d-155f-4cbe-b1a8-c6958d16756b" name="Default" comment="spring 2.0">
-      <change afterPath="$PROJECT_DIR$/.idea/ideaspace.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/codecube/base/AbstractBaseModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/codecube/common/dao/DepartmentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/codecube/common/dao/RoleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/codecube/common/dao/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/codecube/common/entity/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/codecube/config/JpaConfigure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/myword/boot/MyWordApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/myword/boot/config/WebMvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/myword/boot/interceptor/MyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tk/myword/boot/interceptor/MyInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tk/codecube/MySQLTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/codecube/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/codecube/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/codecube/common/entity/Department.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/codecube/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tk/codecube/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tk/codecube/common/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tk/codecube/DepartmentTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,7 +32,7 @@
       <file leaf-file-name="MyWordApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tk/myword/boot/MyWordApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="132">
               <caret line="8" column="22" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -78,8 +58,8 @@
       <file leaf-file-name="MyController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tk/myword/boot/interceptor/MyController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="308">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,7 +70,7 @@
       <file leaf-file-name="MyInterceptor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tk/myword/boot/interceptor/MyInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="88">
               <caret line="8" column="26" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -147,6 +127,7 @@
         <option value="$PROJECT_DIR$/src/main/java/tk/myword/boot/config/WebMvcConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/tk/myword/boot/interceptor/MyController.java" />
         <option value="$PROJECT_DIR$/src/main/java/tk/myword/boot/interceptor/MyInterceptor.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -219,58 +200,6 @@
               <item name="ideaspace" type="b2602c69:ProjectViewProjectNode" />
               <item name="ideaspace" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ideaspace" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ideaspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ideaspace" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ideaspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ideaspace" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ideaspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="codecube" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ideaspace" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ideaspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="boot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ideaspace" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ideaspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ideaspace" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ideaspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ideaspace" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ideaspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ideaspace" type="b2602c69:ProjectViewProjectNode" />
@@ -449,7 +378,8 @@
       <workItem from="1526707892998" duration="6801000" />
       <workItem from="1526727152168" duration="431000" />
       <workItem from="1526728813327" duration="7630000" />
-      <workItem from="1526741826892" duration="2268000" />
+      <workItem from="1526741826892" duration="2721000" />
+      <workItem from="1526765919356" duration="215000" />
     </task>
     <servers />
   </component>
@@ -486,7 +416,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27664000" />
+    <option name="totallyTimeSpent" value="28117000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -499,6 +429,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
@@ -512,7 +443,6 @@
       <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4918033" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32885906" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.3018322" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.3297975" />
@@ -520,8 +450,8 @@
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.3297975" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.44262296" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.3297975" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32883316" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1641791" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.24686596" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1641791" />
       <window_info anchor="right" id="Bean Validation" order="8" />
       <window_info id="Web" order="7" side_tool="true" weight="0.32967034" />
       <window_info anchor="right" id="Theme Preview" order="7" />
@@ -529,6 +459,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3018322" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297975" />
@@ -569,16 +500,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/tk/myword/boot/MyWordApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/tk/codecube/MySQLTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1386">
@@ -988,16 +909,17 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.45697445972495115" x="2278.6271391762284" y="1181.6466036113493" />
+          <settings layout="Hierarchic Group" zoom="0.45697445972495115" x="2279.0" y="1182.0" />
           <SelectedNodes />
           <Categories />
+          <SCOPE>All</SCOPE>
           <VISIBILITY>All</VISIBILITY>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tk/myword/boot/interceptor/MyInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="88">
           <caret line="8" column="26" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1007,8 +929,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tk/myword/boot/interceptor/MyController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="308">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1017,11 +939,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tk/myword/boot/MyWordApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="132">
           <caret line="8" column="22" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="22">
+            <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
