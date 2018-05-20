@@ -1,17 +1,16 @@
 package tk.codecube.common.entity;
 
-import tk.codecube.base.AbstractBaseModel;
-
 import javax.persistence.*;
-
+import java.io.Serializable;
 @Entity
 @Table(name  = "boot_deparment")
-public class Department extends AbstractBaseModel {
+public class Department implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String name;
 
     public Long getId() {

@@ -1,18 +1,19 @@
 package tk.codecube.common.entity;
 
-import tk.codecube.base.AbstractBaseModel;
-
 import javax.persistence.*;
+import java.io.Serializable;
+
 /*
 * 角色表
 *
 * */
 @Entity
 @Table( name = "boot_role")
-public class Role extends AbstractBaseModel {
+public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
 
     public Long getId() {

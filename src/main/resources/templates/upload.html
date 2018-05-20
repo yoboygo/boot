@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<meta charset="UTF-8"/>
+<head th:fragment="head (title)">
+    <title>上传文件</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="../../css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <form action="advice/upload" enctype="multipart/form-data" method="post">
+        <input th:type="file" th:name="file"/></br>
+        <input th:type="text" th:name="id" th:value="上传文件">
+        <input th:type="submit" th:value="上传">
+    </form>
+</div>
+</body>
+</html>

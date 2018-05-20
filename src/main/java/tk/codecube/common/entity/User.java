@@ -2,9 +2,9 @@ package tk.codecube.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
-import tk.codecube.base.AbstractBaseModel;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 /*
@@ -12,10 +12,11 @@ import java.util.List;
 * */
 @Entity
 @Table(name = "boot_user")
-public class User extends AbstractBaseModel {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
 
 //    @Column(columnDefinition = "CURRENTTIMESTEMP")

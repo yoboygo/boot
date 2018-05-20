@@ -6,6 +6,9 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,22 +22,25 @@ import tk.codecube.common.entity.User;
 import tk.codecube.common.dao.DepartmentDao;
 import tk.codecube.common.dao.RoleDao;
 import tk.codecube.common.dao.UserDao;
+import tk.codecube.config.DataSourceConfig;
 import tk.codecube.config.JpaConfigure;
 
 import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = JpaConfigure.class)
+@EnableAutoConfiguration
+@ContextConfiguration(classes = {JpaConfigure.class,DataSourceConfig.class})
+@PropertySource("application.yml")
 public class MySQLTest {
     private static Logger logger = LoggerFactory.getLogger(JpaConfigure.class);
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
     @Autowired
-    RoleDao roleDao;
+    private RoleDao roleDao;
     @Autowired
-    DepartmentDao departmentDao;
+    private DepartmentDao departmentDao;
 
     @Before
     public void initData(){
@@ -56,9 +62,10 @@ public class MySQLTest {
         user.setName("user");
         user.setCreatedate(new Date());
         user.setDepartment(d1);
-
         List<Role> roles = roleDao.findAll();
         Assert.notNull(roles,"角色表为空！");
+        roles.add(r1);
+        user.setRolse(roles);
 
         userDao.save(user);
         Assert.notNull(user.getId(),"保存用户信息失败！");

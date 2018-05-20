@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class MyWordApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(MyWordApp.class,args);
+        SpringApplication.run(MyWordApp.class, args);
     }
+
 }
