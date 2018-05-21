@@ -6,9 +6,8 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,13 +15,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
-import tk.codecube.common.entity.Department;
-import tk.codecube.common.entity.Role;
-import tk.codecube.common.entity.User;
 import tk.codecube.common.dao.DepartmentDao;
 import tk.codecube.common.dao.RoleDao;
 import tk.codecube.common.dao.UserDao;
-import tk.codecube.config.DataSourceConfig;
+import tk.codecube.common.entity.Department;
+import tk.codecube.common.entity.Role;
+import tk.codecube.common.entity.User;
 import tk.codecube.config.JpaConfigure;
 
 import java.util.Date;
@@ -30,8 +28,7 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableAutoConfiguration
-@ContextConfiguration(classes = {JpaConfigure.class,DataSourceConfig.class})
-@PropertySource("application.yml")
+@ContextConfiguration(classes = {JpaConfigure.class})
 public class MySQLTest {
     private static Logger logger = LoggerFactory.getLogger(JpaConfigure.class);
 
