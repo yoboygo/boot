@@ -29,8 +29,8 @@ public class User implements Serializable {
     private Department department;
 
     @ManyToMany(cascade = {},fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role",joinColumns = {@JoinColumn(name = "roles_id")})
-    private List<Role> rolse;
+    @JoinTable(name = "user_role",joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},inverseJoinColumns = {@JoinColumn(name = "role_id",referencedColumnName = "id")})
+    private List<Role> roles;
 
     public User(){
 
@@ -68,11 +68,11 @@ public class User implements Serializable {
         this.department = department;
     }
 
-    public List<Role> getRolse() {
-        return rolse;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRolse(List<Role> rolse) {
-        this.rolse = rolse;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement(proxyTargetClass = true)
 @EnableJpaRepositories(basePackages = "tk.codecube.common.dao")
 @EntityScan(basePackages = "tk.codecube.common.entity")
-public class JpaConfigure {
+public class JpaConfig {
 
     @Bean
     public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor(){
