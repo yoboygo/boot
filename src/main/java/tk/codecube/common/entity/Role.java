@@ -1,15 +1,19 @@
-package tk.codecube;
+package tk.codecube.common.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
+/*
+* 角色表
+*
+* */
 @Entity
-@Table(name  = "deparment")
-public class Department {
-
+@Table( name = "boot_role")
+public class Role implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private String name;
 
     public Long getId() {

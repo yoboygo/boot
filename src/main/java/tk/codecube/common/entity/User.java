@@ -1,26 +1,30 @@
-package tk.codecube;
+package tk.codecube.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 /*
 * User 表
 * */
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "boot_user")
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
+
+//    @Column(columnDefinition = "CURRENTTIMESTEMP")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdate;
 
     @ManyToOne
-    @JoinColumn(name = 'did')
+    @JoinColumn(name = "did")
     @JsonBackReference
     private Department department;
 
