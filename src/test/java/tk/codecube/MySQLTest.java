@@ -18,9 +18,9 @@ import org.springframework.util.Assert;
 import tk.codecube.common.dao.DepartmentDao;
 import tk.codecube.common.dao.RoleDao;
 import tk.codecube.common.dao.UserDao;
-import tk.codecube.common.entity.Department;
-import tk.codecube.common.entity.Role;
-import tk.codecube.common.entity.User;
+import tk.codecube.common.entity.SysDepartment;
+import tk.codecube.common.entity.SysRole;
+import tk.codecube.common.entity.SysUser;
 import tk.codecube.config.JpaConfig;
 
 import java.util.Date;
@@ -46,26 +46,26 @@ public class MySQLTest {
         roleDao.deleteAll();
         departmentDao.deleteAll();
 
-        Department d1 = new Department();
+        SysDepartment d1 = new SysDepartment();
         d1.setName("开发部");
         departmentDao.save(d1);
         Assert.notNull(d1.getId(),"部门信息保存失败!");
 
-        Role r1 = new Role();
+        SysRole r1 = new SysRole();
         r1.setName("admin");
         roleDao.save(r1);
         Assert.notNull(r1.getId(),"角色保存失败！");
 
-        Role r2 = new Role();
+        SysRole r2 = new SysRole();
         r2.setName("model");
         roleDao.save(r2);
         Assert.notNull(r2.getId(),"角色保存失败！");
 
-        User user = new User();
+        SysUser user = new SysUser();
         user.setName("user");
         user.setCreatedate(new Date());
-        user.setDepartment(d1);
-        List<Role> roles = roleDao.findAll();
+        user.setSysDepartment(d1);
+        List<SysRole> roles = roleDao.findAll();
         Assert.notNull(roles,"角色表为空！");
         user.setRoles(roles);
 
@@ -78,12 +78,12 @@ public class MySQLTest {
     public void findPage(){
         Pageable pageable = PageRequest.of(0,10,Sort.Direction.ASC,"id");
 //        Pageable pageable = new PageRequest(0,10,new Sort(Sort.Direction.ASC,"id"));
-        Page<User> page = userDao.findAll(pageable);
+        Page<SysUser> page = userDao.findAll(pageable);
 
         Assert.notNull(page,"没有查询到用户信息！");
-        for(User u : page.getContent()){
+        for(SysUser u : page.getContent()){
 
-            logger.info("====user==== user  name:{},department name:{},role name:{}",u.getName(),u.getDepartment().getName(),u.getRoles().get(0).getName());
+            logger.info("====user==== user  name:{},department name:{},role name:{}",u.getName(),u.getSysDepartment().getName(),u.getRoles().get(0).getName());
         }
     }
 }

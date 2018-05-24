@@ -11,28 +11,29 @@ import java.util.List;
 * User 表
 * */
 @Entity
-@Table(name = "boot_user")
-public class User implements Serializable {
+@Table(name = "sys_user")
+public class SysUser implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String name;
 
-//    @Column(columnDefinition = "CURRENTTIMESTEMP")
+    private String password;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdate;
 
     @ManyToOne
     @JoinColumn(name = "did")
     @JsonBackReference
-    private Department department;
+    private SysDepartment sysDepartment;
 
     @ManyToMany(cascade = {},fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},inverseJoinColumns = {@JoinColumn(name = "role_id",referencedColumnName = "id")})
-    private List<Role> roles;
+    private List<SysRole> roles;
 
-    public User(){
+    public SysUser(){
 
     }
 
@@ -60,19 +61,27 @@ public class User implements Serializable {
         this.createdate = createdate;
     }
 
-    public Department getDepartment() {
-        return department;
+    public SysDepartment getSysDepartment() {
+        return sysDepartment;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setSysDepartment(SysDepartment sysDepartment) {
+        this.sysDepartment = sysDepartment;
     }
 
-    public List<Role> getRoles() {
+    public List<SysRole> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(List<SysRole> roles) {
         this.roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

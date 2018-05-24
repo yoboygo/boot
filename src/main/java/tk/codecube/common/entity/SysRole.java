@@ -2,14 +2,17 @@ package tk.codecube.common.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-@Entity
-@Table(name  = "boot_deparment")
-public class Department implements Serializable {
 
+/*
+* 角色表
+*
+* */
+@Entity
+@Table( name = "sys_role")
+public class SysRole implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String name;
 
