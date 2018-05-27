@@ -18,7 +18,8 @@ public class CounterInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         long endTime = System.currentTimeMillis();
-        System.out.println("本次请求耗时：" + (endTime - Long.parseLong(request.getAttribute("startTime").toString())) + " ms");
+        String url = request.getRequestURL().toString();
+        System.out.println("本次请求 " + url + " 耗时：" + (endTime - Long.parseLong(request.getAttribute("startTime").toString())) + " ms");
         super.postHandle(request, response, handler, modelAndView);
     }
 }
