@@ -1,9 +1,9 @@
 package ml.idream.config;
 
 import ml.idream.security.CsrfSecurityRequestMatcher;
-import ml.idream.security.LoginSuccessHandler;
+import ml.idream.security.SysLoginSuccessHandler;
+import ml.idream.security.SysLogoutSuccessHandler;
 import ml.idream.security.SysUserDetailService;
-import ml.idream.setting.SecuritySetting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,33 +22,20 @@ import java.util.List;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private SecuritySetting securitySetting;
-    @Autowired
     private SysUserDetailService sysUserDetailService;
 
- /*   @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/login").permitAll().successHandler(new LoginSuccessHandler())
-                .and()
-                .authorizeRequests().antMatchers(securitySetting.getPermitAll().split(",")).permitAll()
-                .anyRequest().authenticated()
-                .and().csrf()
-                .requireCsrfProtectionMatcher(csrfSecurityRequestMatcher())
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
-                .and().logout().logoutSuccessUrl(securitySetting.getLogoutSerccessUrl())
-                .and().exceptionHandling().accessDeniedPage(securitySetting.getDeniedPage())
-        .and().rememberMe().tokenValiditySeconds(86400).tokenRepository(tokenRepository());
-    }*/
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .and()
                 .formLogin().loginPage("/login")
-                    .successForwardUrl("/home").successHandler(new LoginSuccessHandler())
-                    .failureUrl("/login?error").permitAll()
+                .successForwardUrl("/").successHandler(new SysLoginSuccessHandler())
+                .failureUrl("/login?error").permitAll()
                 .and()
-                .logout().permitAll();
+                .logout().logoutSuccessUrl("/").logoutSuccessHandler(new SysLogoutSuccessHandler()).permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/dy/**").permitAll();
     }
 
     @Override

@@ -1,9 +1,7 @@
 package ml.idream.security;
 
-import ml.idream.sys.SysPermission;
 import ml.idream.sys.SysRole;
 import ml.idream.sys.SysUser;
-import ml.idream.sys.dao.SysPermissionDao;
 import ml.idream.sys.dao.SysUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
