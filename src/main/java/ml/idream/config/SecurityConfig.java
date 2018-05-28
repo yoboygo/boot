@@ -32,10 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .successForwardUrl("/").successHandler(new SysLoginSuccessHandler())
+                .successHandler(new SysLoginSuccessHandler()).successForwardUrl("/home")
                 .failureUrl("/login?error").permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/").logoutSuccessHandler(new SysLogoutSuccessHandler()).permitAll()
+                .logout().logoutSuccessHandler(new SysLogoutSuccessHandler()).logoutSuccessUrl("/home")
                 .and().authorizeRequests().anyRequest().authenticated();
     }
 
