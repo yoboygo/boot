@@ -17,6 +17,8 @@ public class SysAccessDecisionManager implements AccessDecisionManager {
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
 
         if(null == configAttributes || configAttributes.size() == 0){
+            //如果配置表为空，则默认所有用户都可以访问任何路径
+            //只要不为空，就按照配置表中的配置执行
             return ;
         }
         for(Iterator<ConfigAttribute> iter = configAttributes.iterator();iter.hasNext();){
