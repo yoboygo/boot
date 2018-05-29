@@ -2,7 +2,7 @@ package ml.idream;
 
 import ml.idream.sys.dao.SysDepartmentDao;
 import ml.idream.sys.dao.SysRoleDao;
-import ml.idream.sys.dao.SysUserDao;
+import ml.idream.sys.user.SysUserDao;
 import ml.idream.sys.SysRole;
 import ml.idream.sys.SysUser;
 import org.junit.Before;

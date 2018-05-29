@@ -4,17 +4,12 @@ import ml.idream.global.CounterInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @Configuration
@@ -37,8 +32,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("/home");
         registry.addViewController("/home").setViewName("/home");
-        registry.addViewController("/login").setViewName("/login");
-        registry.addViewController("/logout").setViewName("/logout");
+        registry.addViewController("/login").setViewName("/user/login");
+        registry.addViewController("/logout").setViewName("/user/logout");
+        registry.addViewController("/signin").setViewName("/user/signin");
         registry.addViewController("/error").setViewName("/error");
         registry.addViewController("/manager/toUpload").setViewName("/manager/upload");
         registry.addViewController("/dy/activity/add").setViewName("/idengyun/activity/main");

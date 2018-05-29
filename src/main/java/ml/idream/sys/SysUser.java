@@ -84,4 +84,25 @@ public class SysUser implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /*建造者*/
+    public static class Builder{
+        private SysUser user;
+
+        public Builder() {
+            this.user = new SysUser();
+        }
+
+        public Builder setName(String userName){
+            user.setName(userName);
+            return this;
+        }
+        public Builder setPassWord(String passWord){
+            user.setPassword(passWord);
+            return this;
+        }
+        public SysUser build(){
+            return user;
+        }
+    }
 }
