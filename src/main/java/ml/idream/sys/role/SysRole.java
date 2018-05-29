@@ -16,7 +16,7 @@ public class SysRole implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(unique = true)
     private String name;
 
     @ManyToMany(cascade = {},fetch = FetchType.EAGER)

@@ -10,7 +10,7 @@ public class SysDepartment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String name;
 
     public Long getId() {
