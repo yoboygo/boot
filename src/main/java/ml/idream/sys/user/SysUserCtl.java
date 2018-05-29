@@ -16,10 +16,11 @@ public class SysUserCtl {
     public String toSignIn(Model model) throws Exception {
         return "/user/signin";
     }
+
     @RequestMapping(value = "/signin",method = RequestMethod.POST)
     public String signIn(Model model,String username,String password) throws Exception {
         userService.addUser(username,password);
         System.out.println( "username:" + username + " password:" + password );
-        return "redirect:/home";
+        return "redirect:/login";
     }
 }
