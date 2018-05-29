@@ -19,7 +19,7 @@
                 <a class="navbar-brand" href="#">Spring Security</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li th:if="${param.login} == null"><a th:href="@{/sign}"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <li th:if="${param.login} == null"><a th:href="@{/user/sign}"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
                 <li th:if="${param.login} == null"><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
                 <li th:if="${param.login}"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
             </ul>

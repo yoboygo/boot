@@ -1,6 +1,8 @@
-package ml.idream.sys;
+package ml.idream.sys.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import ml.idream.sys.dao.department.SysDepartment;
+import ml.idream.sys.role.SysRole;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;

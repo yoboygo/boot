@@ -1,7 +1,7 @@
 package ml.idream.security;
 
-import ml.idream.sys.SysRole;
-import ml.idream.sys.dao.SysRoleDao;
+import ml.idream.sys.role.SysRole;
+import ml.idream.sys.role.SysRoleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;

@@ -1,6 +1,5 @@
-package ml.idream.sys.dao;
+package ml.idream.sys.dao.permission;
 
-import ml.idream.sys.SysPermission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

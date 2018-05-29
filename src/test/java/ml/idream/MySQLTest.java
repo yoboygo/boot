@@ -1,10 +1,10 @@
 package ml.idream;
 
-import ml.idream.sys.dao.SysDepartmentDao;
-import ml.idream.sys.dao.SysRoleDao;
+import ml.idream.sys.dao.department.SysDepartmentDao;
+import ml.idream.sys.role.SysRoleDao;
 import ml.idream.sys.user.SysUserDao;
-import ml.idream.sys.SysRole;
-import ml.idream.sys.SysUser;
+import ml.idream.sys.role.SysRole;
+import ml.idream.sys.user.SysUser;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
-import ml.idream.sys.SysDepartment;
+import ml.idream.sys.dao.department.SysDepartment;
 import ml.idream.config.JpaConfig;
 
 import java.util.ArrayList;
