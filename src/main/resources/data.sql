@@ -25,14 +25,12 @@ INSERT INTO `sys_deparment` VALUES (1, '开发部');
 -- ----------------------------
 -- Records of sys_permission
 -- ----------------------------
-INSERT INTO `sys_permission` VALUES (1, '根目录', '根', NULL, '/');
-INSERT INTO `sys_permission` VALUES (2, '管理', '管理', NULL, '/manager/**');
+INSERT INTO `sys_permission` VALUES (1, '管理', '管理', NULL, '/manager/**');
 
 -- ----------------------------
 -- Records of sys_permission_role
 -- ----------------------------
 INSERT INTO `sys_permission_role` VALUES (1, 1);
-INSERT INTO `sys_permission_role` VALUES (1, 2);
 
 -- ----------------------------
 -- Records of sys_role

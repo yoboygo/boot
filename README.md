@@ -1,6 +1,6 @@
 # boot2尝试笔记
 ------ 
-### 未解决的问题
+### 问题
 > ##### 1、当遇到异常退出时，`MySQL`服务也会自动关闭
 -  ###### `Hikari`连接池`destroy`时会调用`datasourceShutdown`。将连接数据库的用户取消shutdown权限即可。
 > ##### 2、正常启动后，访问时会报一个莫名其妙的`NIO`异常   
@@ -25,4 +25,5 @@ java.io.EOFException: null
 	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_131]
 ``` 
 > ##### 3、登陆成功/失败不能自动跳转
-- ###### 因为自定义了`SuccessHandler`，不仅导致不能自动跳转到成功页面，还可能会出现`405`异常，原因未知，暂时去掉了因为自定义了`SuccessHandler`。
+- ###### 因为自定义了`successHandler`，不仅导致不能自动跳转到成功页面，还可能会出现`405`异常，原因未知，暂时去掉了因为自定义了`SuccessHandler`。
+- ###### 自定义的`SuccessHandler`继承`org.springframework.security.web.authentication.SimpleUrlLogoutSuccessHandler`便不会报错，相应的`logoutHandler`要继承`org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler`。
