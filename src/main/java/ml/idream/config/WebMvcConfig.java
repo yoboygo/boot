@@ -37,22 +37,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("/home");
         registry.addViewController("/home").setViewName("/home");
-//        registry.addViewController("/login").setViewName("/login");
+        registry.addViewController("/login").setViewName("/login");
+        registry.addViewController("/error").setViewName("/error");
         registry.addViewController("/manager/toUpload").setViewName("/manager/upload");
         registry.addViewController("/dy/activity/add").setViewName("/idengyun/activity/main");
     }
-    /*
-    * login
-    * */
-    @RequestMapping(value = "/login",method = {RequestMethod.GET,RequestMethod.POST})
-    public String login(HttpServletRequest request, HttpServletResponse response){
-
-        return "/login";
-    }
-
-
-
-
 
     /*
      * 使之接受xx.yy类型的值

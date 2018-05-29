@@ -20,8 +20,9 @@ public class ExceptionHandlerException {
     * */
     @ExceptionHandler(value = Exception.class)
     public ModelAndView exception(Exception e, WebRequest request){
-        ModelAndView modelAndView = new ModelAndView("error");
-        modelAndView.addObject("errorMessage",e.getMessage());
+        ModelAndView modelAndView = new ModelAndView("/error");
+        modelAndView.addObject("title","错误");
+        modelAndView.addObject("message",e.getMessage());
         return modelAndView;
     }
 
