@@ -31,8 +31,4 @@ public class SysUserCtl {
         return "redirect:/login";
     }
 
-    @RequestMapping(value = "/swagger",method = RequestMethod.GET)
-    public String toSwagger(){
-        return "redirect:/swagger-ui.html";
-    }
 }

@@ -1,7 +1,6 @@
 package ml.idream.log;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Component;
@@ -58,8 +57,8 @@ public class LogBeanProcesser implements InstantiationAwareBeanPostProcessor {
                 String ret = "";
                 for (RequestMethod rm : methodReq){
                     switch (rm){
-                        case GET: ret += "GET";
-                        case POST: ret += "POST";
+                        case GET: ret += "GET ";break;
+                        case POST: ret += "POST ";break;
                     }
                 }
                 mapping.put("method",ret);

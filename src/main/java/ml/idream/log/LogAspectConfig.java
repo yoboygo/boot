@@ -1,5 +1,6 @@
 package ml.idream.log;
 
+import com.google.common.collect.Sets;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -33,6 +34,10 @@ public class LogAspectConfig {
     @Bean
     public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2)
+//                .produces(Sets.newHashSet("application/json"))
+//                .consumes(Sets.newHashSet("application/json"))
+//                .protocols(Sets.newHashSet("http","https"))
+//                .forCodeGeneration(true)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("ml.idream"))
