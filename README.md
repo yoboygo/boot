@@ -27,3 +27,4 @@ java.io.EOFException: null
 > ##### 3、登陆成功/失败不能自动跳转
 - ###### 因为自定义了`successHandler`，不仅导致不能自动跳转到成功页面，还可能会出现`405`异常，原因未知，暂时去掉了因为自定义了`SuccessHandler`。
 - ###### 自定义的`SuccessHandler`继承`org.springframework.security.web.authentication.SimpleUrlLogoutSuccessHandler`便不会报错，相应的`logoutHandler`要继承`org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler`。
+ > ##### 4、在整合swagger-ui的时候，如果使用了安全框架，需要将`/v2/api-docs`,`/configuration/ui`,`/swagger-resources/**`,`/configuration/security`,`/swagger-ui.html`加入到相应的权限中。
