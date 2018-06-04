@@ -1,4 +1,4 @@
-package ml.idream.sys.dao.permission;
+package ml.idream.sys.permission;
 
 import javax.persistence.*;
 import java.util.List;

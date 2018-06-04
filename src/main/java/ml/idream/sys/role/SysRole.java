@@ -1,6 +1,6 @@
 package ml.idream.sys.role;
 
-import ml.idream.sys.dao.permission.SysPermission;
+import ml.idream.sys.permission.SysPermission;
 
 import javax.persistence.*;
 import java.io.Serializable;

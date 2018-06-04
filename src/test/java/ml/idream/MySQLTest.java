@@ -1,6 +1,6 @@
 package ml.idream;
 
-import ml.idream.sys.dao.department.SysDepartmentDao;
+import ml.idream.sys.department.SysDepartmentDao;
 import ml.idream.sys.role.SysRoleDao;
 import ml.idream.sys.user.SysUserDao;
 import ml.idream.sys.role.SysRole;
@@ -20,7 +20,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
-import ml.idream.sys.dao.department.SysDepartment;
+import ml.idream.sys.department.SysDepartment;
 import ml.idream.config.JpaConfig;
 
 import java.util.ArrayList;

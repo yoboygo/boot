@@ -1,12 +1,13 @@
 package ml.idream.sys.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import ml.idream.sys.dao.department.SysDepartment;
+import ml.idream.sys.department.SysDepartment;
 import ml.idream.sys.role.SysRole;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 /*
@@ -25,7 +26,7 @@ public class SysUser implements Serializable {
     private String password;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createdate;
+    private Date createdate = Calendar.getInstance().getTime();
 
     @ManyToOne
     @JoinColumn(name = "did")

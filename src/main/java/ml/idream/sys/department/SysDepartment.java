@@ -1,4 +1,4 @@
-package ml.idream.sys.dao.department;
+package ml.idream.sys.department;
 
 import javax.persistence.*;
 import java.io.Serializable;
