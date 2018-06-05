@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
     <title>主页</title>
+    <link rel="icon" th:href="@{/images/favicon.ico}">
 </head>
 <body>
 <div class="pos-f-t">
@@ -19,12 +20,13 @@
                 <a class="navbar-brand" href="#">Spring Security</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li th:if="${param.login} == null"><a th:href="@{/user/signin}"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <li th:if="${param.login} == null"><a th:href="@{/signup}"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
                 <li th:if="${param.login} == null"><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
-                <li th:if="${param.login}"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
+                <li th:if="${param.login}"><a href="#" onclick="document.getElementById('form_logout').submit()"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
             </ul>
         </div>
     </nav>
 </div>
+<form id="form_logout" th:action="@{/logout}" th:method="POST" th:class="hide-right"></form>
 </body>
 </html>
