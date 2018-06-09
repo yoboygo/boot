@@ -22,6 +22,8 @@ public class TestRandom {
                     item = 200 - sum - item -  (20 - counter * 10);
                     if(item < 10){
                         item = 10;
+                    }else if(item > 50){
+                        item = 50;
                     }
                     sum += item;
                     ret.add(item);
