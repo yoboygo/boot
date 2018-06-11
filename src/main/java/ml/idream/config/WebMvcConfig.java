@@ -33,7 +33,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/error").setViewName("/error");
         registry.addViewController("/manager/toUpload").setViewName("/manager/upload");
         registry.addViewController("/manager").setViewName("/manager/manager");
-        registry.addViewController("/dy/activity/add").setViewName("/idengyun/activity/main");
     }
 
     @Override

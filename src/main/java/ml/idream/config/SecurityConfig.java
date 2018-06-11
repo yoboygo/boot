@@ -29,9 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**",
-                        "/configuration/security", "/swagger-ui.html","/index","/","/home","/error",
-                        "/signup","/dy/**","/css/**","/js/**","/images/**","/fonts/**","/font/**",
-                        "/less/**","/scss/**","/webjars/**")
+                        "/webjars/**","/configuration/security", "/swagger-ui.html",
+                        "/index","/","/home","/error","/signup",
+                        "/css/**","/js/**","/images/**","/fonts/**","/pages/**","/plugins/**")
                 .permitAll()
                 .and()
                 .formLogin()
