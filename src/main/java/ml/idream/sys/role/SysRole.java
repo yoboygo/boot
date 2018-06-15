@@ -2,7 +2,6 @@ package ml.idream.sys.role;
 
 import ml.idream.sys.permission.SysPermission;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,17 +9,11 @@ import java.util.List;
 * 角色表
 *
 * */
-@Entity
-@Table( name = "sys_role")
+//sys_role
 public class SysRole implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
     private String name;
 
-    @ManyToMany(cascade = {},fetch = FetchType.EAGER)
-    @JoinTable(name= "sys_permission_role",joinColumns = {@JoinColumn(name = "role_id",referencedColumnName = "id")},inverseJoinColumns = {@JoinColumn(name = "permission_id",referencedColumnName = "id")})
     private List<SysPermission> permissions;
 
     public Long getId() {

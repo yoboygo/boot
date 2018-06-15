@@ -1,8 +1,7 @@
 package ml.idream.sys.permission;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
 
-@Repository
-public interface SysPermissionDao extends JpaRepository<SysPermission,Long> {
+@Mapper
+public interface SysPermissionDao{
 }

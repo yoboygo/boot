@@ -1,16 +1,12 @@
 package ml.idream.sys.department;
 
-import javax.persistence.*;
 import java.io.Serializable;
-@Entity
-@Table(name  = "sys_deparment")
+
+//sys_deparment
 public class SysDepartment implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String name;
 
     public Long getId() {

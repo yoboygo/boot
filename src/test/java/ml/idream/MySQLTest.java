@@ -1,10 +1,12 @@
 package ml.idream;
 
-import ml.idream.sys.department.SysDepartmentDao;
-import ml.idream.sys.role.SysRoleDao;
-import ml.idream.sys.user.SysUserDao;
+import ml.idream.config.JpaConfig;
+import ml.idream.sys.department.SysDepartment;
+import ml.idream.sys.department.SysDepartmentService;
 import ml.idream.sys.role.SysRole;
+import ml.idream.sys.role.SysRoleService;
 import ml.idream.sys.user.SysUser;
+import ml.idream.sys.user.SysUserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,15 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
-import ml.idream.sys.department.SysDepartment;
-import ml.idream.config.JpaConfig;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,31 +31,31 @@ public class MySQLTest {
     private static Logger logger = LoggerFactory.getLogger(JpaConfig.class);
 
     @Autowired
-    private SysUserDao userDao;
+    private SysUserService sysUserService;
     @Autowired
-    private SysRoleDao roleDao;
+    private SysRoleService sysRoleService;
     @Autowired
-    private SysDepartmentDao departmentDao;
+    private SysDepartmentService sysDepartmentService;
 
     @Before
     public void initData(){
-        userDao.deleteAll();
-        roleDao.deleteAll();
-        departmentDao.deleteAll();
+        sysUserService.deleteAll();
+        sysRoleService.deleteAll();
+        sysDepartmentService.deleteAll();
 
         SysDepartment d1 = new SysDepartment();
         d1.setName("开发部");
-        departmentDao.save(d1);
+        sysDepartmentService.save(d1);
         Assert.notNull(d1.getId(),"部门信息保存失败!");
 
         SysRole r1 = new SysRole();
         r1.setName("ROLE_ADMIN");
-        roleDao.save(r1);
+        sysRoleService.save(r1);
         Assert.notNull(r1.getId(),"角色保存失败！");
 
         SysRole r2 = new SysRole();
         r2.setName("ROLE_USER");
-        roleDao.save(r2);
+        sysRoleService.save(r2);
         Assert.notNull(r2.getId(),"角色保存失败！");
 
         //admin:User1
@@ -74,7 +70,7 @@ public class MySQLTest {
         roles.add(r1);
         user.setRoles(roles);
 
-        userDao.save(user);
+        sysUserService.save(user);
         Assert.notNull(user.getId(),"保存用户信息失败！");
 
         //user:User2
@@ -89,21 +85,21 @@ public class MySQLTest {
         roles2.add(r2);
         user2.setRoles(roles2);
 
-        userDao.save(user);
+        sysUserService.save(user);
         Assert.notNull(user.getId(),"保存用户信息失败！");
 
     }
 
     @Test
     public void findPage(){
-        Pageable pageable = PageRequest.of(0,10,Sort.Direction.ASC,"id");
-//        Pageable pageable = new PageRequest(0,10,new Sort(Sort.Direction.ASC,"id"));
-        Page<SysUser> page = userDao.findAll(pageable);
-
-        Assert.notNull(page,"没有查询到用户信息！");
-        for(SysUser u : page.getContent()){
-
-            logger.info("====user==== user  name:{},department name:{},role name:{}",u.getName(),u.getSysDepartment().getName(),u.getRoles().get(0).getName());
-        }
+//        Pageable pageable = PageRequest.of(0,10,Sort.Direction.ASC,"id");
+////        Pageable pageable = new PageRequest(0,10,new Sort(Sort.Direction.ASC,"id"));
+//        Page<SysUser> page = userDao.findAll(pageable);
+//
+//        Assert.notNull(page,"没有查询到用户信息！");
+//        for(SysUser u : page.getContent()){
+//
+//            logger.info("====user==== user  name:{},department name:{},role name:{}",u.getName(),u.getSysDepartment().getName(),u.getRoles().get(0).getName());
+//        }
     }
 }

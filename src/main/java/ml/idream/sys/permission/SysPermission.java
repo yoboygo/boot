@@ -1,15 +1,8 @@
 package ml.idream.sys.permission;
 
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
-@Table(name = "sys_permission")
+//sys_permission
 public class SysPermission {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
     private String name;
     private String description;
     private String url;
