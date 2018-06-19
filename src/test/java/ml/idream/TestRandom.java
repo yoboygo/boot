@@ -38,6 +38,8 @@ public class TestRandom {
                     sum += item;
                     ret.add(item);
                 }
+
+                /*
                 if(RandomUtils.nextInt(1,1000) % 2 == 0){
                     if(counter < 2){
                         ++counter;
@@ -46,24 +48,19 @@ public class TestRandom {
                     }
 
                 }
+
+*/
+
             }
 
-            boolean flag = true;
             for (int item : ret){
                 if (item > 50 || item < 10){
-                    flag = false;
                     System.err.println(j + ":sum = " + sum + " item : " + ret.toString());
                     break;
                 }
             }
-//            System.out.println(j + ":sum = " + sum + " item : " + ret.toString());
-            /*
-            if(flag){
-                System.out.println(j + ":sum = " + sum + " item : " + ret.toString());
-            }else{
-                System.err.println(j + ":sum = " + sum + " item : " + ret.toString());
-            }
-            */
+
+            System.out.println(j + ":sum = " + sum + " item : " + ret.toString());
 
         }
 
