@@ -2,8 +2,8 @@ package ml.idream.sys.user;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.*;
+import org.mapstruct.Mapper;
 
-import javax.swing.text.html.parser.Entity;
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.List;
