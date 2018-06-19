@@ -38,8 +38,7 @@ public class TestRandom {
                     sum += item;
                     ret.add(item);
                 }
-
-                /*
+                
                 if(RandomUtils.nextInt(1,1000) % 2 == 0){
                     if(counter < 2){
                         ++counter;
@@ -48,8 +47,6 @@ public class TestRandom {
                     }
 
                 }
-
-*/
 
             }
 
