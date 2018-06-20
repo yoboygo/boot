@@ -23,6 +23,6 @@ spring:
 logging:
   level:
     root: debug
-#mybatis:
-#  mapper-locations: classpath:mybatis/**/*.xml
-#  config-location: classpath:mybatis/mybatis-config.xml
+mybatis:
+  mapper-locations: classpath:mybatis/**/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml

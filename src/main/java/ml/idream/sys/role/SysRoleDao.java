@@ -4,7 +4,9 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
-
+/*
+* @linke {ml.idream.sys.permission.SysPermissionDao.findByRoleId}
+* */
 @Mapper
 public interface SysRoleDao{
 
