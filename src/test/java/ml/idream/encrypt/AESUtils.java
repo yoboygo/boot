@@ -3,7 +3,6 @@ package ml.idream.encrypt;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.util.Base64Utils;
-
 import javax.crypto.*;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -23,6 +22,7 @@ public class AESUtils {
             aesGenerator.init(128,new SecureRandom(privateKey.getBytes()));
             secretKey = aesGenerator.generateKey();
             cipher =  Cipher.getInstance("AES");
+
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {
@@ -33,6 +33,7 @@ public class AESUtils {
     /*
     * 加密
     * */
+
     public static String encrypt(String passWord) throws InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
         cipher.init(Cipher.ENCRYPT_MODE,secretKey);
         return Base64Utils.encodeToUrlSafeString(cipher.doFinal(passWord.getBytes("UTF-8")));
