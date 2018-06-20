@@ -127,16 +127,12 @@
             <artifactId>spring-data-redis</artifactId>
             <version>2.0.8.RELEASE</version>
         </dependency>
-<<<<<<< HEAD
         <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
         </dependency>
-=======
->>>>>>> a4b2a53e91163cab515744c528cacbc81539271c
-
     </dependencies>
     <build>
         <plugins>
