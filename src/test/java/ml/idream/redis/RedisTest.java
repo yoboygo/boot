@@ -1,4 +1,4 @@
-package ml.idream.Redis;
+package ml.idream.redis;
 
 public class RedisTest {
 

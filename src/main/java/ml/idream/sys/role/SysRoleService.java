@@ -32,4 +32,11 @@ public class SysRoleService {
     public void deleteAll() {
         sysRoleDao.deleteAll();
     }
+
+    /*
+    * 查询所有role
+    * */
+    public List<SysRole> findAll() {
+        return sysRoleDao.findAll();
+    }
 }

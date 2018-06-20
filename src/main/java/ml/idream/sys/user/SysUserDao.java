@@ -3,7 +3,6 @@ package ml.idream.sys.user;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.*;
 
-import javax.swing.text.html.parser.Entity;
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.Map;
 @Mapper
 public interface SysUserDao{
 
-    @Select("select * from sys_user where name like %#{name}% order by id limit 0,1")
+    @Select("select * from sys_user where name like %${name}% order by id limit 0,1")
     SysUser findByNameLikeOrderByIdAsc(String name);
 
     @Select("select * from sys_user where createdate < #{date}")
@@ -25,14 +24,14 @@ public interface SysUserDao{
     SysUser findByNameEquals(String name);
 
     @Options(useGeneratedKeys = true)
-    @Insert("insert into sys_user (name,password,sysDepartment) values (#{name},#{password},#{sysDepartment})")
+    @Insert("insert into sys_user (name,password) values (#{name},#{password})")
     void save(SysUser user);
 
     @Options(useGeneratedKeys = true)
     @InsertProvider(type = UserDaoProvider.class,method = "insertUserRole")
     void saveUserRole(List<Map<String,Object>> userRole);
 
-    @Delete("delete from sys_user_role")
+    @Delete("delete from sys_user")
     void deleteAll();
 }
 

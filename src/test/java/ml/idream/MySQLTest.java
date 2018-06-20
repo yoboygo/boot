@@ -1,6 +1,5 @@
 package ml.idream;
 
-import ml.idream.config.JpaConfig;
 import ml.idream.sys.department.SysDepartment;
 import ml.idream.sys.department.SysDepartmentService;
 import ml.idream.sys.role.SysRole;
@@ -10,12 +9,16 @@ import ml.idream.sys.user.SysUserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
@@ -23,12 +26,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableAutoConfiguration
-@ContextConfiguration(classes = {JpaConfig.class})
-@PropertySource("application_p.properties")
+@MapperScan(basePackages = "ml.idream")
+@ComponentScan(basePackages = "ml.idream")
 public class MySQLTest {
-    private static Logger logger = LoggerFactory.getLogger(JpaConfig.class);
+
+    private static Logger logger = LoggerFactory.getLogger(MySQLTest.class);
 
     @Autowired
     private SysUserService sysUserService;
@@ -92,14 +97,6 @@ public class MySQLTest {
 
     @Test
     public void findPage(){
-//        Pageable pageable = PageRequest.of(0,10,Sort.Direction.ASC,"id");
-////        Pageable pageable = new PageRequest(0,10,new Sort(Sort.Direction.ASC,"id"));
-//        Page<SysUser> page = userDao.findAll(pageable);
-//
-//        Assert.notNull(page,"没有查询到用户信息！");
-//        for(SysUser u : page.getContent()){
-//
-//            logger.info("====user==== user  name:{},department name:{},role name:{}",u.getName(),u.getSysDepartment().getName(),u.getRoles().get(0).getName());
-//        }
+        System.out.println("abcd");
     }
 }

@@ -2,6 +2,7 @@ package ml.idream.security;
 
 import ml.idream.sys.role.SysRole;
 import ml.idream.sys.role.SysRoleDao;
+import ml.idream.sys.role.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
@@ -18,14 +19,14 @@ import java.util.*;
 public class SysInvocationSecurityMetadataSourceService implements FilterInvocationSecurityMetadataSource {
 
     @Autowired
-    private SysRoleDao roleDao;
+    private SysRoleService sysRoleService;
     //key:url,value:List<role>
     private HashMap<String,Collection<ConfigAttribute>> rightMap = new HashMap<String,Collection<ConfigAttribute>>();
 
     @PostConstruct
     public void init(){
         rightMap.clear();
-        List<SysRole> roles = roleDao.findAll();
+        List<SysRole> roles = sysRoleService.findAll();
         if(roles == null)  return;
         for (SysRole role : roles) {
             role.getPermissions().forEach( p -> {
@@ -59,7 +60,7 @@ public class SysInvocationSecurityMetadataSourceService implements FilterInvocat
     public Collection<ConfigAttribute> getAllConfigAttributes() {
         init();
         Collection<ConfigAttribute> ret = new ArrayList<>();
-        List<SysRole> roles = roleDao.findAll();
+        List<SysRole> roles = sysRoleService.findAll();
         if (roles == null) return ret;
 
         for (SysRole role : roles) {

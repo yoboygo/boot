@@ -7,8 +7,12 @@ import java.util.Map;
 
 @Mapper
 public interface SysRoleDao{
+
     @Select("select * from sys_role")
-    List<SysRole> findAll();
+    @Results({
+            @Result(property = "permissions",column = "id",many = @Many(select = "ml.idream.sys.permission.SysPermissionDao.findByRoleId"))
+    })
+    public List<SysRole> findAll();
 
     @Delete("delete from sys_role")
     void deleteAll();

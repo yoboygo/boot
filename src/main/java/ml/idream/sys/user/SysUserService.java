@@ -14,7 +14,8 @@ import java.util.Map;
 public class SysUserService {
 
     @Autowired
-    private SysUserDao userDao;
+    private SysUserDao sysUserDao;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -24,12 +25,12 @@ public class SysUserService {
     }
 
     public void deleteAll() {
-        userDao.deleteAll();
+        sysUserDao.deleteAll();
     }
 
     public SysUser save(SysUser user) {
         //保存用户
-        userDao.save(user);
+        sysUserDao.save(user);
         //插入关联关系
         List<Map<String,Object>> userRole = new ArrayList<Map<String,Object>>();
         for(SysRole role : user.getRoles()){
@@ -38,7 +39,7 @@ public class SysUserService {
             item.put("roleId",role.getId());
             userRole.add(item);
         }
-        userDao.saveUserRole(userRole);
+        sysUserDao.saveUserRole(userRole);
         return user;
     }
 }

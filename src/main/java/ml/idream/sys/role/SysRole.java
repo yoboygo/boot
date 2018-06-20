@@ -3,6 +3,7 @@ package ml.idream.sys.role;
 import ml.idream.sys.permission.SysPermission;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -14,7 +15,7 @@ public class SysRole implements Serializable {
     private Long id;
     private String name;
 
-    private List<SysPermission> permissions;
+    private List<SysPermission> permissions = new ArrayList<SysPermission>();
 
     public Long getId() {
         return id;
