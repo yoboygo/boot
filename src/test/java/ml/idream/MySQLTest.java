@@ -26,7 +26,7 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableAutoConfiguration
 @ContextConfiguration(classes = {JpaConfig.class})
-@PropertySource("application.properties")
+@PropertySource("application_p.properties")
 public class MySQLTest {
     private static Logger logger = LoggerFactory.getLogger(JpaConfig.class);
 
