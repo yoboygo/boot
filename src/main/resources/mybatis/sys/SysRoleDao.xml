@@ -8,4 +8,7 @@
     <insert id="save" parameterType="ml.idream.sys.role.SysRole" useGeneratedKeys="true" keyProperty="id">
         insert into sys_role (name) values (#{name})
     </insert>
+    <select id="findAll" resultType="">
+
+    </select>
 </mapper>
