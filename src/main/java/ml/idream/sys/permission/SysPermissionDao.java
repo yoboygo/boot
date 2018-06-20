@@ -10,8 +10,8 @@ import java.util.List;
 public interface SysPermissionDao{
 
     @Select("Select * from sys_permission where id = #{id}")
-    public SysPermission findById(@Param("id") Integer id);
+    public SysPermission findById(@Param("id") Long id);
 
     @Select("Select p.* from sys_permission p join sys_role_permission m on m.permission_id = p.id where m.role_id = #{roleId}")
-    public List<SysPermission> findByRoleId(@Param("roleId") Integer roleId);
+    public List<SysPermission> findByRoleId(@Param("roleId") Long roleId);
 }
