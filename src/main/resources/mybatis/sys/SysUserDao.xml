@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ml.idream.sys.user.SysUserDao">
+    <select id="findByNameEquals" parameterType="String" resultType="ml.idream.sys.user.SysUser">
+        select * from sys_user where name = #{name}
+    </select>
+    <insert id="">
+        insert into sys_user (name,password) values (#{name},#{password})
+    </insert>
     <delete id="deleteAll">
         delete from sys_user
     </delete>
