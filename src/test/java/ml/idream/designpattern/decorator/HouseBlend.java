@@ -1,4 +1,4 @@
-package ml.idream.model.decorator;
+package ml.idream.designpattern.decorator;
 
 public class HouseBlend extends Beverage {
     public HouseBlend() {

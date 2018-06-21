@@ -13,6 +13,7 @@ public interface SysRoleDao{
     @Select("select * from sys_role")
     @Results({
             @Result(property = "permissions",column = "id", javaType = List.class,many = @Many(select = "ml.idream.sys.permission.SysPermissionDao.findByRoleId"))
+//            @Result(property = "permissions",column = "id", javaType = List.class,many = @Many(select = "findPermissionByRoleId"))
     })
     public List<SysRole> findAll();
 

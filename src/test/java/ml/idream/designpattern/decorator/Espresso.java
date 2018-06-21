@@ -1,4 +1,4 @@
-package ml.idream.model.decorator;
+package ml.idream.designpattern.decorator;
 
 public class Espresso extends Beverage{
     public Espresso() {
