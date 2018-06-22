@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
 public interface SysPermissionDao{
 
     public SysPermission findPermissionById(@Param("id") Integer id);

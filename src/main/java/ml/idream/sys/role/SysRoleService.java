@@ -3,6 +3,7 @@ package ml.idream.sys.role;
 import ml.idream.sys.permission.SysPermission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class SysRoleService {
     @Autowired
     private SysRoleDao sysRoleDao;
 
+    @Transactional
     public void save(SysRole sysRole) {
         //保存角色信息
         sysRoleDao.save(sysRole);
@@ -26,7 +28,10 @@ public class SysRoleService {
             item.put("permissionId",permission.getId());
             rolePermission.add(item);
         }
-        sysRoleDao.saveRolePermission(rolePermission);
+        if(rolePermission.size() > 0){
+            sysRoleDao.saveRolePermission(rolePermission);
+        }
+
     }
 
     public void deleteAll() {

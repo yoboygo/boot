@@ -7,7 +7,6 @@ import java.util.Map;
 /*
 * @linke {ml.idream.sys.permission.SysPermissionDao.findByRoleId}
 * */
-@Mapper
 public interface SysRoleDao{
 
     public List<SysRole> findAll();

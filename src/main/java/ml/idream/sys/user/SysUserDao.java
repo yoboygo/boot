@@ -8,7 +8,6 @@ import java.util.Map;
 /*
 * UserDao
 * */
-@Mapper
 public interface SysUserDao{
 
     SysUser findByNameEquals(String name);

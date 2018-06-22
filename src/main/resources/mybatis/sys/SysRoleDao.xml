@@ -18,7 +18,12 @@
     <select id="findAll" resultMap="SysRole" >
         select * from sys_role
     </select>
-    <insert id="saveRolePermission" parameterType="HashMap">
-        insert into sys_role_permissioin (role_id,permission_id) values (#{roleId},#{permissionId})
+    <insert id="saveRolePermission" parameterType="List">
+        insert into sys_role_permissioin (role_id,permission_id)
+        values
+         <foreach collection="list" item="item" separator=",">
+             (#{item.roleId},#{item.permissionId})
+         </foreach>
+
     </insert>
 </mapper>

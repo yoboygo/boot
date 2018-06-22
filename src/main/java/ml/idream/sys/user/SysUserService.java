@@ -4,6 +4,7 @@ import ml.idream.sys.role.SysRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class SysUserService {
         sysUserDao.deleteAll();
     }
 
+    @Transactional
     public SysUser save(SysUser user) {
         //保存用户
         sysUserDao.save(user);
@@ -39,7 +41,9 @@ public class SysUserService {
             item.put("roleId",role.getId());
             userRole.add(item);
         }
-        sysUserDao.saveUserRole(userRole);
+        if(userRole.size() > 0){
+            sysUserDao.saveUserRole(userRole);
+        }
         return user;
     }
 }

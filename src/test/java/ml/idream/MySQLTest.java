@@ -90,7 +90,7 @@ public class MySQLTest {
         roles2.add(r2);
         user2.setRoles(roles2);
 
-        sysUserService.save(user);
+        sysUserService.save(user2);
         Assert.notNull(user.getId(),"保存用户信息失败！");
 
     }
