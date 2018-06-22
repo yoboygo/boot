@@ -4,6 +4,16 @@ server:
     uri-encoding: UTF-8
 debug: true
 spring:
+  devtools:
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: HTML5
+    prefix: classpath:/templates
+    suffix: .html
+    excluded-view-names: /**/swagger-ui.html,/swagger,/**/api
   datasource:
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver

@@ -1,48 +1,85 @@
 <!DOCTYPE html>
-<!-- saved from url=(0057)https://v4.bootcss.com/docs/4.0/examples/floating-labels/ -->
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>注册</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title>注册</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="ThemeDesign" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" th:href="@{/images/favicon.ico}">
+        <link rel="shortcut icon" th:href="@{/assets/images/faviicon.png}">
 
-    <title>Floating labels example for Bootstrap</title>
+        <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+        <link th:href="@{/assets/css/icons.css}" rel="stylesheet" type="text/css">
+        <link th:href="@{/assets/css/style.css}" rel="stylesheet" type="text/css">
 
-    <!-- Bootstrap core CSS -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    </head>
 
-    <!-- Custom styles for this template -->
-    <link th:href="@{/css/signin.css}" rel="stylesheet">
-</head>
 
-<body>
-<form class="form-signin" th:action="@{/signup}" th:method="POST">
-    <div class="text-center mb-4">
-        <img class="mb-4" th:src="@{/fonts/bootstrap-solid.svg}" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">注册</h1>
-    </div>
+    <body>
 
-    <div class="form-label-group">
-        <input type="text" id="inputUserName" name="username" class="form-control" placeholder="User Name" required="" autofocus="">
-        <label for="inputUserName">User Name</label>
-    </div>
+        <!-- Begin page -->
+        <div class="accountbg"></div>
+        <div class="wrapper-page">
 
-    <div class="form-label-group">
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
-        <label for="inputPassword">Password</label>
-    </div>
+            <div class="card">
+                <div class="card-body">
 
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-    <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
-</form>
-</body>
+                    <h3 class="text-center mt-0 m-b-15">
+                        <a href="index.html" class="logo logo-admin"><img th:src="@{/assets/images/logo.png}" height="30" alt="logo"></a>
+                    </h3>
+
+                    <h4 class="text-muted text-center font-18"><b>注册</b></h4>
+
+                    <div class="p-3">
+                        <form class="form-horizontal m-t-20" th:action="@{/signup}" th:method="POST" >
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" type="email" required="" placeholder="邮箱" th:name="username">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" type="text" required="" placeholder="用户名">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" type="password" required="" placeholder="密码" th:name="password">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label font-weight-normal" for="customCheck1">我接受 <a href="#" class="text-muted">用户服务条款</a></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group text-center row m-t-20">
+                                <div class="col-12">
+                                    <button class="btn btn-info btn-block waves-effect waves-light" type="submit">注册</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group m-t-10 mb-0 row">
+                                <div class="col-12 m-t-20 text-center">
+                                    <a href="pages-login.html" class="text-muted">已经有账户了?</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
 </html>
