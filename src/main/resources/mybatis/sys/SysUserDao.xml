@@ -5,13 +5,13 @@
     <select id="findByNameEquals" parameterType="String" resultType="ml.idream.sys.user.SysUser">
         select * from sys_user where name = #{name}
     </select>
-    <insert id="">
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
         insert into sys_user (name,password) values (#{name},#{password})
+    </insert>
+    <insert id="saveUserRole" parameterType="HashMap">
+        insert into sys_user_role (user_id,role_id) values (#{userId},#{roleId})
     </insert>
     <delete id="deleteAll">
         delete from sys_user
     </delete>
-    <insert id="save" parameterType="ml.idream.sys.department.SysDepartment" useGeneratedKeys="true" keyProperty="id">
-        insert into sys_user (name) values (#{name})
-    </insert>
 </mapper>

@@ -4,6 +4,8 @@
 <mapper namespace="ml.idream.sys.role.SysRoleDao">
     
     <resultMap id="SysRole" type="ml.idream.sys.role.SysRole">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
         <association property="permissions" column="id" select="ml.idream.sys.permission.SysPermissionDao.findPermissionByRoleId" />
     </resultMap>
     
@@ -13,7 +15,10 @@
     <insert id="save" parameterType="ml.idream.sys.role.SysRole" useGeneratedKeys="true" keyProperty="id">
         insert into sys_role (name) values (#{name})
     </insert>
-    <select id="findAll" resultType="SysRole" >
+    <select id="findAll" resultMap="SysRole" >
         select * from sys_role
     </select>
+    <insert id="saveRolePermission" parameterType="HashMap">
+        insert into sys_role_permissioin (role_id,permission_id) values (#{roleId},#{permissionId})
+    </insert>
 </mapper>
