@@ -33,7 +33,7 @@
                     <h4 class="text-muted text-center font-18"><b>登陆</b></h4>
 
                     <div class="p-3">
-                        <form class="form-horizontal m-t-20" th:action="@{/signup}">
+                        <form class="form-horizontal m-t-20" th:action="@{/login}" th:method="POST">
 
                             <div class="form-group row">
                                 <div class="col-12">
@@ -43,7 +43,7 @@
 
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <input class="form-control" type="password" required="" placeholder="密码"  th:name="username">
+                                    <input class="form-control" type="password" required="" placeholder="密码"  th:name="password">
                                 </div>
                             </div>
 
@@ -67,7 +67,7 @@
                                     <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock    "></i> 忘记密码?</a>
                                 </div>
                                 <div class="col-sm-5 m-t-20">
-                                    <a th:href="@{/login}" class="text-muted"><i class="mdi mdi-account-circle"></i> 创建新用户</a>
+                                    <a th:href="@{/signup}" class="text-muted"><i class="mdi mdi-account-circle"></i> 创建新用户</a>
                                 </div>
                             </div>
                         </form>
@@ -76,24 +76,6 @@
                 </div>
             </div>
         </div>
-
-
-
-        <!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/modernizr.min.js"></script>
-        <script src="assets/js/detect.js"></script>
-        <script src="assets/js/fastclick.js"></script>
-        <script src="assets/js/jquery.slimscroll.js"></script>
-        <script src="assets/js/jquery.blockUI.js"></script>
-        <script src="assets/js/waves.js"></script>
-        <script src="assets/js/jquery.nicescroll.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-
-        <!-- App js -->
-        <script src="assets/js/app.js"></script>
 
     </body>
 </html>

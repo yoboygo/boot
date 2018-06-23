@@ -4,6 +4,7 @@ import ml.idream.sys.department.SysDepartment;
 import ml.idream.sys.role.SysRole;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +23,7 @@ public class SysUser implements Serializable {
 
     private SysDepartment sysDepartment;
 
-    private List<SysRole> roles;
+    private List<SysRole> roles = new ArrayList<SysRole>();
 
     public SysUser(){
 

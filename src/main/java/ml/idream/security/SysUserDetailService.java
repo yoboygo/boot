@@ -3,6 +3,7 @@ package ml.idream.security;
 import ml.idream.sys.role.SysRole;
 import ml.idream.sys.user.SysUser;
 import ml.idream.sys.user.SysUserDao;
+import ml.idream.sys.user.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,11 +19,11 @@ import java.util.List;
 @Service
 public class SysUserDetailService implements UserDetailsService {
     @Autowired
-    private SysUserDao userDao;
+    private SysUserService sysUserService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SysUser sysUser = userDao.findByNameEquals(username);
+        SysUser sysUser = sysUserService.findByNameEquals(username);
         if (sysUser == null) {
             throw new UsernameNotFoundException("Security 验证失败，没用找到用户 " + username);
         }

@@ -1,7 +1,5 @@
 package ml.idream.sys.department;
 
-import org.apache.ibatis.annotations.Mapper;
-
 public interface SysDepartmentDao {
     void deleteAll();
 

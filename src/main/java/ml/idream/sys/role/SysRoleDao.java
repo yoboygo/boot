@@ -1,7 +1,5 @@
 package ml.idream.sys.role;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import java.util.List;
 import java.util.Map;
 /*

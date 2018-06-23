@@ -46,4 +46,8 @@ public class SysUserService {
         }
         return user;
     }
+
+    public SysUser findByNameEquals(String username) {
+        return sysUserDao.findByNameEquals(username);
+    }
 }

@@ -17,7 +17,7 @@ spring:
   datasource:
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://172.50.3.94:3306/mydatabase?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      jdbc-url: jdbc:mysql://localhost:3306/mydatabase?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
       username: myuser
       password: 111111
       maximum-pool-size: 5
