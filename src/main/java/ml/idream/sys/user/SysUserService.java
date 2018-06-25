@@ -20,8 +20,10 @@ public class SysUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public SysUser addUser(String userName,String passWord) throws Exception {
-        SysUser user = new SysUser.Builder().setName(userName).setPassWord(passwordEncoder.encode(passWord)).build();
+    public SysUser addUser(String userName,String passWord,String email) throws Exception {
+        SysUser user = new SysUser.Builder().setName(userName)
+                .setPassWord(passwordEncoder.encode(passWord))
+                .setEmail(email).build();
         return save(user);
     }
 

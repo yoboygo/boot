@@ -19,6 +19,8 @@ public class SysUser implements Serializable {
 
     private String password;
 
+    private String email;
+
     private Date createdate = Calendar.getInstance().getTime();
 
     private SysDepartment sysDepartment;
@@ -77,6 +79,14 @@ public class SysUser implements Serializable {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     /*建造者*/
     public static class Builder{
         private SysUser user;
@@ -91,6 +101,10 @@ public class SysUser implements Serializable {
         }
         public Builder setPassWord(String passWord){
             user.setPassword(passWord);
+            return this;
+        }
+        public Builder setEmail(String email){
+            user.setEmail(email);
             return this;
         }
         public SysUser build(){

@@ -31,7 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**",
                         "/configuration/security", "/swagger-ui.html","/index","/","/home","/error",
                         "/signup","/dy/**","/css/**","/js/**","/images/**","/fonts/**",
-                        "/assets/**","/webjars/**")
+                        "/manage/**","/webjars/**","/blog/**",
+                        "/**/css/**","/**/scripts/**","/**/image/**","/**/styles/**","/**/fronts/**")//通用静态资源路径
                 .permitAll()
                 .and()
                 .formLogin()

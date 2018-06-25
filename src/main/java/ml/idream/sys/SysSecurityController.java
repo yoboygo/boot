@@ -28,8 +28,8 @@ public class SysSecurityController {
      * 注册新用户
      * */
     @RequestMapping(value = "/signup",method = RequestMethod.POST)
-    public String signUp(Model model,String username, String password) throws Exception {
-        userService.addUser(username,password);
+    public String signUp(Model model,String username, String password,String email) throws Exception {
+        userService.addUser(username,password,email);
         System.out.println( "username:" + username + " password:" + password );
         return "redirect:/login";
     }

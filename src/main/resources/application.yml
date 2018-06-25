@@ -10,7 +10,7 @@ spring:
   thymeleaf:
     cache: false
     encoding: UTF-8
-    mode: HTML5
+#    mode: HTML5
     prefix: classpath:/templates
     suffix: .html
     excluded-view-names: /**/swagger-ui.html,/swagger,/**/api
