@@ -2,9 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>发布文章</title>
+    <title>写文章</title>
+    <script type="text/javascript" th:src="@{/wangEditor/scripts/wangEditor.js}"></script>
 </head>
 <body>
+<div id="editor">
+    <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+</div>
+<script th:inline="javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.customConfig.uploadImgShowBase64 = true;
+    editor.create()
 
+</script>
 </body>
 </html>
