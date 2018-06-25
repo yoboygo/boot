@@ -3,23 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>写文章</title>
-    <link th:href="@{/manage/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" th:src="@{/wangEditor/scripts/wangEditor.js}"></script>
 </head>
 <body>
-
-<div class="form-group row">
-    <div class="col-12">
-        <input id="title" class="form-control" type="text" required="" placeholder="请输入标题"  th:name="title">
-    </div>
-</div>
 <div id="editor">
-    <h2>正文</h2>
-</div>
-<div class="form-group text-center row m-t-20">
-    <div class="col-12">
-        <button id="publish" class="btn btn-info btn-block waves-effect waves-light">发布</button>
-    </div>
+    <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
 </div>
 <script th:inline="javascript">
     var E = window.wangEditor

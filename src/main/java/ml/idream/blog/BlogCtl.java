@@ -11,4 +11,9 @@ public class BlogCtl {
     public String index (){
         return "/blog/blog-home";
     }
+
+    @RequestMapping("/add")
+    public String toAddArticle(){
+        return "/blog/add-article";
+    }
 }
