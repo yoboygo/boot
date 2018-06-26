@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>写文章</title>
+    <link rel="stylesheet" th:href="@{/css/common/bootstrap.css}"/>
     <link th:href="@{/manage/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" th:src="@{/wangEditor/scripts/wangEditor.js}"></script>
+    <script type="text/javascript" th:src="@{/js/common/jquery-3.3.1.js}"></script>
+    <script type="text/javascript" th:src="@{/js/common/bootstrap.js}"></script>
+    <script type="text/javascript" th:src="@{/js/blog/add-article.js}"></script>
 </head>
 <body>
 
@@ -21,12 +25,11 @@
         <button id="publish" class="btn btn-info btn-block waves-effect waves-light">发布</button>
     </div>
 </div>
+<div class="alert alert-danger" role="alert">
+    This is a danger alert—check it out!
+</div>
 <script th:inline="javascript">
-    var E = window.wangEditor
-    var editor = new E('#editor')
-    // 或者 var editor = new E( document.getElementById('editor') )
-    editor.customConfig.uploadImgShowBase64 = true;
-    editor.create()
+
 
 </script>
 </body>

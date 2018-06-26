@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <title>博客</title>
     <script type="text/javascript" th:src="@{/wangEditor/scripts/wangEditor.js}"></script>
+    <script type="text/javascript" th:src="@{/js/common/jquery-3.3.1.js}"></script>
 </head>
 <body>
-<div id="editor">
+<div id="div1">
     <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
 </div>
+<textarea id="text1" style="width:100%; height:200px;"></textarea>
 <script th:inline="javascript">
     var E = window.wangEditor
-    var editor = new E('#editor')
-    // 或者 var editor = new E( document.getElementById('editor') )
-    editor.customConfig.uploadImgShowBase64 = true;
+    var editor = new E('#div1')
+    var $text1 = $('#text1')
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        $text1.val(html)
+    }
     editor.create()
+    // 初始化 textarea 的值
+    $text1.val(editor.txt.html())
 
 </script>
 </body>
