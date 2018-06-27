@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>大家都来说</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/lbstyle.css}">
+</head>
+<body class="gray">
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div id="#addload">
+		<div class="spiner"></div>
+	</div>
+	<div class="wrap">
+		<div class="talk">
+			<!-- 对美容师的说说 -->
+			<div class="heading-beautician">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<h3>陈倩<i>高级技师</i></h3>
+						<p class="features">
+							<span class="score"><span class="score-inner" style="width:70%"></span></span>
+							<span class="reservat">100</span>
+							<span class="comment">88</span>
+						</p>
+					</dd>
+				</dl>
+				<textarea class="post-area" placeholder="请输入您的说说内容（5-50字）" maxlength="50" ></textarea>
+				<div class="btn-area">
+					<input type="button" class="post-btn" value="发布说说" disabled="disabled">
+				</div>
+			</div>
+			
+			<!-- 对商品的说说 -->
+			
+			<div class="heading-goods">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<h3>奥马生机海洋精粹舒缓露奥马生机海洋精粹舒缓露</h3>
+						<p class="features">
+							<span class="score"><span class="score-inner" style="width:70%"></span></span>
+							<span class="sales">100</span>
+							<span class="comment">88</span>
+						</p>
+					</dd>
+				</dl>
+				<textarea class="post-area" placeholder="请输入您的说说内容（5-50字）" maxlength="50" ></textarea>
+				<div class="btn-area">
+					<input type="button" class="post-btn" value="发布说说" disabled="disabled">
+				</div>
+			</div>
+
+			<!-- 对店铺的说说 -->
+			<div class="heading-salon">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<h3>店铺名称名称</h3>
+						<p class="features"><a href="tel:010-89145690">电话: 010-89145690</a></p>
+						<p>地址: 罗湖区华强北路19号罗湖区</p>
+					</dd>
+				</dl>
+				<textarea class="post-area" placeholder="请输入您的说说内容（5-50字）" maxlength="50" ></textarea>
+				<div class="btn-area">
+					<input type="button" class="post-btn" value="发布说说" disabled="disabled">
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.loading').fadeOut();
+		$('.post-area').chackInput();
+	});
+
+	$.fn.chackInput = function () {
+		$(this).keydown(function(){
+			var txtLength = $(this).val().length;
+			txtLength > 0 ? $('.post-btn').prop("disabled",false) : $('.post-btn').prop("disabled",true);
+		});
+		$(this).blur(function(){
+			var txtLength = $(this).val().length;
+			txtLength == 0 ? $('.post-btn').prop("disabled",true) : '';
+		})
+		return this;  
+	};
+
+</script>
+</html>

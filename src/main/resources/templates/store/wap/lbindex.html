@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>生活美容</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/flexslider.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/lbstyle.css}">
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div class="wrap has-footer">
+		<div class="banner flexslider">
+			<ul class="slides">
+				<li><a href="#"><img th:src="@{/store/wap/images/banner.jpg}"></a></li>
+				<li><a href="#"><img th:src="@{/store/wap/images/banner.jpg}"></a></li>
+			</ul>
+		</div>
+		<!-- 附导航 -->
+		<div class="affix-nav">
+			<a href="./lbintem.html">
+				<img th:src="@{/store/wap/images/icon-project.png}" alt="">
+				<i>项目</i>
+			</a>
+			<a href="./salonlist.html">
+				<img th:src="@{/store/wap/images/icon-salon.png}" alt="">
+				<i>美容院</i>
+			</a>
+			<a href="./beautician.html">
+				<img th:src="@{/store/wap/images/icon-mrs.png}" alt="">
+				<i>美容师</i>
+			</a>
+			<a href="###">
+				<img th:src="@{/store/wap/images/icon-servicers.png}" alt="">
+				<i>客服</i>
+			</a>
+		</div>
+		<!-- 推荐活动 -->
+		<div class="offers">
+			<ul class="sift">
+				<li>
+					<a href="http://192.168.1.227/Project/beautyGo/special.html" style="background-image:url(../images/sift_04.jpg)"></a>
+				</li>
+				<li>
+					<a href="http://192.168.1.227/Project/beautyGo/special.html" style="background-image:url(../images/sift_05.jpg)"></a>
+					<a href="http://192.168.1.227/Project/beautyGo/special.html" style="background-image:url(../images/sift_06.jpg)"></a>
+				</li>
+			</ul>
+		</div>
+		<!-- 新开门店 -->
+		<div class="offers">
+			<p class="titles"><span>新店开业喜报</span></p>
+			<div class="store flexslider">
+				<ul class="slides">
+					<li>
+						<a href="javascript:;" class="store-item">
+							<p class="store-picture">
+								<img th:src="@{/store/wap/images/banner.jpg}">
+								<span>深圳罗湖可诺丹婷店</span>
+							</p>
+							<p>电话: 010-89145690</p>
+							<p>地址: 罗湖区华强北路19号华强北路19号</p>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" class="store-item">
+							<p class="store-picture">
+								<img th:src="@{/store/wap/images/banner.jpg}">
+								<span>深圳罗湖可诺丹婷店</span>
+							</p>
+							<p>电话: 010-89145690</p>
+							<p>地址: 罗湖区华强北路19号华强北路19号</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 美丽分享 -->
+		<div class="offers">
+			<p class="titles"><span>美丽分享</span></p>
+			<div class="lbarticle">
+				<div class="art-item">
+					<div class="heading" data-href="">
+						<div class="users">
+							<img src="http://resource.idengyun.com/resource/images/2017/04/0a14e304-dbda-4e54-b5ce-fc7a1a6f52eb.jpg" alt="">
+							<span>喵喵</span>
+							<span class="levels"><i>Lv</i>5</span>
+						</div>
+						<div class="BGImg items1">
+							<div style="background-image:url(http://resource.idengyun.com/resource/images/2017/04/f8bc98d0-3aa6-477b-9dca-ccc519c3753d.jpg);"></div>
+						</div>
+						<p>不知道下一次超声刀是什么时候，皱纹都看不见了啊，真变得太厉害了，我要当天山童姥！！！</p>
+					</div>
+					<div class="commodity" good-id=""><span>泰妍雅集丰韵套装</span></div>
+					<div class="art-menu">
+						<span class="browsed">12345</span>
+						<span class="comments">12442</span>
+						<span class="praised">75214</span>
+						<span class="shared">12347</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 他们都在做 -->
+		<div class="offers">
+			<p class="titles"><span>她们都在做</span></p>
+			<div class="offers-item">
+				<div class="offers-inner">
+					<a href="" class="items">
+						<p class="pic-wrap">
+							<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+							<span class="comment">100</span>
+							<span class="sales">100</span>
+						</p>
+						<p class="word-ellipsis">泰妍雅集套装泰妍雅集套装</p>
+						<p class="prise"><span>¥<i>1680</i></span><del>¥289</del></p>
+						<p class="score"><span class="score-inner" style="width:70%"></span></p>
+					</a>
+					<a href="" class="items">
+						<p class="pic-wrap">
+							<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+							<span class="comment">100</span>
+							<span class="sales">100</span>
+						</p>
+						<p class="word-ellipsis">泰妍雅集套装泰妍雅集套装</p>
+						<p class="prise"><span>¥<i>1680</i></span><del>¥289</del></p>
+						<p class="score"><span class="score-inner" style="width:70%"></span></p>
+					</a>
+					<a href="" class="items">
+						<p class="pic-wrap">
+							<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+							<span class="comment">100</span>
+							<span class="sales">100</span>
+						</p>
+						<p class="word-ellipsis">泰妍雅集套装泰妍雅集套装</p>
+						<p class="prise"><span>¥<i>1680</i></span><del>¥289</del></p>
+						<p class="score"><span class="score-inner" style="width:70%"></span></p>
+					</a>
+					<a href="" class="items">
+						<p class="pic-wrap">
+							<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+							<span class="comment">100</span>
+							<span class="sales">100</span>
+						</p>
+						<p class="word-ellipsis">泰妍雅集套装泰妍雅集套装</p>
+						<p class="prise"><span>¥<i>1680</i></span><del>¥289</del></p>
+						<p class="score"><span class="score-inner" style="width:70%"></span></p>
+					</a>
+					<a href="" class="items">
+						<p class="pic-wrap">
+							<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+							<span class="comment">100</span>
+							<span class="sales">100</span>
+						</p>
+						<p class="word-ellipsis">泰妍雅集套装泰妍雅集套装</p>
+						<p class="prise"><span>¥<i>1680</i></span><del>¥289</del></p>
+						<p class="score"><span class="score-inner" style="width:70%"></span></p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- 明星技师 -->
+		<div class="offers">
+			<p class="titles"><span>明星技师</span></p>
+			<div class="technician">
+				<div class="row1">
+					<a href="#">
+						<p>美容师</p>
+						<img th:src="@{/store/wap/images/caoyue.jpg}" alt="">
+					</a>
+					<a href="#">
+						<p>美容师</p>
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+					</a>
+					<a href="#">
+						<p>美容师</p>
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+					</a>
+				</div>
+				<div class="row2">
+					<a href="#">
+						<p>美容师</p>
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+					</a>
+					<a href="#">
+						<p>美容师</p>
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+					</a>
+					<a href="#">
+						<p>美容师</p>
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+					</a>
+					<a href="#">
+						<p>美容师</p>
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- 热门项目  -->
+		<div class="offers">
+			<p class="titles"><span>热门项目</span></p>
+			<div class="hot-items">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<a href="">
+							<h3>奥马生机海洋精粹舒缓露奥马生机海洋精粹舒缓露</h3>
+							<p class="prise"><span>¥<i>1680</i></span><del>¥289</del></p>
+							<p class="features">
+								<span class="score"><span class="score-inner" style="width:70%"></span></span>
+								<span class="sales">100</span>
+								<span class="comment">88</span>
+							</p>
+						</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<a href="">
+							<h3>奥马生机海洋精粹舒缓露奥马生机海洋精粹舒缓露</h3>
+							<p class="prise"><span>¥<i>1680</i></span><del>¥289</del></p>
+							<p class="features">
+								<span class="score"><span class="score-inner" style="width:70%"></span></span>
+								<span class="sales">100</span>
+								<span class="comment">88</span>
+							</p>
+						</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- footer -->
+		<footer>
+			<a href="./lbindex.html" class="active"><img th:src="@{/store/wap/images/nav-icon11.png}" alt=""><i>美容</i></a>
+			<a href="./lbclassify.html"><img th:src="@{/store/wap/images/nav-icon20.png}" alt=""><i>分类</i></a>
+			<a href="./lbarticle.html"><img th:src="@{/store/wap/images/nav-icon30.png}" alt=""><i>变美</i></a>
+			<a href=""><img th:src="@{/store/wap/images/nav-icon40.png}" alt=""><i>我的</i></a>
+		</footer>
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/store/wap/js/slider.js}"></script>
+<script type="text/javascript">
+	var isApp = 0;
+
+	$(function(){
+		$('.loading').fadeOut();
+		// 隐藏滚动条
+		$('.offers-item').each(function(){
+			var len = $(this).find('a').length;
+			$(this).wrap('<div class="offers-wrap"></div>')
+			$(this).find('.offers-inner').css({'width':(len*146)+'px'})
+		});
+
+		$('.banner.flexslider').flexslider({
+			animation: "slide",
+			slideDirection: "horizontal"
+		});
+		// 门店
+		$('.store.flexslider').flexslider({
+			slideshow:false,
+			animation: "slide",
+			slideDirection: "horizontal"
+		});
+
+
+	})
+
+
+</script>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>大家都来说</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/lbstyle.css}">
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div id="#addload">
+		<div class="spiner"></div>
+	</div>
+	<div class="wrap has-footer">
+		<div class="talk">
+			<div class="heading">关于<i>什么什么什么</i>大家说了这些：</div>
+			<div class="list" id="list">
+				<a href="https://www.baidu.com/" class="items">
+					<p>啊大苏打</p>
+					<p>阿达阿达阿达</p>
+					<p class="link">共2个回复<span>2017-05-02　10:00</span></p>
+				</a>
+				<a href="" class="items">
+					<p>啊大苏打</p>
+					<p>感觉这家店还不错，真心推荐这家店，技术好态度好，主要是这家的妹纸人漂亮，心地好，真心推荐</p>
+					<p>共2个回复<span>2017-05-02　10:00</span></p>
+				</a>
+				<a href="" class="items">
+					<p>啊大苏打</p>
+					<p>阿达阿达阿达</p>
+					<p>共2个回复<span>2017-05-02　10:00</span></p>
+				</a>
+				<a href="" class="items">
+					<p>啊大苏打</p>
+					<p>感觉这家店还不错，真心推荐这家店，技术好态度好，主要是这家的妹纸人漂亮，心地好，真心推荐</p>
+					<p>共2个回复<span>2017-05-02　10:00</span></p>
+				</a>
+				<a href="" class="items">
+					<p>啊大苏打</p>
+					<p>阿达阿达阿达</p>
+					<p>共2个回复<span>2017-05-02　10:00</span></p>
+				</a>
+				<a href="" class="items">
+					<p>啊大苏打</p>
+					<p>感觉这家店还不错，真心推荐这家店，技术好态度好，主要是这家的妹纸人漂亮，心地好，真心推荐</p>
+					<p>共2个回复<span>2017-05-02　10:00</span></p>
+				</a>
+			</div>
+			<div class="tombsign">
+				<div></div><div></div><div></div>
+			</div>
+		</div>
+	</div>
+	<footer class="talk-footer">
+		<a href="./posttalk.html">我也说说</a>
+	</footer>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.loading').fadeOut();
+		var second = 100,
+			$elm = $('#list'),
+			$sign = $('.tombsign'),
+			$page = 1;
+
+		showItem();
+
+		function loadComment(){
+
+			if( !($elm.data('nomore')) && ($page < 4) && !($elm.data('isloading')) ) {
+				
+				// 设置加载状态，防止重复多次加载
+				$elm.data('isloading',true)
+				$.ajax({
+					url:'../js/data.php',
+					data:{
+
+					},
+					dataType: 'json',
+					type:'get',
+					beforeSend:function(){
+						$sign.show();
+					},
+					success: function() {
+						// 没有更多数据的判断条件
+						var str = '';
+						
+						str +='<a href="https://www.baidu.com/" class="items">'
+							+'<p>啊大苏打</p>'
+							+'<p>阿达阿达阿达</p>'
+							+'<p class="link">共2个回复<span>2017-05-02　10:00</span></p>'
+						+'</a>';
+						str +='<a href="https://www.baidu.com/" class="items">'
+							+'<p>啊大苏打</p>'
+							+'<p>阿达阿达阿达</p>'
+							+'<p class="link">共2个回复<span>2017-05-02　10:00</span></p>'
+						+'</a>';
+						str +='<a href="https://www.baidu.com/" class="items">'
+							+'<p>啊大苏打</p>'
+							+'<p>阿达阿达阿达</p>'
+							+'<p class="link">共2个回复<span>2017-05-02　10:00</span></p>'
+						+'</a>';
+				
+						$sign.fadeOut();
+						$elm.append(str);//添加节点 
+						$page++;//分页++
+						$elm.data('isloading',false); //去掉加载限制
+
+						// 判断到底啦条件
+						if(($page >=4)) {
+							$elm.data('nomore'); 
+							$elm.append('<div class="no-more"></div>');
+						};
+						// 显示效果
+						showItem();
+					},
+					error:function(e){
+						$sign.fadeOut();
+					}
+				});
+			}
+		}
+
+		// 拉动加载
+		$(window).scroll(function(){
+			var scrollTop = $(this).scrollTop(),
+				scrollHeight = $(document).height(),
+				windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+				loadComment();
+		　　}
+
+		});
+
+
+		function showItem(){
+			$('.list .items').not('.isfinish').each(function(i,e){
+				$(this).css({
+		          '-webkit-animation':'fadeInUp 1s '+((i*100)+parseInt(second))+'ms ease both'
+		        }).addClass('isfinish');
+			});
+		}
+		
+	});
+</script>
+</html>

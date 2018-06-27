@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>美容院</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/citypicker.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/lbstyle.css}">
+</head>
+<body class="gray">
+	<div id="addload"><div class="spiner"></div></div>
+	<div class="wrap lbitem">
+		<div class="sorting">
+			<span class="select-city">全部城市<i></i></span>
+			<span class="droplist-sort-tab"><span>智能排序</span><i></i></span>
+		</div>
+			<div class="hot-items" id="aslonlist">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<a href="">
+							<h3>北京通州万达可诺丹婷店</h3>
+							<p class="features">
+								<span class="score"><span class="score-inner" style="width:70%"></span></span>
+							</p>
+							<p>电话: 010-89145690</p>
+							<p>地址: 北京市通州区万达广场A区167号</p>
+						</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<a href="">
+							<h3>北京通州万达可诺丹婷店</h3>
+							<p class="features">
+								<span class="score"><span class="score-inner" style="width:70%"></span></span>
+							</p>
+							<p>电话: 010-89145690</p>
+							<p>地址: 北京市通州区万达广场A区167号</p>
+						</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<!-- 智能排序弹层 -->
+	<div class="droplist-sort-cover">
+		<ul class="droplist-sort-option">
+			<li class="selected" id="0">智能排序</li>
+			<li id="1">离我最近</li>
+			<li id="2">评分最高</li>
+			<li id="3">最受欢迎</li>
+		</ul>
+	</div>
+	<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/store/wap/js/salonlist.js}"></script>
+	
+</body>
+</html>

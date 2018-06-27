@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>我的收藏</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/base.css}">
+</head>
+<body>
+	<div class="loading"><div class="spinner"></div></div>
+	<div class="wrap">
+		<ul class="cutover-menu">
+			<li class="current">商品</li>
+			<li>店铺</li>
+			<li>技师</li>
+		</ul>
+		<div class="cutover-box">
+			<!-- 商品 -->
+			<div class="cutover-inner fadeInLeft">
+				<dl class="item goods">
+					<dt>
+						<a href=""><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></a>
+					</dt>
+					<dd class="">
+						<a href="" class="item-title">奥马生机海洋精粹舒缓露奥马生机海洋精粹舒缓露奥马</a>
+					</dd>
+					<dd><span>2017-04-17</span><span class="action-btn" onclick="">取消收藏</span></dd>
+				</dl>
+				<dl class="item goods">
+					<dt>
+						<a href=""><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></a>
+					</dt>
+					<dd class="">
+						<a href="" class="item-title">奥马生机海洋精粹舒缓露奥马生机海洋精粹舒缓露奥马</a>
+					</dd>
+					<dd><span>2017-04-17</span><span class="action-btn" onclick="">取消收藏</span></dd>
+				</dl>
+			</div>
+			<!-- 店铺 -->
+			<div class="cutover-inner">
+				<dl class="item story">
+					<dt>
+						<a href=""><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></a>
+					</dt>
+					<dd class="">
+						<a href="" class="item-title">可诺丹婷北京万达店</a>
+					</dd>
+					<dd><span>2017-04-17</span><span class="action-btn" onclick="">取消收藏</span></dd>
+				</dl>
+				<dl class="item story">
+					<dt>
+						<a href=""><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></a>
+					</dt>
+					<dd class="">
+						<a href="" class="item-title">可诺丹婷北京万达店</a>
+					</dd>
+					<dd><span>2017-04-17</span><span class="action-btn" onclick="">取消收藏</span></dd>
+				</dl>
+			</div>
+			<!-- 技师 -->
+			<div class="cutover-inner">
+				<dl class="item beautican">
+					<dt>
+						<a href=""><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></a>
+					</dt>
+					<dd class="">
+						<a href="" class="item-title">高圆圆<span>高级技师c</span></a>
+					</dd>
+					<dd><span>2017-04-17</span><span class="action-btn" onclick="">取消收藏</span></dd>
+				</dl>
+				<dl class="item beautican">
+					<dt>
+						<a href=""><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></a>
+					</dt>
+					<dd class="">
+						<a href="" class="item-title">高圆圆<span>高级技师c</span></a>
+					</dd>
+					<dd><span>2017-04-17</span><span class="action-btn" onclick="">取消收藏</span></dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.loading').fadeOut();
+		var $current = 0;
+		$('.cutover-menu li').click(function(){
+			var $this = $(this), 
+				$index = $(this).index(); //当前点击的序号
+			$this.addClass('current').siblings().removeClass('current');	
+			if(parseInt($index) > parseInt($current)){  //当前点击大于指定序号
+				$('.cutover-inner').eq($index).attr('class','cutover-inner fadeInRight');
+				$('.cutover-inner').eq($current).attr('class','cutover-inner fadeOutLeft');
+				$current = $index;
+			}else if(parseInt($index) < parseInt($current)){
+				$('.cutover-inner').eq($index).attr('class','cutover-inner fadeInLeft');
+				$('.cutover-inner').eq($current).attr('class','cutover-inner fadeOutRight');
+				$current = $index;
+			};
+		});
+	});
+</script>
+</html>

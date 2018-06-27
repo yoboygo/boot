@@ -32,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/configuration/security", "/swagger-ui.html","/index","/","/home","/error",
                         "/signup","/dy/**","/css/**","/js/**","/images/**","/fonts/**",
                         "/manage/**","/webjars/**","/blog/**",
-                        "/**/css/**","/**/scripts/**","/**/image/**","/**/styles/**","/**/fronts/**")//通用静态资源路径
+                        "/**/css/**","/**/scripts/**","/**/image/**","/**/styles/**","/**/fronts/**",//通用静态资源路径
+                        "/store/**")
                 .permitAll()
                 .and()
                 .formLogin()

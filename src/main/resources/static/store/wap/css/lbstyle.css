@@ -1,0 +1,502 @@
+﻿@charset "utf-8";
+/* 生美样式*/
+html{color:#1a1a1a;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,strong{padding:0;margin:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}a{text-decoration:none;outline:none;}caption,em,strong,i{font-style:inherit;font-weight:inherit;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}input,button,textarea,select,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}.clear{clear:both;height:0px;overflow:hidden;}.clearfix:after{clear:both;display: block;content: "...";visibility: hidden;height: 0;font-size: 0;}input,button,textarea{-webkit-appearance: none;border:none;outline:none;border-radius:0;}.clearfix{*zoom:1;}a,div,span,p,li{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;}{-webkit-box-sizing:border-box;}
+img{vertical-align:top;-webkit-touch-callout:none;}
+body{-webkit-overflow-scrolling:touch;}/*局部滚动也能实现弹性效果*/
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-font-smoothing: antialiased;
+    /*让页面上的字体变得清晰*/
+}
+a{color:inherit;}
+del{color:#999 !important;}
+.word-ellipsis{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wrap{overflow: hidden;-webkit-transition:all .5s .2s ease;}
+.banner img{width:100%;vertical-align:top;}
+/* 主要内容*/
+html,body{font-size: 62.5%;max-width:768px;margin:0 auto;}
+.loading{position:fixed;left:0;top:0;width:100%;height:100%;z-index:999;}
+.loading .spinners{position:absolute;left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;background-color:rgba(0,0,0,.7);background-image:url(../images/loading.gif);background-position:center;background-repeat:no-repeat;background-size:30px;border-radius:8px;  z-index:999;}
+.loading .spinner{position:absolute;left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;background-color:rgba(0,0,0,.7);background-image:url(../images/loading.gif);background-position:center;background-repeat:no-repeat;background-size:30px;border-radius:8px;  z-index:999;}
+/*墓碑占位*/
+.tombsign{display:none;}
+.tombsign div{position:relative; width:100%;height:110px;margin-top:12px;}
+.tombsign div::before{content:'';position:absolute;left:12px;top:0;width:80px;height:30px;background:#ececec;}
+.tombsign div::after{content:'';position:absolute;left:12px;right:12px;bottom:0;height:65px;background:#ececec;}
+
+#addload{position:fixed;left:0;top:0;width:100%;height:100%;z-index:999;}
+#addload .spiner{position:absolute;left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;background-color:rgba(0,0,0,.7);background-image:url(../images/loading.gif);background-position:center;background-repeat:no-repeat;background-size:30px;border-radius:8px;  z-index:999;}
+
+#addload .msg-joinCart,#addload .success{width:190px;height:88px;margin:-44px 0 0 -95px;background-image:url(../images/success.png);background-color: rgba(0,0,0,.8);background-position:center 20px;}
+#addload .warning{width:190px;height:auto;padding-top:60px;padding-bottom:12px; margin:-55px 0 0 -95px;background-image:url(../images/error.png);background-color: rgba(0,0,0,.8);background-position:center 20px;}
+#addload .warning .text{width:100%;line-height:20px;color:#fff;font-size:14px;text-align:center;}
+#addload .msg-error:before{content:'操作失败,请稍后再试';position:absolute;left:0; bottom:10px;width:100%;height:20px;line-height:20px;color:#fff;font-size:14px;text-align:center;}
+#addload .success .text{position:absolute;left:0; bottom:10px;width:100%;height:20px;line-height:20px;color:#fff;font-size:14px;text-align:center;}
+
+.gray{background:#f5f5f5;}
+.wrap.has-footer{padding-bottom:55px;}
+.banner .flex-control-nav li a{background:#dcdcdc;}
+.banner .flex-control-nav li .flex-active{background:#fff;}
+
+/*页脚*/
+footer{position:fixed;left:0;bottom:0; width:100%;height:55px;box-shadow:0 0px 15px -2px rgba(0,0,0,.2); z-index:99;}
+footer a{float:left;width:25%;text-align:center;font-size:12px;color:#666;overflow:hidden;}
+footer{position:fixed;left:0;bottom:0;width:100%;height:55px;background-color:#fff;z-index:99;-webkit-box-sizing:border-box;padding-top:10px; }
+footer{box-shadow:none;border-top:1px solid #ececec;}
+footer a img{max-height:23px;margin:0 auto 5px;display:block;}
+footer .active{color:#ef508d;}
+
+/*生美首页附导航*/
+.affix-nav{padding:15px 0 5px;overflow:hidden;border-bottom:5px solid #f3f3f3;}
+.affix-nav a{float:left;width:25%;text-align:center;}
+.affix-nav img{display:block;width:48px;margin:0 auto;}
+.affix-nav i{display:inline-block;height:30px;line-height:30px;font-size:13px;color:#666;}
+
+.hot-news .flex-control-nav{display:none;}
+/*标题*/
+.offers{width:100%; overflow:hidden;background:#fff;border-bottom:8px solid #f3f3f3;}
+.sift{display:-webkit-box;display:-webkit-flex;display:flex;width:100%;background:#f3f3f3;}
+.sift li{background-size:cover; overflow:hidden;}
+.sift li:nth-child(1){-webkit-box-flex:1;flex:1; margin-right:1px;}
+.sift li:nth-child(1) a{float:left;width:100%;padding-top:120%;margin-top: -1px;background-size:cover;}
+.sift li:nth-child(2){-webkit-box-flex: 1;flex: 1;}
+.sift li:nth-child(2) a{float:left;width:100%;padding-top:60%;background-size:cover;}
+.sift li:nth-child(2) a:nth-child(1){padding-top: calc(60% - 2px);margin-bottom:2px;}
+
+.offers .titles{text-align:center;font-size:15px; color:#000;}
+.offers .titles span{display:inline-block; height: 55px;line-height:55px;}
+.offers .titles span::before{content:'';display:inline-block;width:32px;height:60px;vertical-align:top;margin-right:10px; background:url(../images/icon-title-left.png) center no-repeat;background-size:32px 3px;}
+.offers .titles span::after{content:'';display:inline-block;width:32px;height:60px;vertical-align:top;margin-left:10px; background:url(../images/icon-title-right.png) center no-repeat;background-size:32px 3px;}
+  /*门店*/
+.offers .store{padding-bottom:35px;}
+.offers .store .flex-control-nav{bottom:5px;height:20px;}
+.offers .store .flex-control-nav a{background:#dcdcdc;}
+.offers .store .flex-control-nav .flex-active{background:#ef508d;}
+
+.offers .store .store-item{display:block; padding:0 12px;overflow:hidden;}
+.offers .store .slides li{background:none}
+.offers .store-item .store-picture{position:relative;border-radius:5px;margin-bottom:8px; overflow:hidden;}
+.offers .store-item .store-picture img{width:100%;border-radius:5px;}
+.offers .store-item .store-picture span{position:absolute;left:0;right:0;bottom:0;padding:0 .5em; height:30px;line-height:30px;text-align:left;font-size:14px;color:#fff;background:rgba(0,0,0,.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.offers .store-item:not(.store-picture){margin-bottom:8px;font-size:12px;color:#999;text-align:left;}
+
+.lastpage{position:fixed;width:30px;height:30px;left:25px;top:30px;border-radius:50%; background-color:rgba(221,221,221,.7);background-image:url(../images/left3.png);background-size:15px;background-position:center;background-repeat:no-repeat; z-index:10;}
+.fixebtn{position:fixed !important;width:100%;left:0;bottom:0;}
+.special-text{padding-bottom:20px;text-align:center;}
+.special-text h3{height:32px;line-height:32px;font-size:15px;}
+.special-text p{line-height:26px;color:#666;font-size:12px;}
+
+/*生活美容*/
+.life .nav{height:45px;}
+.life .nav span,.life .nav a{float:left;width:25%;height:45px;line-height:45px;text-align:center;font-size:14px;color:#666;border-bottom:2px solid #fff;}
+.life .nav .active{border-bottom:2px solid #ea36bb;color:#4e4e4e;}
+.life .banner{height:210px;width:100%;background-size:cover;background-repeat:no-repeat;background-position:center;}
+  /*tab*/
+.life .tab-box{width:100%;overflow:hidden;height:calc(100vh - 55px);}
+.life .tab-box .tab-item{height:100%;display:none;}
+.life .tab-box .tab-item:first-child{display:block;}
+  /*分类项目*/
+.mall-wrap{width:100%;height:100%;}
+.mall-wrap .menu-list{float:left;width:90px;height:100%;overflow-x:hidden;overflow-y:auto;-webkit-box-sizing:border-box;box-sizing:border-box;border-right:1px solid #eee;}
+.mall-wrap .menu-list::-webkit-scrollbar{display:none;}
+.mall-wrap .menu-list li{position:relative; height:50px;line-height:50px;text-align:center;font-size:14px;color:#ef508d;overflow:hidden;}
+.mall-wrap .menu-list .active{color:#ef518c;background:#f3f3f3;}
+.mall-wrap .menu-list .active::before{content:'';position:absolute;left:0;top:0;height:50px;width:2px;background:#ef508d;}
+
+.mall-wrap .mall-box{float:left;position:relative; width:calc(100% - 90px);height:100%; overflow-x:hidden;overflow-y:auto;background:#eee; }
+.mall-wrap .mall-list{padding:15px 10px; overflow:hidden;}
+
+.mall-box .mall-item{float:left;position:relative; width:calc(33.33% - 4px);padding-top:32%;margin:0 6px 12px 0;border-radius:5px;overflow:hidden;}
+.mall-box .mall-item img{position:absolute;left:0;top:0;width:100%;height:77%;}
+.mall-box .mall-item:nth-child(3n){margin-right:0;}
+.mall-box .mall-item p{height:30px;line-height:30px;text-align:center;color:#999; background:#fff;overflow:hidden;}
+.life .nomore{height:50px;line-height:50px;text-align:center;color:#b3b3b3;background:#f5f5f5;font-size:14px;display:none;}
+  
+  /*都在做*/
+.offers .offers-wrap{height:220px;overflow:hidden;}
+.offers .offers-inner{height:210px;}
+.offers .offers-item{padding:10px;height:220px;overflow-y:hidden;overflow-x:auto;}
+.offers .offers-item .items{float:left;width:136px;margin-right:10px;text-align:center;overflow:hidden;}
+.offers .offers-item::-webkit-scrollbar{display:none;opacity:0;}
+
+.offers .offers-item .pic-wrap{position:relative;width:136px;height:136px;font-size:12px;color:#fff;font-family:arial;}
+.offers .offers-item .pic-wrap::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:26px;background:rgba(0,0,0,.3);border-bottom-left-radius:6px;border-bottom-right-radius:6px;}
+.offers .offers-item .items img{display: block;width:135px;height:135px;border:1px solid #eee;border-radius:6px;}
+.offers .offers-item .comment{position:absolute;height:26px;line-height:26px;left:10px;bottom:0;z-index:2;}
+.offers .offers-item .comment::before{content:'';display:inline-block;width:14px;height:26px;vertical-align:top;margin-right:4px; background:url(../images/icon-comment2.png) center no-repeat;background-size:14px;}
+.offers .offers-item .sales{position:absolute;height:26px;line-height:26px;right:10px;bottom:0;z-index:2;}
+.offers .offers-item .sales::before{content:'';display:inline-block;width:14px;height:26px;vertical-align:top;margin-right:4px; background:url(../images/icon-sales2.png) center no-repeat;background-size:14px;}
+.offers .items p:not(.pic-wrap){margin-top:6px;text-align:left;}
+.offers .items .word-ellipsis{font-size:14px;color:#1a1a1a;}
+.offers .items p.prise{height:20px;line-height:20px;margin-top:1px;color:#ef508d;font-family:arial;font-size:13px;text-indent:1px}
+.offers .items .prise i{font-size:16px;vertical-align:bottom;}
+.offers .items .prise span{padding-right:.7em;}
+.offers .items .prise del{vertical-align:middle;}
+.offers .items p.score{position:relative;width:87px;height:12px;margin-top:2px;vertical-align:middle; background:url(../images/goods-score.png);background-size:87px 12px;overflow:hidden;}
+.score .score-inner{position:absolute;left:0;height:12px;background:url(../images/goods-score2.png);background-size:87px 12px;}
+  /*明星技师*/
+.technician > div{overflow:hidden;border-top:1px solid #eee;}
+.technician a{float:left;width:25%;border-left:1px solid #eee;margin-left:-1px;text-align:center;}
+.technician > div a:first-child{border:none;}
+.technician > div a img{width:60px;margin-bottom:15px;border-radius:50%;}
+.technician > div p{height:45px;line-height:45px;font-size:14px;color:#444;text-align:center;}
+.technician .row1 a:first-child{width:50%;text-align:center;}
+.technician .row1 a:first-child p{display:inline-block;height:auto;line-height:auto;padding-top:40px;font-size:14px;color:#000;}
+.technician .row1 a:first-child img{width:110px;margin:10px 0 0;border-radius:0;}
+  /*热门项目*/
+.hot-items dl{padding:20px 12px;border-bottom:8px solid #f3f3f3;overflow:hidden;}
+.offers .hot-items dl:first-child{padding-top:0;}
+.offers .hot-items dl:last-child{border:none;}
+
+.hot-items dl a{display:block;}
+.hot-items dl dt{float:left;border:1px solid #dedede;background-color:#eee;border-radius:5px; overflow:hidden;}
+.hot-items dl dt img{width:84px;height:84px;}
+.hot-items dl dd{margin-left:100px;}
+.hot-items dl h3{height:48px;line-height:24px;margin-top:-4px; font-size:14px;color:#1a1a1a;}
+.hot-items dl p.prise{height:26px;line-height:26px;color:#ef508d;font-family:arial;font-size:13px;text-indent:1px}
+.hot-items dl .features{color:#999;font-size:13px; overflow:hidden;}
+.hot-items dl .prise i{font-size:16px;vertical-align:bottom;}
+.hot-items dl .prise span{padding-right:.7em;}
+.hot-items dl .prise del{vertical-align:middle;}
+.hot-items dl .score{position:relative;float:left;width:87px;height:12px;margin-top:2px;vertical-align:middle; background:url(../images/goods-score.png);background-size:87px 12px;overflow:hidden;}
+.hot-items dl .sales{float:right;height:14px;line-height:14px;}
+.hot-items dl .sales::before{content:'';display:inline-block;width:14px;height:14px;vertical-align:top;margin-right:4px; background:url(../images/icon-sales3.png) center no-repeat;background-size:15px;}
+.hot-items dl .comment{float:right;height:14px;line-height:14px;margin-right:.5em;}
+.hot-items dl .comment::before{content:'';display:inline-block;width:14px;height:14px;vertical-align:top;margin-right:4px; background:url(../images/icon-comments3.png) center no-repeat;background-size:15px;}
+.hot-items dl .reservat{float:right;height:14px;line-height:14px;}
+.hot-items dl .reservat::before{content:'';display:inline-block;width:14px;height:14px;vertical-align:top;margin-right:4px; background:url(../images/icon-reserve.png) center no-repeat;background-size:14px;}
+.hot-items .slogan{ height:30px;margin:15px -12px -10px;padding:0 12px;line-height:40px;border-top:1px solid #eee;}
+.hot-items .slogan i{display:inline-block;width:16px;height:16px;margin-top:-4px; line-height:16px;text-align:center;font-size:10px;color:#fff;background:#ef508d;border-radius:3px;}
+.hot-items .slogan span{display:inline-block;height:30px;line-height:40px; vertical-align:top; padding-left:10px; color:#999;font-size:12px;}
+.hot-items .slogan span::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#f85492;margin-bottom:1px;margin-right:.3em;}
+
+/*生美文章列表*/
+
+/*作者头像*/
+.lbarticle .art-item .users{height:50px;line-height:50px;padding:0 12px;}
+.lbarticle .art-item .users img{width:32px;height:32px;vertical-align:middle;margin-right:10px;border-radius:50%;}
+.lbarticle .art-item .users span{font-size:16px;color:#1a1a1a;vertical-align:middle;}
+.lbarticle .art-item p{padding:6px 12px;font-size:14px;line-height:20px;color:rgba(51,51,51,.9);}
+.lbarticle .art-item .users .levels{display:inline-block;width:46px;height:15px;line-height:15px;margin-left:4px;font-size:11px; text-indent:16px;color:#ef508d;font-weight:bold; vertical-align:middle; background:url(../images/icon-levels.png) center no-repeat;background-size:46px 15px;-webkit-transform:scale(.9);}
+.lbarticle .art-item .users .levels i{font-size:12px;}
+
+.lbarticle .art-item .BGImg{overflow:hidden;padding:0 12px;}
+.lbarticle .art-item .BGImg div{float:left;background-size:cover;background-repeat:no-repeat;border-radius:5px;}
+.lbarticle .art-item .BGImg.items1 div{width:100%;padding-top:48.5%;}
+.lbarticle .art-item .BGImg.items2 div{width:49.5%;padding-top:50%;}
+.lbarticle .art-item .BGImg.items2 div:nth-child(2n){margin-left:1%;}
+.lbarticle .art-item .BGImg.items3 div{width:32.33%;padding-top:32.33%;margin-right:1%;}
+.lbarticle .art-item .BGImg.items3 div:last-child{margin-right:0;}
+.lbarticle .art-menu{height:40px;font-size:12px;padding:0 12px;margin-top:6px;border-top:1px solid #eee;border-bottom: 8px solid #f3f3f3;}
+.lbarticle .art-item:last-child .art-menu{border-bottom:0;}
+.lbarticle .art-menu span{float:left;position:relative; width:25%;height:40px;line-height:40px;font-size:12px;color:#999;text-align:center;}
+.lbarticle .art-menu span::before{content:'';display:inline-block;width:16px;height:40px;margin-right:.5em;vertical-align:bottom;background-size:16px;background-repeat:no-repeat;background-position:center; }
+.lbarticle .art-menu span::after{content:'';position:absolute;right:0;top:14px;height:14px;width:1px;background-color:#eee;}
+.lbarticle .art-menu span:last-child::after{display:none;}
+.lbarticle .art-menu .browsed::before{background-image:url(../images/icon-browsed.png);}
+.lbarticle .art-menu .comments::before{background-image:url(../images/icon-comments.png);}
+.lbarticle .art-menu .praised::before{background-image:url(../images/icon-praised.png);}
+.lbarticle .art-menu .shared::before{background-image:url(../images/icon-shared.png);}
+.no-more{height:88px;margin-top:45px;background:url(../images/nomore.png) center bottom no-repeat;background-size:107px 88px;}
+  /*商品链接*/
+.lbarticle .commodity{width:calc(100% - 24px);height:26px;padding:0 12px;line-height:26px;font-size:12px;color:#ef508d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lbarticle .commodity::before{content:'';display:inline-block;height:26px;width:26px;vertical-align:top;background:url(../images/icon-goodlink.png) left center no-repeat;background-size:18px;}
+.lbarticle .commodity span{text-decoration:underline;}
+.scrollitems{-webkit-transition:all .2s .2s ease;}
+/*智能排序*/
+.droplist-sort-cover{position:fixed;left:0;top:47px;width:100%;height:100%;z-index:6;background:rgba(0,0,0,.7);display:none;}
+.droplist-sort-option{width:100%;background:#fff;}
+.droplist-sort-option li{height:40px;line-height:40px;font-size:14px;color:#000;text-indent:12px;}
+.droplist-sort-option .selected{color:#ef508d;}
+.drop-trigger{position:fixed;left:0;top:0;width:100%; z-index:5;}
+.drop-trigger .droplist-sort-tab i{ transform:rotate(180deg);}
+/* 生美项目列表*/
+.lbitem .sorting{height:45px;line-height:45px;font-size:14px;color:#999;border-top:1px solid #eee;border-bottom:1px solid #eee;background:#fff; }
+.lbitem .sorting > span{float:left;width:50%;text-align:center;}
+.lbitem .sorting .select-city{display:inline-block;height:45px;line-height:45px;}
+.lbitem .sorting > span i{display:inline-block;vertical-align:middle;width:22px;height:12px;background:url(../images/icon-pull-down.png) center no-repeat;background-size:11px 6px;}
+.lbitem .hot-items{background:#fff;}
+.lbitem .hot-items dl{border-bottom:8px solid #f3f3f3;}
+/*美容院*/
+.lbitem #aslonlist dt,.lbitem #beautician dt{width:50px;height:50px;border:1px solid #eee; border-radius:50%;}
+.lbitem #aslonlist dt img,.lbitem #beautician dt img{width:50px;height:50px;}
+.lbitem #aslonlist dd,.lbitem #beautician dd{margin-left:65px;}
+.lbitem #aslonlist dl h3,.lbitem #beautician dl h3{height:25px;overflow:hidden;}
+.lbitem #aslonlist dd p{height:20px;line-height:20px; font-size:13px;color:#999;}
+/*美容师列表*/
+.lbitem #beautician h3{font-size:15px;color:#333;}
+.lbitem #beautician h3 i{padding-left:.5em;font-size:12px;color:#666;}
+.lbitem #beautician .ability{padding:10px 0 0;overflow:hidden;}
+.lbitem #beautician .ability span{float:left;padding:2px 10px;margin:0 8px 8px 0;font-size:12px;color:#666;border-radius:12px;background:#ececec;}
+/*美容院详情*/
+.saloninfo{border-bottom:8px solid #f3f3f3;}
+.saloninfo dt{height:50px;line-height:50px;text-align:center;font-size:18px;color:#000;}
+.saloninfo dd{overflow:hidden;padding:0 12px;border-top:1px solid #eee;}
+.saloninfo dd i{float:left;width:22px;height:50px;margin-right:10px;background-repeat:no-repeat;background-position:center;background-size:23px;}
+.saloninfo dd span{float:left;width:65px;height:50px;line-height:50px;margin-right:.5em; font-size:14px;color:#999;}
+.saloninfo dd p{padding-left:100px;padding-right:20px;line-height:50px;font-size:14px;color:#333;}
+.saloninfo dd .icon-hours{background-image:url(../images/icon-hours.png);}
+.saloninfo dd .icon-tel{background-image:url(../images/icon-tel.png);}
+.saloninfo dd .icon-localtion{background-image:url(../images/icon-localtion.png);}
+.saloninfo dd .salon-address{position:relative;padding-top: 14px;padding-bottom:6px; line-height:22px;}
+.saloninfo dd .salon-address::after{position:absolute;content:'';height:50px;width:18px;right:0;top:0;background:url(../images/icon-right.png) center no-repeat;background-size:18px;}
+  /*评论*/
+.salon-review{padding:0 12px;border-bottom:8px solid #f3f3f3;}
+.salon-review .review-top{height:40px;line-height:40px;color:#999;font-size:14px;}
+.salon-review .icon-review{display:inline-block;vertical-align:top;height:40px;width:22px;margin-right:.5em; background:url(../images/icon-review.png) center no-repeat;background-size:23px;}
+.salon-review .com-item{padding-top:2px; overflow:hidden;}
+.salon-review .com-item dt{float:left;width:36px;}
+.salon-review .com-item dt img{width:38px;height:38px;border-radius:50%;}
+.salon-review .com-item dd{padding-left:50px;height:18px;line-height:18px;}
+.salon-review .com-item .uname{font-size:14px;color:#000;}
+.salon-review .com-item .uname > i{float:left;}
+.salon-review .com-item .uname .levels{float:left;width:46px;height:15px;line-height:15px;margin-left:4px;font-size:11px; text-indent:16px;color:#ef508d;font-weight:bold; vertical-align:middle; background:url(../images/icon-levels.png) center no-repeat;background-size:46px 15px;-webkit-transform:scale(.9);}
+.salon-review .com-item .uname .levels i{font-size:12px;}
+.salon-review .com-item .times{font-size:12px;color:#999;font-family:arial;}
+.salon-review .com-item .score{position:relative;float:right;width:87px;height:12px;margin-top:2px;margin-right:4px; vertical-align:middle; background:url(../images/goods-score.png);background-size:87px 12px;overflow:hidden;}
+.salon-review .more-review{display:block;width:100px;height:26px;line-height:26px;margin:15px auto;text-align:center;font-size:12px;color:#ef508d;border:1px solid #ef508d; border-radius:14px;}
+.salon-review .com-item .comment{padding-top:10px;}
+.salon-review .com-item .comment p{font-size:13px;color:#000;line-height:22px;}
+.hot-items a.more-items{display:block;width:100%;height:40px;line-height:40px;margin-top:-7px;text-align:center;font-size:12px;color:#999;background:#fff;}
+.salon-review .comment .gallery{overflow:hidden;padding:10px 0;}
+.salon-review .comment .gallery .slide{float:left;position:relative;width:calc(33% - 8px);padding-top:30.5%; margin-right:8px;margin-bottom:8px;overflow:hidden;}
+.salon-review .gallery img{position:absolute;left:0;top:0; width:100%;height:100%;border-radius:6px;}
+.salon-review .replay{position:relative; padding:12px;background:#f5f5f5;border-radius:6px;}
+.salon-review .replay::after{content:'';position:absolute;left:20%;top:-8px; width: 0;height: 0;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 8px solid #f5f5f5;z-index:10;}
+.salon-review .replay p{font-size:14px;color:#666;line-height:20px;}
+.salon-review .replay .replay-times{height:20px;line-height:24px;font-family:arial;font-size:12px;color:#ccc;}
+
+  /*关于我店*/
+.offers.shop .infos{padding:0 12px 20px;}
+.offers.shop .banner img{border-radius:6px;}
+.offers.shop .infos p{padding:6px 0;line-height:24px;font-size:14px;color:#999;}
+  /*店铺附导航*/
+.salon-nav{position:fixed;top:0;left:0;width:100%;height:40px;line-height:40px;border-bottom:1px solid #eee;  background:#f8f8f8;z-index:-10;opacity:0;}
+.salon-nav.animation-show{-webkit-animation:fadeInDown .2s .2s ease both;z-index:10;}
+.salon-nav div{float:left;width:33.33%;font-size:14px;color:#000;text-align:center;}
+.salon-nav .active{color:#ef508d;}  
+.salon-nav .active span::before{content:'';display:inline-block;width:12px;height:40px;vertical-align:top;margin-right:3px; background:url(../images/icon-nav-loaction.png) center no-repeat;background-size:12px;}
+
+  /*店铺footer*/
+.store-footer{padding-top:0;}
+.store-footer .collection{float:left;width:30%;background:#fff;text-align:center;}
+.store-footer .collection i{display:inline-block;width:15px;height:15px;margin-top:10px; background:url(../images/icon-collection.png) center no-repeat;background-size:15px;}
+.store-footer .collection span{display:inline-block;width:100%;font-size:13px;color:#666;margin-top:2px;}
+.store-footer .servicer{float:left;width:35%;background:#f85492;}
+.store-footer .servicer i{display:inline-block;width:18px;height:55px;background:url(../images/icon-servicer.png) center no-repeat;background-size:18px;}
+.store-footer .collection.active i{background:url(../images/icon-collection2.png) center no-repeat;background-size:16px;-webkit-animation:bounceIn .5s ease both;}
+.store-footer .servicer span{display:inline-block;height:55px;vertical-align:top;line-height:55px;color:#fff;font-size:13px;margin-left:2px;}
+.store-footer .telphone{float:left;width:35%;background:#ff5d9b;}
+.store-footer .telphone i{display:inline-block;width:18px;height:55px;background:url(../images/icon-telphone.png) center no-repeat;background-size:18px;}
+.store-footer .telphone span{display:inline-block;height:55px;vertical-align:top;line-height:55px;color:#fff;font-size:13px;margin-left:2px;}
+/*美容师详情*/
+.beautician-info{padding:20px 0 12px; }
+.beautician-info .avatar{position:relative;width:70px;height:70px;margin:0 auto;border:1px solid #ef508d;border-radius:50%;overflow:hidden;}
+.beautician-info .avatar img{width:70px;height:70px;}
+.beautician-info .avatar span{position:absolute;left:0;bottom:0;width:100%;height:18px;line-height:18px;text-align:center;font-size:11px;color:#fff;background:#ef508d;}
+.beautician-info h3{height:40px;line-height:40px;font-size:15px;color:#000;text-align:center;}
+.beautician-info .entire{height:60px;}
+.beautician-info .entire p{float:left;position:relative; width:33.33%;text-align:center;}
+.beautician-info .entire p::after{content:'';position:absolute;width:0;height:12px;right:0;top:24px;border-right:1px solid #999;}
+.beautician-info .entire p:last-child::after{display:none;}
+.beautician-info .entire span{display:inline-block;width:100%;height:20px;line-height:20px;font-size:14px;color:#666;}
+.beautician-info .entire .score{position:relative;width:87px;height:12px;margin:0 auto 7px;vertical-align:middle; background:url(../images/goods-score.png);background-size:87px 12px;overflow:hidden;}
+.beautician-info .entire .score + span{color:#999;}
+
+.beautician-info .infolist{overflow:hidden;padding:0 12px;border-top:1px solid #eee;}
+.beautician-info .infolist:nth-child(7){border-bottom:1px solid #eee;}
+.beautician-info .infolist i{float:left;width:22px;height:50px;margin-right:10px;}
+.beautician-info .infolist span{float:left;width:56px;height:50px;line-height:50px;margin-right:.5em; font-size:14px;color:#999;}
+.beautician-info .infolist p{position:relative; padding:14px 20px 6px 95px;line-height:22px;font-size:14px;color:#333;}
+.beautician-info .infolist .salon-address::after{position:absolute;content:'';height:50px;width:18px;right:0;top:0;background:url(../images/icon-right.png) center no-repeat;background-size:18px;}
+.beautician-info .infolist .icon-store{background:url(../images/icon-store.png) center no-repeat;background-size:18px;}
+.beautician-info .infolist .icon-works{background:url(../images/icon-works.png) center no-repeat;background-size:19px;}
+.beautician-info .infolist .icon-label{background:url(../images/icon-label.png) center no-repeat;background-size:18px;}
+.beautician-info .infolist .icon-declarat{background:url(../images/icon-flower.png) center no-repeat;background-size:18px;}
+
+.beautician-info .infolist .years{float:none;display:inline-block;width:auto;height:18px;line-height:18px; vertical-align:middle;padding:0 3px;font-size:10px;color:#ef508d;border:1px solid #ef508d;border-radius:3px;}
+.beautician-info .infolist .label{float:none;display:inline-block;width:auto;height:18px;line-height:18px;margin-right:1em; vertical-align:middle;padding:0 6px;font-size:11px;color:#999;background:#ececec;border-radius:6px;}
+.beautician-info .evaluate{border-top:1px solid #eee;}
+.beautician-info .evaluate .heading{position:relative;height:40px;line-height:40px;font-size:15px;color:#999;padding:0 12px;}
+.beautician-info .evaluate .heading::after{position:absolute;content:'';width:18px;height:40px;right:12px;top:0;background:url(../images/icon-right.png) center no-repeat;background-size:18px;}
+.beautician-info .evaluate p{position:relative;padding:0 12px 0 35px;font-size:14px;color:#333;line-height:24px;}
+.beautician-info .evaluate i{position:absolute;left:12px;top:3px; width:15px;height:15px;line-height:15px;text-align:center;font-size:10px;color:#ef508d;border:1px solid #ef508d;border-radius:2px;}
+/*专业点评*/
+.professional{padding-bottom:12px;}
+.professional .com-item{padding:2px 12px; overflow:hidden;}
+.professional .com-item dt{float:left;width:36px;}
+.professional .com-item dt img{width:38px;height:38px;border-radius:50%;}
+.professional .com-item dd{padding-left:50px;height:38px;line-height:38px;}
+.professional .com-item .uname{font-size:14px;color:#000;}
+.professional .com-item .uname > i{float:left;}
+.professional .com-item .comment{padding-top:10px;font-size:14px;color:#999;line-height: 22px;}
+.professional .com-item .lecturer{display:inline-block;width:56px;height:18px;margin-left:10px;line-height:19px;vertical-align:middle;text-align:center;font-size:11px;color:#ef508d;border:1px solid #ef508d;border-radius:10px;}
+.professional .com-item .score{position:relative;float:right;width:87px;height:12px;margin-top:2px;margin-right:4px; vertical-align:middle; background:url(../images/goods-score.png);background-size:87px 12px;overflow:hidden;}
+.beautic-footer{padding-top:0;}
+.beautic-footer .collection{float:left;width:30%;background:#fff;text-align:center;}
+.beautic-footer .collection i{display:inline-block;width:15px;height:15px;margin-top:10px; background:url(../images/icon-collection.png) center no-repeat;background-size:15px;}
+.beautic-footer .collection.active i{background:url(../images/icon-collection2.png) center no-repeat;background-size:16px;-webkit-animation:bounceIn .5s ease both;}
+.beautic-footer .collection span{display:inline-block;width:100%;font-size:13px;color:#666;margin-top:2px;}
+.beautic-footer .appointment{float:left;width:70%;height:55px;line-height:55px;font-size:15px;color:#fff;text-align:center;background:#f85492;}
+
+/*大家都来说*/
+.evaluate{border-bottom: 8px solid #eee;padding-bottom: 20px;display: block;}
+.evaluate .heading{position:relative;height:40px;line-height:40px;font-size:15px;color:#999;padding:0 12px;}
+.evaluate .heading::after{position:absolute;content:'';width:18px;height:40px;right:12px;top:0;background:url(../images/icon-right.png) center no-repeat;background-size:18px;}
+.evaluate p{position:relative;padding:0 12px 0 35px;font-size:14px;color:#333;line-height:24px;}
+.evaluate i{position:absolute;left:12px;top:3px; width:15px;height:15px;line-height:15px;text-align:center;font-size:10px;color:#ef508d;border:1px solid #ef508d;border-radius:2px;}
+
+.talk{min-height:100%; background:#f3f3f3;}
+.talk .heading{height:40px;line-height:40px;padding:0 12px;color:#666;font-size:16px;}
+.talk .heading i{display:inline-block;max-width:calc(100% - 166px);padding:0 4px; color:#000;vertical-align:top; white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.talk .items{display:block;width:calc(100% - 24px);padding:12px 12px 6px;margin-bottom:8px;background:#fff;border-bottom:1px solid #f3f3f3;}
+.talk .items p{position:relative; padding-left:25px;margin-bottom:6px;line-height:24px;font-size:15px;color:#010101;}
+.talk .items p::before{content:'说';left:0;top:3px; position:absolute;width:15px;height:15px;line-height:17px;text-align:center;font-size:10px;color:#ef508d;border:1px solid #ef508d;border-radius:2px;}
+.talk .items p:nth-child(2)::before{content:'回'; color:#f16c0f;border-color:#f16c0f;}
+.talk .items p:nth-child(3){font-size:13px;line-height:20px; color:#2568d4;overflow:hidden;}
+.talk .items p:nth-child(3)::before{display:none;}
+.talk .items p:nth-child(3) span{float:right;color:#999;font-family:arial;}
+.talk .fadeInUp{-webkit-animation:fadeInUp 1s .2s ease both;}
+.talk .tombsign{background:#fff;padding-top:12px;}
+.talk-footer{line-height:35px;background:#333;}
+.talk-footer a{width:100%;font-size:15px;color:#ef508d;}
+.talk-footer a::before{content:'';display:inline-block;height:35px;vertical-align:top; width:18px;margin-right:.5em; background:url(../images/icon-talkabout.png) center no-repeat;background-size:18px;}
+/*发布说说*/
+.talk .heading-beautician,.talk .heading-goods,.talk .heading-salon{background:#fff;}
+.talk .heading-beautician dl,.talk .heading-goods dl,.talk .heading-salon dl{padding:20px 12px;border-bottom:1px solid #f3f3f3;overflow:hidden;}
+
+.talk .heading-beautician dt{float:left; width:50px;height:50px;border:1px solid #eee; border-radius:50%;overflow:hidden;}
+.talk .heading-beautician dt img{width:50px;height:50px;}
+.talk .heading-beautician dd{margin-left:65px;}
+.talk .heading-beautician dl h3{height:25px;font-size:15px;color:#333;overflow:hidden;}
+.talk .heading-beautician dl i{padding-left:.5em;font-size:12px;color:#666;}
+.talk .features{height:20px;line-height:20px;color:#999;font-size:13px; overflow:hidden;}
+
+.talk .heading-goods dl dt{float:left;border:1px solid #dedede;background-color:#eee;border-radius:5px; overflow:hidden;}
+.talk .heading-goods dl dt img{width:64;height:64px;}
+.talk .heading-goods dl dd{margin-left:80px;}
+.talk .heading-goods dl h3{height:48px;line-height:24px;margin-top:-4px; font-size:14px;color:#1a1a1a;}
+
+.talk .heading-salon dt{float:left;width:50px;height:50px;border:1px solid #eee; border-radius:50%;}
+.talk .heading-salon dt img{width:50px;height:50px;border-radius:50%;}
+.talk .heading-salon dd{margin-left:65px;}
+.talk .heading-salon dl h3{height:25px;line-height:25px;font-size:14px;overflow:hidden;}
+.talk .heading-salon dd p{line-height:20px; font-size:13px;color:#999;}
+
+.talk .score{position:relative;float:left;width:87px;height:12px;margin-top:2px;vertical-align:middle; background:url(../images/goods-score.png);background-size:87px 12px;overflow:hidden;}
+.talk .sales{float:right;height:14px;line-height:14px;}
+.talk .sales::before{content:'';display:inline-block;width:14px;height:14px;vertical-align:top;margin-right:4px; background:url(../images/icon-sales3.png) center no-repeat;background-size:15px;}
+.talk dl .reservat{float:right;height:14px;line-height:14px;}
+.talk dl .reservat::before{content:'';display:inline-block;width:14px;height:14px;vertical-align:top;margin-right:4px; background:url(../images/icon-reserve.png) center no-repeat;background-size:14px;}
+.talk dl .comment{float:right;height:14px;line-height:14px;margin-right:.5em;}
+.talk dl .comment::before{content:'';display:inline-block;width:14px;height:14px;vertical-align:top;margin-right:4px; background:url(../images/icon-comments3.png) center no-repeat;background-size:15px;}
+
+.talk .post-area{width:calc(100% - 24px);height:70px; margin:12px;line-height:20px;color:#333;font-size:14px;color:#333;resize:none;}
+.talk .btn-area{padding:12px;overflow:hidden;}
+.talk .post-btn{float:right;padding:4px 8px;font-size:13px; color:#fff;border-radius:4px;background:#ef508d;}
+.talk .post-btn:disabled{background:#aaa;}
+/**/
+.talk .question,.talk .answer{position:relative;padding:12px 12px 12px 34px;margin-bottom:8px;line-height:24px;font-size:15px;color:#010101;background:#fff;}
+
+.talk .question::before{content:'说';position:absolute;left:12px;top:15px; width:15px;height:15px;line-height:17px;text-align:center;font-size:11px;color:#ef508d;border:1px solid #ef508d;border-radius:2px;}
+.talk .answer::before{content:'回';position:absolute;left:12px;top:15px; width:15px;height:15px;line-height:17px;text-align:center;font-size:11px;color:#ef508d; color:#f16c0f;border:1px solid #f16c0f;border-radius:2px;}
+
+.talk .reply-list{background:#fff;}
+.talk .reply-list dl{padding:12px;border-top:1px solid #f3f3f3;overflow:hidden;}
+.talk .reply-list dt{float:left;}
+.talk .reply-list dt img{width:40px;height:40px;border-radius:50%;}
+.talk .reply-list dd{padding-left:50px;}
+.talk .reply-list .uname{height:20px;line-height:20px; font-size:14px;color:#000;}
+.talk .reply-list .uname > i{float:left;}
+.talk .reply-list .uname .levels{float:left;width:46px;height:15px;line-height:15px;margin-left:4px;font-size:11px; text-indent:16px;color:#ef508d;font-weight:bold; vertical-align:middle; background:url(../images/icon-levels.png) center no-repeat;background-size:46px 15px;-webkit-transform:scale(.9);}
+.talk .reply-list .uname .levels i{font-size:12px;}
+.talk .reply-list .times{height:20px;line-height:20px;font-size:12px;color:#999;font-family:arial;}
+.talk .reply-list .comments{padding:8px 0 0;font-size: 14px;color: #000;line-height: 26px;}
+.talk .reply-list .art-menu{width:calc(100% - 24px); height:40px;padding:0 12px;font-size:12px; text-align:right;margin-bottom:-5px;}
+.talk .reply-list .art-menu span{display:inline-block;height: 30px;;margin-left:.6em;line-height:30px;font-size: 12px;color: #999;}
+.talk .reply-list .art-menu span::before{content:'';display:inline-block;width:16px;height:30px;margin-right:.3em;vertical-align:bottom;background-size:16px;background-repeat:no-repeat;background-position:center; }
+.talk .reply-list .art-menu .comments::before{background-image:url(../images/icon-comments.png);}
+.talk .reply-list .art-menu .praised::before{background-image:url(../images/icon-praised.png);}
+
+footer.post-comments{height:auto;min-height:50px;padding:10px 12px;}
+footer.post-comments .input-area{width:calc(100% - 65px); min-height:20px;max-height:60px;padding:5px 10px;line-height:20px;font-size:12px;color:#333;border-radius:4px;background:#eee;}
+footer.post-comments .post-btn{position:absolute;right:6px;top:0;width:40px;height:100%;background:#fff;color:#ef508d;font-size:15px;}
+/**/
+.talk #reply-area{padding-left:60px;margin-top:-10px;}
+.talk .talkreply .ispraise{color:#ef508d !important;}
+.talk .talkreply .ispraise::before{background-image: url(../images/icon-praised2.png) !important;}
+.talk #reply-area dt img{width:30px;height:30px;}
+.talk #reply-area .uname{padding-left:40px;height:30px;line-height:30px;}
+.talk #reply-area .uname .levels{height:30px;line-height:inherit;}
+.talk #reply-area .uname .times{float:right;height:30px;line-height:30px;}
+.talk #reply-area .no-more{margin-left:-60px;}
+/*animation*/
+@-webkit-keyframes fadeInUp{
+0%{opacity:0;
+  -webkit-transform:translateY(20px)}
+  100%{opacity:1;
+  -webkit-transform:translateY(0)}
+}
+@-webkit-keyframes bounceIn{
+0%{opacity:0;
+-webkit-transform:scale(.3)}
+50%{opacity:1;
+-webkit-transform:scale(1.05)}
+70%{-webkit-transform:scale(.9)}
+100%{-webkit-transform:scale(1)}
+}
+@-webkit-keyframes scaleout {
+  0% { -webkit-transform: scale(0.0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fadeInLeft{
+0%{opacity:0;z-index:1;
+-webkit-transform:translateX(-100%)}
+100%{opacity:1;
+-webkit-transform:translateX(0)}
+}
+
+@-webkit-keyframes fadeInRight{
+0%{opacity:0;z-index:1;
+-webkit-transform:translateX(100%)}
+100%{opacity:1;
+-webkit-transform:translateX(0)}
+}
+
+@-webkit-keyframes fadeOutLeft{
+0%{opacity:1;z-index:1;
+-webkit-transform:translateX(0)}
+100%{opacity:0;z-index:-100;
+-webkit-transform:translateX(-100%)}
+}
+
+@-webkit-keyframes fadeOutRight{
+0%{opacity:1;z-index:1;
+-webkit-transform:translateX(0)}
+100%{opacity:0;z-index:-100;
+-webkit-transform:translateX(100%)}
+}
+@-webkit-keyframes move {
+	0% {background-position: 0 0;}
+	100% {background-position: 10px;}
+}
+@-webkit-keyframes bounceIn{
+0%{opacity:.4;
+-webkit-transform:scale(.3)}
+30%{opacity:.8;
+-webkit-transform:scale(.8)}
+50%{opacity:1;
+-webkit-transform:scale(1.05)}
+70%{-webkit-transform:scale(.9)}
+100%{-webkit-transform:scale(1)}
+}
+@-webkit-keyframes fadeInDown{
+0%{opacity:0;
+-webkit-transform:translateY(-20px)}
+100%{opacity:1;
+-webkit-transform:translateY(0)}
+}

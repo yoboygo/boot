@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>分类</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/lbstyle.css}">
+</head>
+<body>
+	<!-- loading加载 -->
+	<div id="addload">
+		<div class="spiner"></div>
+	</div>
+
+	<div class="wrap life">
+		<div class="tab-box">
+			<div class="tab-item">
+				<!-- 分类项目 -->
+				<div class="mall-wrap">
+					<ul class="menu-list">
+						<li class="active" data-id="1">部位</li>
+						<li data-id="2">仪器</li>
+						<li data-id="3">体雕</li>
+						<li data-id="4">塑形</li>
+						<li data-id="5">半永久</li>
+						<li data-id="6">美艺</li>
+						<li data-id="7">疗程类</li>
+					</ul>
+					<div class="mall-box" >
+						<div class="mall-list" id="mall-box">
+							<div class="mall-item">
+								<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+								<p>面部</p>
+							</div>
+							<div class="mall-item">
+								<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+								<p>头部</p>
+							</div>
+							<div class="mall-item">
+								<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+								<p>眼部</p>
+							</div>
+							<div class="mall-item">
+								<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+								<p>头部</p>
+							</div>
+							<div class="mall-item">
+								<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+								<p>面部</p>
+							</div>
+							<div class="mall-item">
+								<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+								<p>眼部</p>
+							</div>
+						</div>
+						<div class="nomore">没有更多了</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<footer>
+		<a href="./lbindex.html" class="active"><img th:src="@{/store/wap/images/nav-icon11.png}" alt=""><i>美容</i></a>
+		<a href="./lbclassify.html"><img th:src="@{/store/wap/images/nav-icon20.png}" alt=""><i>分类</i></a>
+		<a href="./lbarticle.html"><img th:src="@{/store/wap/images/nav-icon30.png}" alt=""><i>变美</i></a>
+		<a href=""><img th:src="@{/store/wap/images/nav-icon40.png}" alt=""><i>我的</i></a>
+	</footer>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<!-- lbclassify 包含 拉动加载等操作 -->
+<script type="text/javascript" th:src="@{/store/wap/js/lbclassify.js}"></script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>预约列表</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/base.css}">
+</head>
+<body class="gray">
+	<div class="loading"><div class="spinner"></div></div>
+	<div class="wrap">
+		<ul class="cutover-menu">
+			<li class="current"><a href="">全部</a></li>
+			<li><a href="">已用完</a></li>
+			<li><a href="">已过期</a></li>
+		</ul>
+		<div class="cutover-box">
+			<div class="cutover-inner fadeInLeft">
+				<div class="item">
+					<!-- 有尾款时添加 pre-payment -->
+					<dl class="cart-item pre-payment">
+						<dt>
+							<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						</dt>
+						<dd>面部刮痧护理面部刮痧护理面部刮痧护理</dd>
+						<dd>有效期：<i>2016-12-20</i></dd>
+						<dd>按次：<i>3/</i>10</dd>
+					</dl>
+				</div>
+				<div class="item">
+					<dl class="cart-item finished">
+						<dt>
+							<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						</dt>
+						<dd>面部刮痧护理面部刮痧护理面部刮痧护理</dd>
+						<dd>有效期：<i>2016-12-20</i></dd>
+						<dd>按次：<i>1年卡</i></dd>
+					</dl>
+				</div>
+				<!-- 已用完 -->
+				<div class="item">
+					<dl class="cart-item expired">
+						<dt>
+							<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						</dt>
+						<dd>面部刮痧护理面部刮痧护理面部刮痧护理</dd>
+						<dd>有效期：<i>2016-12-20</i></dd>
+						<dd>按次：<i>3/</i>10</dd>
+					</dl>
+				</div>
+				<!-- 已过期 -->
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.loading').fadeOut();
+	});
+</script>
+</html>

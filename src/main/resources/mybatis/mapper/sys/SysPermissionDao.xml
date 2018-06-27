@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ml.idream.sys.permission.SysPermissionDao">
+<mapper namespace="ml.idream.manage.sys.permission.SysPermissionDao">
 
-   <select id="findPermissionById" resultType="ml.idream.sys.permission.SysPermission">
+   <select id="findPermissionById" resultType="ml.idream.manage.sys.permission.SysPermission">
       Select * from sys_permission where id = #{id}
    </select>
-    <select id="findPermissionByRoleId" resultType="ml.idream.sys.permission.SysPermission">
+    <select id="findPermissionByRoleId" resultType="ml.idream.manage.sys.permission.SysPermission">
       Select p.* from sys_permission p join sys_role_permission m on m.permission_id = p.id where m.role_id = #{roleId}
    </select>
 

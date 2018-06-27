@@ -1,11 +1,11 @@
 package ml.idream;
 
-import ml.idream.sys.department.SysDepartment;
-import ml.idream.sys.department.SysDepartmentService;
-import ml.idream.sys.role.SysRole;
-import ml.idream.sys.role.SysRoleService;
-import ml.idream.sys.user.SysUser;
-import ml.idream.sys.user.SysUserService;
+import ml.idream.manage.sys.department.SysDepartment;
+import ml.idream.manage.sys.department.SysDepartmentService;
+import ml.idream.manage.sys.role.SysRole;
+import ml.idream.manage.sys.role.SysRoleService;
+import ml.idream.manage.sys.user.SysUser;
+import ml.idream.manage.sys.user.SysUserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,11 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 

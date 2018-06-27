@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>注册</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/base.css}">
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<!-- 加载提示 -->
+	<div id="addload">
+		<div class="spiner"></div>
+	</div>
+
+	<div class="login-page">
+		<div class="invite">
+			<p class="tel"><input type="tel" name="telphone" id="telphone" maxlength="11" placeholder="手 机 号"><i></i></p>
+			<p class="nickname"><input type="text" name="telphone" id="nickname" maxlength="20" placeholder="昵　称"><i></i></p>
+			<p class="verify">
+				<input type="tel" name="tel" id="verify" placeholder="验 证 码"><i></i>
+				<input type="button" value="获取验证码" class="verifyCode" id="verifyCode">
+			</p>
+			<p class="password"><input type="password" name="password" id="passsword" placeholder="登录密码"><i></i></p>
+			<div class="btn-area">
+				<input type="button" value="注 册" class="btns subBtn">
+			</div>
+			<div class="agreement">轻触上面的“注册”按钮，即表示你同意<br><a href="/mtmy-wap/template/html/law.html" target="_blank">《每天每耶服务协议》</a></div>
+		</div>	
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.loading').fadeOut();
+		
+		var $load = $('#addload'),
+			$tip = $load.find('.spiner'),
+			verifyCode = $('#verifyCode'),
+			invite_code = '${inviteCode}',
+			user_id = '${user_id}'
+			mobile= $.trim($('#telphone').val());
+			var reg=/^1\d{10}$/;
+			
+			/*
+			 * 获取验证码 已经验证输入
+			*/ 
+			var wait = 60; 
+			verifyCode.click(function(){
+				$('.subBtn').attr('disabled', false);
+				
+				mobile =  $.trim($('#telphone').val());
+	    		verifyCode = $('#verifyCode');
+				if(mobile != "" ){
+					if (!reg.exec(mobile)){
+		                msgAlert('号码格式不正确')
+		                return false;
+		            }else{
+		            	$('.subBtn').removeAttr('disabled');
+		            	
+		                $.ajax({
+							url: base + 'user/identifyCode.do',
+							type: 'post',
+							data: {mobile: mobile},
+							dataType: 'json',
+							beforeSend: function () {
+						        $('#addload').fadeIn();
+						    }, success: function(data){
+								if(data.code == 200){
+									time();
+									msgAlert('发送成功');
+									if (wait == 0) { 
+										verifyCode.removeAttr("disabled"); 
+										verifyCode.val('获取验证码'); 
+										wait = 60; 
+									}
+								}else if(data.code == 10008){
+									msgAlert("此用户已注册！");
+								}else if(data.code == 10002){
+									msgAlert("验证码发送频繁，请稍后再试！");
+								}else{
+									msgAlert(data.msg);
+								}
+							}, error: function(data){
+								msgAlert('加载失败，请检查网络');
+							}
+						});
+		            }
+				}else{
+					msgAlert('手机号码不能为空！');
+		            return false;
+				}
+			});
+	
+			// 提交 已经验证输入不为空
+			$('.subBtn').click(function(){
+				mobile= $.trim($('#telphone').val());
+				if (!reg.exec(mobile)){
+	                msgAlert('号码格式不正确')
+	                return false;
+	            }
+				if($.trim($('#verify').val()) == ''){
+					msgAlert('请输入验证码');
+					return false;
+				}
+				
+				var $load = $('#addload'),
+					$tip = $load.find('.spiner'),
+					verifyCode = $('#verifyCode'),
+			    	invite_code = '${inviteCode}',
+			    	user_id = '${user_id}'
+					mobile= $.trim($('#telphone').val()),
+					identifyCode= $('#verify').val();
+
+				$.ajax({
+					url: '/mtmy-wap/AddUserDt.do',
+					type: 'post',
+					data: {
+						mobile:mobile,
+						inviteCode:invite_code,
+						identifyCode: identifyCode,
+						user_id:user_id
+					}, dataType: 'json',
+					beforeSend: function () {
+					   $('#addload').show();
+					},success:function(data){
+							if(data.code == 200){
+								msgAlert('注册成功！');
+								setTimeout(function(){
+								window.location.href = base + 'main/index.do';
+								}, 2000);
+							}else{
+								msgAlert(data.msg);
+							}
+					},error:function(XMLHttpRequest, textStatus){
+						msgAlert('加载失败，请检查网络'); 
+					}
+				
+				});
+				
+			});
+
+			// 倒计时方法
+			function time(o) {
+				if (wait == 0) { 
+					verifyCode.removeAttr("disabled"); 
+					verifyCode.val('获取验证码'); 
+					wait = 60; 
+				}else{ 
+					verifyCode.attr("disabled", true); 
+					verifyCode.val("重新发送(" + wait + ")"); 
+					wait--; 
+					setTimeout(function() { time() }, 1000);
+				}
+			}
+			
+			// 提示方法
+			function msgAlert(text){
+				$tip.addClass('warning').append('<p class="text">'+text+'</p>');
+				$load.fadeIn();
+				setTimeout(function(){
+					$load.fadeOut(2000, function(){
+						$tip.empty().removeClass('warning');
+					})
+				}, 1000);
+			};
+	
+
+		});
+		
+</script>
+</html>

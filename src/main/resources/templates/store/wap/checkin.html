@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>签到抽奖</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/base.css}">
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div class="checkin">
+		<div class="head">
+			<div class="checkstatus">签到</div>
+			<span class="regular">签到规则</span>
+			<p class="">已连续签到</p>
+			<div class="continuous">
+				<span>0</span>
+				<span>0</span>
+				<span>3</span>
+				<i>天</i>
+			</div>
+			<div class="waves"></div>
+			<div class="item">
+				<div class="symbol1"></div>
+				<div class="symbol2"></div>
+				<div class="symbol3"></div>
+				<div class="cloud-left-top"></div>
+				<div class="cloud-right-top"></div>
+				<div class="cloud-left-bottom"></div>
+				<div class="cloud-right-bottom"></div>
+				<div class="ship1"></div>
+				<div class="ship2"></div>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="lottery">
+				<a href="" class="lottery-btn disable">去抽奖</a>
+				<p>连续签到<i>3</i>天以上可抽奖</p>
+			</div>
+			<div class="calendar">
+				<div class="top">2017年4月</div>
+				<div class="inner">
+					<ul>
+						<li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>
+					</ul>
+					<ul>
+						<li></li><li></li><li></li><li></li><li></li><li></li><li>1</li>
+						<li>2</li><li class="check">3</li><li class="check">4</li><li>5</li><li class="check">6</li><li>7</li><li>8</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="regubox"></div>
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.loading').fadeOut();
+		// 签到按钮 checked
+ 		$('.checkstatus').click(function(){
+ 			if(!$(this).hasClass('checked')){
+ 				$(this).addClass('checked').text('已签到');
+ 				//ajax
+ 			}
+ 		});
+ 		// 规则
+ 		$('.regular').click(function(){
+ 			$('.regubox').show();
+ 		});
+ 		$('.regubox').click(function(){
+ 			$(this).hide();
+ 		});
+
+	});
+</script>
+</html>

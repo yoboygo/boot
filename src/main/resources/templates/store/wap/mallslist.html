@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>商品列表</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/base.css}">
+</head>
+<body class="gray">
+	<!-- loading加载 -->
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div class="wrap has-footer">
+		<ul class="offers-list">
+			<div class="mt-item" onclick="goDetail(750, 0)">
+				<div class="item-img" style="background-image:url(http://resource.idengyun.com/resource/images/2017/04/f16b5293-bafe-4c54-a0fd-d0df324004b9.jpg)"></div>
+				<p>象印不锈钢真空保温杯SM-SA48</p>
+				<p><span>¥<i>398</i></span></p>
+			</div>
+			<!-- 抢购 rush-by -->
+			<div class="mt-item rush-buy" onclick="goDetail(749, 0)">
+				<div class="item-img" style="background-image:url(http://resource.idengyun.com/resource/images/2017/04/f16b5293-bafe-4c54-a0fd-d0df324004b9.jpg)"></div>
+				<p>象印不锈钢真空保温杯SM-SA36</p>
+				<p><span>¥<i>368</i></span><span class="action-btn">立即抢购</span></p>
+			</div>
+			<!-- 抢购时间不到或者已经结束 -->
+			<div class="mt-item rush-buy" onclick="goDetail(752, 0)">
+				<div class="item-img" style="background-image:url(http://resource.idengyun.com/resource/images/2017/04/55a2c65d-f6fb-4ccb-ba6d-c60706e3e145.jpg)"></div>
+				<p>象印不锈钢真空保温杯SM-XB48</p>
+				<p><span>¥<i>449</i></span><span class="action-btn disabled">已抢光</span></p>
+			</div>
+			<div class="mt-item rush-buy" onclick="goDetail(751, 0)">
+				<div class="item-img" style="background-image:url(http://resource.idengyun.com/resource/images/2017/04/55a2c65d-f6fb-4ccb-ba6d-c60706e3e145.jpg)"></div>
+				<p>象印不锈钢真空保温杯SM-XB36</p><p><span>¥<i>429</i></span><span class="action-btn disabled">10.19日 10:00</span></p>
+			</div>
+		</ul>
+	</div>
+	<!-- footer -->
+	<footer>
+		<a href="./lbindex.html" class="active"><img th:src="@{/store/wap/images/nav-icon11.png}" alt=""><i>美容</i></a>
+		<a href="./lbindex.html" class="active"><img th:src="@{/store/wap/images/nav-icon11.png}" alt=""><i>商城</i></a>
+		<a href="./lbclassify.html"><img th:src="@{/store/wap/images/nav-icon20.png}" alt=""><i>分类</i></a>
+		<a href="./lbarticle.html"><img th:src="@{/store/wap/images/nav-icon30.png}" alt=""><i>变美</i></a>
+		<a href=""><img th:src="@{/store/wap/images/nav-icon40.png}" alt=""><i>我的</i></a>
+	</footer>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.loading').fadeOut();
+	})
+</script>
+
+</html>

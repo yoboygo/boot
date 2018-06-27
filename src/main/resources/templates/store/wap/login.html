@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>登录</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/base.css}">
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<!-- 加载提示 -->
+	<div id="addload">
+		<div class="spiner"></div>
+	</div>
+
+	<div class="login-page">
+		<div class="banner"><img th:src="@{/store/wap/images/login-bg.jpg}" alt=""></div>
+		<div class="invite login">
+			<p class="tel"><input type="tel" name="telphone" id="telphone" maxlength="11" placeholder="手机号"><i></i></p>
+			<p class="password"><input type="password" name="password" id="passsword" placeholder="登录密码"><i></i></p>
+			<div class="btn-area">
+				<input type="button" value="登 录" class="btns subBtn">
+			</div>
+		</div>
+		<div class="features"><a href="">忘记密码？</a>　|　<a href="">立即注册 &gt;</a></div>
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.loading').fadeOut();
+
+		var mobile,pwd,
+			$load = $('#addload'),
+			$tip = $load.find('.spiner');
+		
+		$(".subBtn").click(function(e) {
+	        // 检验手机号
+	        	mobile =  $.trim($('#telphone').val());
+	            pwd =  $.trim($('#password').val());
+
+	        if(mobile != "" ){
+	            var reg=/^1\d{10}$/;
+	            if (!reg.exec(mobile)){
+	                msgAlert('号码格式不正确！');
+	                return false;
+	            }else if(pwd ==''){
+
+	               	msgAlert('请输入密码！');
+	                return false;
+	            }else{
+	                $.ajax({
+						url:'http://www.tngou.net/api/memo/comment',
+						type:'get',
+						data:'',
+						dataType:'jsonp',
+						beforeSend: function () {
+					        // 显示loading界面
+					        $('#addload').show();
+					    },
+						success:function(data){
+
+							// window.location.href  msgAlert('密码错误！');
+							$('#addload').fadeOut();
+						},
+						error:function(data){
+							msgAlert('加载失败，请检查网络！');
+						}
+					});	
+	                return false;
+	            }
+	        }else{
+	        	msgAlert('手机号码不能为空！');
+	            return false;
+	        }    
+	    });
+	
+		function msgAlert(text){
+			$tip.addClass('warning').append('<p class="text">'+text+'</p>');
+			$load.fadeIn();
+			setTimeout(function(){
+				$load.fadeOut(500,function(){
+					$tip.empty().removeClass('warning');
+				})
+			},1000);
+		};
+
+	});
+</script>
+</html>

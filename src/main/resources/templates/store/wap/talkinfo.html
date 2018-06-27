@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>大家都来说</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/lbstyle.css}">
+</head>
+<body class="gray">
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div id="#addload">
+		<div class="spiner"></div>
+	</div>
+	<div class="wrap has-footer">
+		<div class="talk">
+			<!-- 对美容师的说说 -->
+			<div class="heading-beautician">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<h3>陈倩<i>高级技师</i></h3>
+						<p class="features">
+							<span class="score"><span class="score-inner" style="width:70%"></span></span>
+							<span class="reservat">100</span>
+							<span class="comment">88</span>
+						</p>
+					</dd>
+				</dl>
+			</div>
+			<!-- 对商品的说说 -->
+			<div class="heading-goods">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<h3>奥马生机海洋精粹舒缓露奥马生机海洋精粹舒缓露</h3>
+						<p class="features">
+							<span class="score"><span class="score-inner" style="width:70%"></span></span>
+							<span class="sales">100</span>
+							<span class="comment">88</span>
+						</p>
+					</dd>
+				</dl>
+			</div>
+			<!-- 对店铺的说说 -->
+			<div class="heading-salon">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<h3>店铺名称名称</h3>
+						<p class="features"><a href="tel:010-89145690">电话: 010-89145690</a></p>
+						<p>地址: 罗湖区华强北路19号罗湖区</p>
+					</dd>
+				</dl>
+			</div>
+			<!-- end -->
+			<p class="question">不知道这家店铺的技师服务质量技术水平怎么样有没有去过的？</p>
+			<div class="reply-list" id="list">
+				<p class="answer">共2条回复</p>
+				<a href="">
+					<dl>
+						<dt><img th:src="@{/store/wap/images/p2.jpg}" alt=""></dt>
+						<dd class="uname">
+							<i>用户132</i>
+							<span class="levels"><i>Lv</i>5</span>
+						</dd>
+						<dd class="times">2016-05-28 </dd>
+						<dd class="comments">舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了</dd>
+						<dd class="art-menu">
+							<span class="praised">75214</span>
+							<span class="comments">12442</span>
+						</dd>
+					</dl>
+				</a>
+				<a href="">
+					<dl>
+						<dt><img th:src="@{/store/wap/images/p2.jpg}" alt=""></dt>
+						<dd class="uname">
+							<i>用户132</i>
+							<span class="levels"><i>Lv</i>5</span>
+						</dd>
+						<dd class="times">2016-05-28 </dd>
+						<dd class="comments">舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了</dd>
+						<dd class="art-menu">
+							<span class="praised">75214</span>
+							<span class="comments">12442</span>
+						</dd>
+					</dl>
+				</a>
+			</div>
+			<div class="tombsign">
+				<div></div><div></div><div></div>
+			</div>
+		</div>
+		<footer class="post-comments">
+			<input type="text" class="input-area" placeholder="发表评价..." onkeydown="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5\.]/g,'')">
+			<input type="button" class="post-btn" value="发送">
+		</footer>
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		var second = 100,
+			$elm = $('#list'),
+			$sign = $('.tombsign'),
+			$page = 1;
+		$('.loading').fadeOut();
+		
+		showItem();
+
+		function loadComment(){
+
+			if( !($elm.data('nomore')) && ($page < 4) && !($elm.data('isloading')) ) {
+				
+				// 设置加载状态，防止重复多次加载
+				$elm.data('isloading',true)
+				$.ajax({
+					url:'../js/data.php',
+					data:{
+
+					},
+					dataType: 'json',
+					type:'get',
+					beforeSend:function(){
+						$sign.show();
+					},
+					success: function() {
+						// 没有更多数据的判断条件
+						var str = '';
+						
+						str +='<a href><dl>'
+							+'<dt><img th:src="@{/store/wap/images/p2.jpg}" alt=""></dt>'
+							+'<dd class="uname">'
+								+'<i>用户132</i>'
+								+'<span class="levels"><i>Lv</i>5</span>'
+							+'</dd>'
+							+'<dd class="times">2016-05-28 </dd>'
+							+'<dd class="comments">舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了</dd>'
+							+'<dd class="art-menu">'
+								+'<span class="praised">75214</span>'
+								+'<span class="comments">12442</span>'
+							+'</dd>'
+						+'</dl></a>';
+						str +='<a href=""><dl>'
+							+'<dt><img th:src="@{/store/wap/images/p2.jpg}" alt=""></dt>'
+							+'<dd class="uname">'
+								+'<i>用户132</i>'
+								+'<span class="levels"><i>Lv</i>5</span>'
+							+'</dd>'
+							+'<dd class="times">2016-05-28 </dd>'
+							+'<dd class="comments">舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了</dd>'
+							+'<dd class="art-menu">'
+								+'<span class="praised">75214</span>'
+								+'<span class="comments">12442</span>'
+							+'</dd>'
+						+'</dl></a>';
+						str +='<a href=""><dl>'
+							+'<dt><img th:src="@{/store/wap/images/p2.jpg}" alt=""></dt>'
+							+'<dd class="uname">'
+								+'<i>用户132</i>'
+								+'<span class="levels"><i>Lv</i>5</span>'
+							+'</dd>'
+							+'<dd class="times">2016-05-28 </dd>'
+							+'<dd class="comments">舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了</dd>'
+							+'<dd class="art-menu">'
+								+'<span class="praised">75214</span>'
+								+'<span class="comments">12442</span>'
+							+'</dd>'
+						+'</dl></a>';
+				
+						$sign.fadeOut();
+						$elm.append(str);//添加节点 
+						$page++;//分页++
+						$elm.data('isloading',false); //去掉加载限制
+
+						// 判断到底啦条件
+						if(($page >=4)) {
+							$elm.data('nomore'); 
+							$elm.append('<div class="no-more"></div>');
+						};
+						// 显示效果
+						showItem();
+					},
+					error:function(e){
+						$sign.fadeOut();
+					}
+				});
+			}
+		}
+
+		// 拉动加载
+		$(window).scroll(function(){
+			var scrollTop = $(this).scrollTop(),
+				scrollHeight = $(document).height(),
+				windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+				loadComment();
+		　　}
+
+		});
+
+		function showItem(){
+			$('#list dl').not('.isfinish').each(function(i,e){
+				$(this).css({
+		          '-webkit-animation':'fadeInUp 1s '+((i*100)+parseInt(second))+'ms ease both'
+		        }).addClass('isfinish');
+			});
+		}
+
+	});
+	
+
+</script>
+</html>

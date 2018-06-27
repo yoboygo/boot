@@ -1,14 +1,14 @@
 package ml.idream;
 
 import ml.idream.config.DreamClassLoaser;
-import ml.idream.sys.user.SysUser;
+import ml.idream.manage.sys.user.SysUser;
 import org.junit.Test;
 
 public class TestDream {
 
     @Test
     public void testClassLoaser() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        String path = "ml.idream.sys.user.SysUser";
+        String path = "ml.idream.manage.sys.user.SysUser";
         DreamClassLoaser dLoader = new DreamClassLoaser();
         Class<?> clazz = dLoader.loadClass(path);
         SysUser sysUser = (SysUser) clazz.newInstance();

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>专题</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/base.css}">
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div id="addload">
+		<div class="spiner"></div>
+	</div>
+	<div class="wrap item-list" id="list">
+		<div class="nav-tab-wrap">
+			<div class="nav-tab" id="nav-tab" list-type="special">
+			<!-- listtype 存储的是活动还是专题 -->
+				<ul class="nav-inner">
+					<li class="active" id="18" data-page="1">推荐</li>
+					<li id="19" data-page="1">养生养生</li>
+					<li id="20" data-page="1">养生养生</li>
+					<li id="21" data-page="1">大保健</li>
+					<li id="22" data-page="1">养生养生</li>
+					<li id="18" data-page="1">养生养生推荐</li>
+					<li id="19" data-page="1">养生</li>
+					<li id="20" data-page="1">养生养生</li>
+					<li id="21" data-page="1">大保健</li>
+					<li id="22" data-page="1">养生养生</li>
+				</ul>	
+			</div>	
+		</div>
+		<!--  -->
+		<div class="tab-con" id="con">
+			<div class="tab-inner"></div>
+			<div class="tab-inner"></div>
+			<div class="tab-inner"></div>
+			<div class="tab-inner"></div>
+			<div class="tab-inner"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/store/wap/js/active.js}"></script>
+</html>

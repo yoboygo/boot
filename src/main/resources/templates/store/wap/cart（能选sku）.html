@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title></title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/base.css}">
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div id="addload">
+		<div class="spiner"></div>
+	</div>
+	<div class="wrap cart">
+		<header>购物车(3) <button class="edit-btn" id="edit-btn">编辑</button></header>
+		<a href="" class="gocart"><span>包邮</span>全场实物商品满¥100包邮哦~<i>去凑单</i></a>
+		<!-- 商品列表 -->
+		<div class="cart-list">
+			<!-- 实物 -->
+			<div class="item">
+				<div class="check-menu">
+					<input type="checkbox" id="check01" value="1" checked="checked">
+					<label for="check01"></label>
+				</div>
+				<dl class="cart-item">
+					<dt>
+						<a href="./detail.html"><img th:src="@{/store/wap/images/series1.jpg}" alt=""></a>
+					</dt>
+					<dd>
+						<a href="./detail.html" class="product-name">套装版:360手机 F4 2GB+16GB 魔力白 移动4G手机 双卡双待</a>
+						<span class="count">2</span>
+						<p class="product-prop">粉色  450ml  还有一些其他规格</p>
+						<p class="product-price">
+							<span class="price">¥168</span>
+						</p>
+
+						<p class="sku-info" good-id="123" max-inventory="6">已选择：<span>15片[190*150mm]</span><i></i></p>
+						<p class="customize">
+							<button class="minus"></button>
+							<input type="tel" class="iscount" value="1" disabled="disabled">
+							<button class="add">+</button>
+						</p>
+						
+					</dd>
+				</dl>
+			</div>
+			<!-- 虚拟 -->
+			<div class="item">
+				<div class="check-menu">
+					<input type="checkbox" id="check02" value="2">
+					<label for="check02"></label>
+				</div>
+				<dl class="cart-item">
+					<dt>
+						<a href="./detail.html"><img th:src="@{/store/wap/images/series1.jpg}" alt=""></a>
+					</dt>
+					<dd>
+						<a href="./detail.html" class="product-name">面部刮痧护理</a>
+						<p class="product-prop">包含5次护理</p>
+						<p class="product-price">
+							<span class="price">¥168</span>
+						</p>
+
+						<p class="sku-info" data-id="123">已选择：<span>包含5次护理</span><i></i></p>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 下架 -->
+		<div class="off-shelf">
+			<div class="item">
+				<div class="mark">下架</div>
+				<div class="check-menu">
+					<input type="checkbox" id="check03" value="3">
+					<label for="check03"></label>
+				</div>
+				<dl class="cart-item">
+					<dt>
+						<a href="./detail.html"><img th:src="@{/store/wap/images/series1.jpg}" alt=""></a>
+					</dt>
+					<dd>
+						<a href="./detail.html" class="product-name">套装版:360手机 F4 2GB+16GB 魔力白 移动4G手机 双卡双待</a>
+						<span class="count">2</span>
+						<p class="product-prop">粉色  450ml  还有一些其他规格</p>
+						<p class="product-price">
+							<span class="price">¥168</span>
+						</p>
+
+						<p class="sku-info" data-id="123">已选择：<span>包含5次护理</span></p>
+					</dd>
+				</dl>
+			</div>
+			<div class="item">
+				<div class="mark">下架</div>
+				<div class="check-menu">
+					<input type="checkbox" id="check04" value="3">
+					<label for="check04"></label>
+				</div>
+				<dl class="cart-item">
+					<dt>
+						<a href="./detail.html"><img th:src="@{/store/wap/images/series1.jpg}" alt=""></a>
+					</dt>
+					<dd>
+						<a href="./detail.html" class="product-name">套装版:360手机 F4 2GB+16GB 魔力白 移动4G手机 双卡双待</a>
+						<span class="count">2</span>
+						<p class="product-prop">粉色  450ml  还有一些其他规格</p>
+						<p class="product-price">
+							<span class="price">¥168</span>
+						</p>
+						<p class="sku-info" data-id="123">已选择：<span>包含5次护理</span></p>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 付款 -->
+		<div class="sub-menu" id="payment">
+			<span class="cart-checkbox">
+				<input type="checkbox" id="check-all" value="1">
+				<label for="check-all" class="checkwarp">全选</label>
+			</span>
+			<span class="cart-prise"><i>0</i></span>
+			<button class="cart-sub" id="sub-cart" >立即结算</button>
+		</div>
+		<!-- 删除 -->
+		<div class="sub-menu" id="delete">
+			<span class="cart-checkbox">
+				<input type="checkbox" id="del-all" value="2">
+				<label for="del-all" class="checkwarp">全选</label>
+			</span>
+			<span class="cart-prise"><i>0</i></span>
+			<button class="cart-sub" id="delete-butoon">删除</button>
+		</div>
+
+		<!-- 购物车为 空 -->
+		<div class="empyt-cart">
+			<h3>小主，您购物车里还没有商品呢！</h3>
+			<div class="bg-img"></div>
+			<a href="" class="gotohome">去商城逛逛</a>
+		</div>
+
+	</div>
+	<!-- sku属性弹层 -->
+	<div class="sku-detail">
+		<div class="content"></div>
+		<!-- 关闭按钮 -->
+		<div class="property-closed"></div>
+		<!-- 确定按钮 -->
+		<button class="sub-but">确定</button>
+	</div>
+	<!-- footer -->
+	<footer>
+		<a href="" class="active"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>首页</i></a>
+		<a href="/mtmy-wap/goods/malls.do"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>分类</i></a>
+		<a href="/mtmy-wap/article/gotoArticlePage.do"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>发现</i></a>
+		<a href="/mtmy-wap/cart/queryMyCar.do"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>购物车</i></a>
+		<a href="/mtmy-wap/my/myZone.do"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>我的</i></a>
+	</footer>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.loading').fadeOut();
+		var $load = $('#addload');
+		// 头部编辑按钮
+		$('#edit-btn').click(function(){
+			if ($(this).hasClass('editing')){
+				$(this).removeClass('editing').html('编辑');
+				$('.cart').removeClass('isedite');
+				// 去掉所有checked状态
+				$('input[type="checkbox"]').prop('checked',false);
+			}else{
+				$(this).addClass('editing').html('完成');
+				$('.cart').addClass('isedite');
+			}
+		});
+
+		/*
+		 * 商品数量加减
+		*/	
+		
+		//商品数量+1 超过单品库存按钮置灰
+		$('.customize .add').on('click',function(){
+			var $val = Number($(this).siblings('.iscount').val()) ;
+			// 获取当前商品的库存数量 
+			var $max = Number($(this).parents('.customize').siblings('.sku-info').attr('max-inventory'));
+			
+			$(this).siblings('.minus').removeAttr("disabled");
+
+			if($val >= $max){
+
+				$(this).attr("disabled", true);
+			}else{
+				$val++;
+				$(this).siblings('.iscount').val($val);
+			}
+
+		});
+		
+		//商品数量-1
+		$('.customize .minus').on('click',function(){
+			var $val = Number($(this).siblings('.iscount').val());
+
+			$(this).siblings('.add').removeAttr("disabled");
+			if ($val > 1) {
+				$val--;
+				$(this).siblings('.iscount').val($val);
+				
+			}else{
+				$(this).attr("disabled", true);
+			}
+		});
+		// 商品数量加减 end
+
+		/*
+		 * 弹出sku层 动态获取属性 goodId 
+		 * 不同组合的最大库存 max-inventory
+		*/ 
+		var $goodId = 0, //商品Id 更改对应sku的库存量 动态设置 
+			$inventory = 0; //全局变量 商品Id 动态设置 
+
+		$('.sku-info').click(function(){
+			var $this =  $(this);
+			// 传入商品id 
+			$goodId = $this.attr('good-id');
+			console.log($goodId)
+			$.ajax({
+				url:'../js/data.php',
+				data:{
+
+				},
+				dataType: 'json',
+				type:'get',
+				beforeSend:function(){
+					$load.show();
+				},
+				success: function() {
+					// 没有更多数据的判断条件
+					var str = '';
+					
+					str+= ''
+					+'<div class="property-head">'
+						+'<img th:src="@{/store/wap/images/mall03_03.jpg}" alt="" class="property-pic">'
+						+'<p class="price-num">500</p>'
+						+'<p>库存<span class="stock-num">500</span>件</p>'
+					+'</div>'
+					+'<div class="property-main"><div>'
+						
+						// 循环区域
+						+'<h3>分类组合：</h3>'
+						+'<div>'
+							+'<button class="attr-item spec1 item-selected" id="spec10" key="米色">米色</button>'
+							+'<button class="attr-item spec1" id="spec11" key="灰色">灰色</button>'
+							+'<button class="attr-item spec1" id="spec12" key="藏青色">藏青色</button>'	
+						+'</div>'	
+						// 循环区域 end	
+
+					+'</div></div>'
+
+					$('.sku-detail .content').append(str);
+					$load.fadeOut();
+					$('.sku-detail').addClass('show');
+				},
+				error:function(e){
+					$load.fadeOut();
+					msgAlert('网络请求超时');
+				}
+			});
+			
+		});
+	
+		// 弹出sku层 end
+
+		/*
+		 * sku 算法
+		*/ 
+		$('.sku-detail').on('click','.attr-item',function(){
+			// 样式修改
+			$(this).addClass('item-selected').siblings().removeClass('item-selected');
+			// 更改库存
+			
+			$inventory = 10; //例 当前sku库存10
+
+			$('.sku-detail').find('.stock-num').html($inventory);
+
+		});
+		
+		// sku 算法 end
+
+		
+
+		/*
+		 * sku 确定按钮 根据商品id设置 
+		 * 在列表里更改对应商品的sku,商品加减最大数等
+		*/ 
+		$('.sku-detail .sub-but').click(function(){
+			$('.cart-list .item').each(function(){
+				var $skuId = $(this).find('.sku-info');
+				// console.log($skuId.attr('good-id'));
+				if($skuId.attr('good-id') == $goodId){
+					$skuId.attr('max-inventory',$inventory);
+				}
+			});
+
+			//收起sku面板
+			$('.sku-detail').removeClass('show');
+		});
+		
+		// sku确定按钮 end
+
+		// 关闭组合层
+		$('.sku-detail .property-closed').click(function(){
+			$('.sku-detail').removeClass('show');
+		});
+
+		// 编辑状态 删除的全选
+		$("#del-all").click(function(){    
+		    if(this.checked){
+		    	$('.item').find('input[type="checkbox"]').prop('checked',true);
+		    }else{ 
+		        $('.item').find('input[type="checkbox"]').prop('checked',false);
+		    }    
+		});
+		// 删除选中的商品
+		$('#delete-butoon').click(function(){
+			
+			$('.check-menu').each(function(){
+				if ($(this).find('input[type="checkbox"]').prop('checked')){
+					$(this).parents('.item').remove();
+					$("#del-all").prop('checked',false);
+				};
+			});
+
+		});
+
+		// 全要了
+		$("#check-all").click(function(){    
+		    if(this.checked){
+		    	$('.cart-list').find('input[type="checkbox"]').prop('checked',true);
+		    	var $total = 0;
+		   //  	$('dd').each(function(){
+					// //获取商品增减数量
+					// var $num = $(this).find('.iscount').val();
+					// var $price = parseFloat($(this).find('.goodsprice').val())*100;
+					// $total = $price * $num + $total;
+		   //  	})
+		   //  	$total = parseFloat(($total)/100).toFixed(2);
+		   //  	$('.cart-prise i').text($total);//修改底部价格
+		    	$(totalEl).val($total);
+		    }else{ 
+		    	// $('.cart-prise i').text('0.00');//修改底部价格
+		    	// $(totalEl).val('0.00');
+		       $('.cart-list').find('input[type="checkbox"]').prop('checked',false);
+		    }    
+		});
+
+		// 立即结算
+		$('#sub-cart').click(function(){
+			//
+		});
+
+		//单个商品checkd 去掉全选checked
+		$('.item input[type="checkbox"]').change(function(){
+			$("#check-all , #del-all").prop('checked',false);
+		});
+
+	});
+</script>
+</html>

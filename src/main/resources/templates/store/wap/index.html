@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>首页</title>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/base.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/flexslider.css}"/>
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div class="wrap has-footer">
+		<div class="banner flexslider">
+			<ul class="slides">
+				<li><a href="#"><img th:src="@{/store/wap/images/banner.jpg}"/></a></li>
+				<li><a href="#"><img th:src="@{/store/wap/images/banner.jpg}"/></a></li>
+			</ul>
+		</div>
+		<!-- 附导航 -->
+		<div class="affix-nav">
+			<a href="###">
+				<img th:src="@{/store/wap/images/affix-nav01.png}" alt="">
+				<i>一键预约</i>
+			</a>
+			<a href="./lbindex.html">
+				<img th:src="@{/store/wap/images/affix-nav02.png}" alt="">
+				<i>生活美容</i>
+			</a>
+			<a href="###">
+				<img th:src="@{/store/wap/images/affix-nav03.png}" alt="">
+				<i>医美</i>
+			</a>
+			<a href="###">
+				<img th:src="@{/store/wap/images/affix-nav04.png}" alt="">
+				<i>海外项目</i>
+			</a>
+			<a href="###">
+				<img th:src="@{/store/wap/images/affix-nav05.png}" alt="">
+				<i>客服中心</i>
+			</a>
+		</div>
+		<!-- 滚动信息 -->
+		<div class="hot-news">
+			<img th:src="@{/store/wap/images/hot-news-logo.png}" alt="" class="icons">
+			<ul class="slides">
+				<li>
+					<div>
+						<p><a href=""><i>测评</i>什么标题标题什么标题标题什么标题标题</a></p>
+						<p><a href=""><i>养生</i>什么标题标题什么标题标题什么标题标题什么标题标题什么标题</a></p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p><a href=""><i>测评</i>什么标题标题什么标题标题什么标题标题</a></p>
+						<p><a href=""><i>养生</i>什么标题标题什么标题标题什么标题标题什么标题标题什么标题</a></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- 火爆抢购 -->
+		<div class="offers">
+			<div class="titles">火爆抢购</div>
+			<div class="banner flexslider">
+				<ul class="slides">
+					<li class="mt-item">
+						<dl class="purchase">
+							<dt class="dao"><a href=""><img th:src="@{/store/wap/images/p2.jpg}" alt=""></a></dt>
+							<dd>
+								<a href="" class="heading">奥玛生机海洋补水舒缓露水润肌肤奥玛生机海洋补水舒缓露水润肌肤</a>
+								<a href="" class="price">¥1999<del>¥19990</del></a>
+								<a href="" class="link-btn">立即抢购</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="mt-item">
+						<dl class="purchase">
+							<dt class="dao"><a href=""><img th:src="@{/store/wap/images/p2.jpg}" alt=""></a></dt>
+							<dd>
+								<a href="" class="heading">奥玛生机海洋补水舒缓露水润肌肤奥玛生机海洋补水舒缓露水润肌肤</a>
+								<a href="" class="price">¥1999<del>¥19990</del></a>
+								<a href="" class="link-btn disabled">10月30日 10：00</a>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 推荐活动 -->
+		<div class="offers">
+			<span class="titles" onclick="activeList('url')">推荐活动<i></i></span>
+			<!-- <a class="titles" href="url">推荐活动<i></i></a> -->
+			<ul class="sift">
+				<li>
+					<a href="http://192.168.1.227/Project/beautyGo/special.html" style="background-image:url(http://resource.idengyun.com/resource/images/2017/05/3eaab198-e1da-4ac4-b745-e88887154db4.jpg)"></a>
+				</li>
+				<li>
+					<a href="http://192.168.1.227/Project/beautyGo/special.html" style="background-image:url(http://resource.idengyun.com/resource/images/2017/05/b6d9d38b-9296-41a0-938b-373528e826e6.jpg)"></a>
+					<a href="http://192.168.1.227/Project/beautyGo/special.html" style="background-image:url(http://resource.idengyun.com/resource/images/2017/05/39a2c222-57a5-4fdc-b25e-e047b19ee6fb.jpg)"></a>
+				</li>
+			</ul>
+		</div>
+		<!-- 热门项目 -->
+		<div class="offers">
+			<span class="titles" onclick="activeList('url')">热门项目<i></i></span>
+			<!-- 泰妍雅集 -->
+			<div class="banner">
+				<img th:src="@{/store/wap/images/banner3.jpg}" alt="">
+			</div>
+			<div class="offers-item">
+				<div class="offers-inner">
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装泰妍雅集套装</span>
+						<span>¥1680</span>
+						<i>送</i>
+						<div class="flages">
+							<p>1000</p>
+							<p>云币</p>
+						</div>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+				</div>
+			</div>
+			<!-- 奥玛生机 -->
+			<div class="banner">
+				<img th:src="@{/store/wap/images/banner4.jpg}" alt="">
+			</div>
+			<div class="offers-item">
+				<div class="offers-inner">
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机奥玛生机奥玛生机</span>
+						<span>¥1680</span>
+						<i>送</i>
+						<div class="flages">
+							<p>1000</p>
+							<p>云币</p>
+						</div>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+				</div>
+			</div>
+			<!-- 中华神灸 -->
+			<div class="banner">
+				<img th:src="@{/store/wap/images/banner5.jpg}" alt="">
+			</div>
+			<div class="offers-item">
+				<div class="offers-inner">
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">中华神灸</span>
+						<span>¥1680</span>
+						<i>送</i>
+						<div class="flages">
+							<p>1000</p>
+							<p>云币</p>
+						</div>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">中华神灸中华神灸中华神灸</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+				</div>
+			</div>
+			<!-- 荷尔蒙平衡霜 -->
+			<div class="banner">
+				<img th:src="@{/store/wap/images/banner6.jpg}" alt="">
+			</div>
+			<div class="offers-item">
+				<div class="offers-inner">
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">荷尔蒙平衡霜</span>
+						<span>¥1680</span>
+						<i>送</i>
+						<div class="flages">
+							<p>1000</p>
+							<p>云币</p>
+						</div>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">荷尔蒙平衡霜荷尔蒙平衡霜</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- 热门专题 -->
+		<div class="offers">
+			<span class="titles" onclick="activeList('url')">热门专题<i></i></span>
+			<!-- 艾丽婷系列 -->
+			<div class="banner">
+				<img th:src="@{/store/wap/images/banner7.jpg}" alt="">
+			</div>
+			<div class="offers-item">
+				<div class="offers-inner">
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">艾丽婷系列艾丽婷系列艾丽婷系列</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">艾丽婷系列</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+				</div>
+			</div>
+			<!-- 毛巾系列 -->
+			<div class="banner">
+				<img th:src="@{/store/wap/images/banner4.jpg}" alt="">
+			</div>
+			<div class="offers-item">
+				<div class="offers-inner">
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机奥玛生机奥玛生机</span>
+						<span>¥1680</span>
+						<i>送</i>
+						<div class="flages">
+							<p>1000</p>
+							<p>云币</p>
+						</div>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">奥玛生机</span>
+						<span>¥1680</span>
+					</a>
+					<a href="" class="items">
+						<img th:src="@{/store/wap/images/p2.jpg}" alt="">
+						<span class="word-ellipsis">泰妍雅集套装</span>
+						<span>¥1680</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- footer -->
+		<!--<footer>
+			<a th:href="@{/store/dynamic/wap/index}" class="active"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>首页</i></a>
+			<a th:href="@{/store/dynamic/wap/malls}"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>分类</i></a>
+			<a th:href="@{/store/dynamic/wap/activelist}"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>发现</i></a>
+			<a th:href="@{/store/dynamic/wap/cart}"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>购物车</i></a>
+			<a href="/mtmy-wap/my/myZone.do"><img th:src="@{/store/wap/images/nav-icon.png}" alt=""><i>我的</i></a>
+		</footer>-->
+
+		<div th:include="/store/wap/fragment :: footer"></div>
+
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/store/wap/js/slider.js}"></script>
+<script type="text/javascript" th:src="@{/store/wap/js/index.js}"></script>
+<script type="text/javascript">
+	var isApp = 0;
+
+	/*
+	 * activeList 根据isApp调用页面跳转方法
+	 */
+	function activeList(url){
+
+	}
+
+</script>
+</html>

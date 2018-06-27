@@ -1,0 +1,332 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>实物商品详情</title>
+<link rel="stylesheet" type="text/css" href="../css/flexslider.css">
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/detail.css}">
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div class="wrap">
+		<a href="" class="gohome">更多商品</a>
+		<div class="banner flexslider">
+			<ul class="slides">
+				<li><a href="#"><img th:src="@{/store/wap/images/banner.jpg}"></a></li>
+				<li><a href="#"><img th:src="@{/store/wap/images/banner.jpg}"></a></li>
+			</ul>
+		</div>
+		<!-- 商品信息 -->
+		<div class="collection">
+			<h3><img th:src="@{/store/wap/images/logo.png}" alt="" class="logos">深海肌肤护理深海肌肤护理深海肌肤</h3>
+			<p class="goods-link"><a href="">肌肤健康水润机密畅想肌肤肌肤健康水润机密畅想肌肤</a></p>
+			<p class="price">
+				<span class="cost"><i>¥</i>1980</span><del><i>¥</i>1880</del>
+				<span class='sold'>888</span>
+			</p>
+		</div>
+		<!-- 商品属性 -->
+		<div class="goods-pro"><p class="">选择规格：<span>玫瑰金+定制版</span></p></div>
+		<!-- 红包 -->
+		<div class="coupons">领取红包</div>
+		<!-- 商品标签 -->
+		<div class="ability">
+			<span>手法娴</span>
+			<span>水润秘籍</span>
+			<span>活好</span>
+			<span>无可挑剔</span>
+		</div>
+		<!-- 评价 -->
+		<div class="review">
+			<div class="review-top"><i class="icon-review"></i>评价1999条</div>
+			<div class="com-item">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/p2.jpg}" alt=""></dt>
+					<dd class="uname">
+						<i>用户132</i>
+						<span class="levels"><i>Lv</i>5</span>
+						<span class="score"><span class="score-inner" style="width:70%"></span></span>
+					</dd>
+					<dd class="times">2016-05-28 </dd>
+				</dl>
+				<div class="comment">
+					<p>舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了</p>
+				</div>
+			</div>
+			<a href="" class="more-review">查看全部评价</a>
+		</div>
+		<!-- 都来说 -->
+		<a href="" class="evaluate">
+			<div class="heading">大家都来说</div>
+			<p><i>说</i>这家店美容师活好么？这家店美容师活多么？</p>
+		</a>
+		<!-- 图文 -->
+		<div class="detail-area">
+			<div class="offers">
+				<p class="titles"><span>商品详情</span></p>
+			</div>
+			<img th:src="@{/store/wap/images/banner3.jpg}" alt="">
+			<img th:src="@{/store/wap/images/banner4.jpg}" alt="">
+			<img th:src="@{/store/wap/images/banner5.jpg}" alt="">
+		</div>
+	</div>
+	<!-- sku属性弹层 -->
+	<div class="sku-detail">
+		<div class="property-head">
+			<img th:src="@{/store/wap/images/mall03_03.jpg}" alt="" class="property-pic">
+			<p class="price-num">500</p>
+			<p>库存<span class="stock-num">500</span>件</p>
+		</div>
+		<div class="property-main">
+			<div>
+				<h3>分类组合：</h3>
+				<div>
+					<button class="attr-item spec1" id="spec10" key="米色">米色</button>
+					<button class="attr-item spec1" id="spec11" disabled="disabled" key="灰色">灰色</button>
+					<button class="attr-item spec1" id="spec12" key="藏青色">藏青色</button>
+				</div>
+				<h3>购买数量：</h3>
+				<p class="customize">
+					<i class="minus"></i>
+					<input type="tel" class="iscount" value="1" disabled="disabled">
+					<i class="add">+</i>
+				</p>
+			</div>
+		</div>
+		<div class="property-closed"></div>
+	</div>
+	<!-- sku end -->
+	<!-- 红包弹层 -->
+	<div class="coupon-detail show">
+		<div class="content">
+			<div class="property-closed"></div>
+			<div class="property-head">领取优惠券:</div>
+			<div class="property-main">
+				<div class="coupon-item">
+					<h4>10元</h4>
+					<p>全场使用无限额</p>
+					<p>有效期至：2016-12-31</p>
+					<button disabled="disabled">立即领取</button>
+				</div>
+				<div class="coupon-item">
+					<h4>10元</h4>
+					<p>全场使用无限额</p>
+					<p>有效期至：2016-12-31</p>
+					<button>立即领取</button>
+				</div>
+				<div class="coupon-item">
+					<h4>10元</h4>
+					<p>全场使用无限额</p>
+					<p>有效期至：2016-12-31</p>
+					<button>立即领取</button>
+				</div>
+				<div class="coupon-item">
+					<h4>10元</h4>
+					<p>全场使用无限额</p>
+					<p>有效期至：2016-12-31</p>
+					<button disabled="disabled">立即领取</button>
+				</div>
+				<div class="coupon-item">
+					<h4>10元</h4>
+					<p>全场使用无限额</p>
+					<p>有效期至：2016-12-31</p>
+					<button>立即领取</button>
+				</div>
+				<div class="coupon-item">
+					<h4>10元</h4>
+					<p>全场使用无限额</p>
+					<p>有效期至：2016-12-31</p>
+					<button>立即领取</button>
+				</div>
+				<div class="coupon-item">
+					<h4>10元</h4>
+					<p>全场使用无限额</p>
+					<p>有效期至：2016-12-31</p>
+					<button disabled="disabled">立即领取</button>
+				</div>
+				<div class="coupon-item">
+					<h4>10元</h4>
+					<p>全场使用无限额</p>
+					<p>有效期至：2016-12-31</p>
+					<button>立即领取</button>
+				</div>
+				<div class="coupon-item">
+					<h4>10元</h4>
+					<p>全场使用无限额</p>
+					<p>有效期至：2016-12-31</p>
+					<button>立即领取</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<a href="" class="service">
+			<i></i>
+			<span>联系客服</span>
+		</a>
+		<span class="collect">
+			<i></i>
+			<span>收藏</span>
+		</span>
+		<button class="join-cart">加入购物车</button>
+		<button class="to-buy">立即购买</button>
+	</footer>
+	<!-- 抢购footer -->
+	<!-- <footer class="virtual rush-to-buy">
+		<a href="" class="service">
+			<i></i>
+			<span>联系客服</span>
+		</a>
+		<span class="collect">
+			<i></i>
+			<span>收藏</span>
+		</span>
+		<button class="to-buy soldout">商品下架了！下次再来吧～</button>
+	</footer> -->
+	<!-- 购物车按钮 -->
+	<a href="./cart.html" class="cart" id="cart"></a>
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/store/wap/js/slider.js}"></script>
+<script type="text/javascript" th:src="@{/store/wap/js/fly.min.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.banner.flexslider').flexslider({
+			animation: "slide",
+			slideDirection: "horizontal"
+		});
+		$('.loading').hide();
+
+		// 弹出组合层
+		$('.goods-pro').click(function(){
+			$('.sku-detail').addClass('show');
+			$('body').append('<div class="cover-decision"></div>');
+		});
+		// 关闭组合层
+		$('.sku-detail .property-closed, .cover-decision').click(function(){
+			$('.sku-detail').removeClass('show');
+			$('.cover-decision').remove();
+		});
+
+		//商品数量+1
+		$('.customize .add').on('click tap',function(){
+			var $val = Number($(this).siblings('.iscount').val()) + 1 ;
+			$(this).siblings('.iscount').val($val);
+			console.log($(this).siblings('.iscount').val())
+		});
+		
+		//商品数量-1
+		$('.customize .minus').on('click tap',function(){
+			var $val = Number($(this).siblings('.iscount').val());
+			if ($val > 1) {
+				$val--;
+				$(this).siblings('.iscount').val($val);
+			}
+		});
+		// 点击收藏
+		$('footer .collect').click(function(){
+			if(!$(this).hasClass('active')){
+				//ajax
+				$(this).addClass('active');
+			}
+		});
+
+		var joinCartOffset = $('.join-cart').offset(),
+			cartOffset = $('#cart').offset(),
+			flyer = $('<span class="flyer"></span>');
+
+		// 加入购物车效果
+		$('.join-cart').click(function(){
+			//动画方法
+		    flyer.fly({
+		        start: {
+		            left: joinCartOffset.left,
+		            top: joinCartOffset.top
+		        },
+		        end: {
+		            left: cartOffset.left,
+		            top: cartOffset.top,
+		            width: 20,
+		            height: 20,
+		        }
+		    });
+		    //ajax
+
+		});
+
+		//抢购倒计时
+		if ($('.coutdown').attr('starTime')){
+			updateStarTime();
+		} else{
+			updateEndTime();
+		};
+
+		/* 
+		 * sku 算法略
+		*/
+
+
+	});
+
+
+	/*倒计时*/
+	function updateEndTime(){
+		var date = new Date();
+		var time = date.getTime(); 
+
+	    $(".coutdown").each(function(i){
+	        var endDate =this.getAttribute("endTime");
+	        var endDate1 = eval('new Date(' + endDate.replace(/\d+(?=-[^-]+$)/, function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) +')');
+	        var endTime = endDate1.getTime();
+	        var lag = (endTime - time) / 1000;
+	        if(lag > 0){
+	            var second = Math.floor(lag % 60); 
+	            var minite = Math.floor((lag / 60) % 60);
+	            var hour = Math.floor((lag / 3600) % 24);
+	            // var day = Math.floor((lag / 3600) / 24);
+	            $(this).html('<i>'+subelement(hour)+'</i>时<i>'+subelement(minite)+'</i>分<i>'+subelement(second)+'</i>秒');
+	            
+	        }else{
+	            $(this).removeClass("settime");
+	            $(this).html('<i>00</i>时<i>00</i>分<i>00</i>秒');
+	        }
+	    });
+	    setTimeout("updateEndTime()",1000);
+	}
+
+	function updateStarTime(){
+		var date = new Date();
+		var time = date.getTime(); 
+
+	    $(".coutdown").each(function(i){
+	        var endDate = this.getAttribute("starTime");
+	        var endDate1 = eval('new Date(' + endDate.replace(/\d+(?=-[^-]+$)/, function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) +')');
+	        var endTime = endDate1.getTime();
+	        var lag = (endTime - time) / 1000;
+	        if(lag > 0){
+	            var second = Math.floor(lag % 60); 
+	            var minite = Math.floor((lag / 60) % 60);
+	            var hour = Math.floor((lag / 3600) % 24);
+	            // var day = Math.floor((lag / 3600) / 24);
+	            $(this).html('<i>'+subelement(hour)+'</i>时<i>'+subelement(minite)+'</i>分<i>'+subelement(second)+'</i>秒');
+	            
+	        }else{
+	        	$('.endtime').html('距抢购结束:');
+	            updateEndTime();
+	        }
+	    });
+	    setTimeout("updateStarTime()",1000);
+	}
+
+	function subelement(s) {
+		return s < 10 ? '0' + s: s;
+	}
+
+
+</script>
+</html>

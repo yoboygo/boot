@@ -1,0 +1,364 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telphone=no"/>
+<meta content="email=no" name="format-detection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>虚拟商品详情</title>
+<link rel="stylesheet" type="text/css" href="../css/flexslider.css">
+<link rel="stylesheet" type="text/css" th:href="@{/store/wap/css/detail.css}">
+</head>
+<body>
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+	<div class="wrap virtual">
+		<div class="banner flexslider">
+			<ul class="slides">
+				<li><a href="#"><img th:src="@{/store/wap/images/banner.jpg}"></a></li>
+				<li><a href="#"><img th:src="@{/store/wap/images/banner.jpg}"></a></li>
+			</ul>
+		</div>
+		<!-- 商品信息 -->
+		<div class="collection">
+			<h3><img th:src="@{/store/wap/images/logo.png}" alt="" class="logos">深海肌肤护理深海肌肤护理深海肌肤</h3>
+			<p class="goods-link"><a href="">肌肤健康水润机密畅想肌肤肌肤健康水润机密畅想肌肤</a></p>
+			<p class="price">
+				<span class="cost"><i>¥</i>1980</span><del><i>¥</i>1880</del>
+				<span class='sold'>888</span>
+			</p>
+			<!-- 抢购 -->
+			<p class="price rush-to-buy">
+				<span class="rush">抢购价</span>
+				<span class="cost"><i>¥</i>188</span>
+				<del><i>¥</i>1880</del>
+				<del><i>¥</i>1980</del>
+				<span class='sold'>888</span>
+			</p>
+			<div class="flashsale">
+				<p class="clearfix">
+					<span class="limit">限抢<i>88</i>件</span>
+					<span class="onsale">已售80%</span>
+					<span class="endtime">距抢购结束:</span>
+				</p>
+				<p class="clearfix progress">
+					<span class="meter">
+						<span class="walker" style="width:80%"></span>
+					</span>
+					<span class="coutdown" starTime="2017-11-10 20:58:07" endTime="2017-11-12 20:58:07"><i>00</i>时<i>00</i>分<i>00</i>秒</span>
+				</p>
+			</div>
+			<!-- 抢购end -->
+		</div>
+		<!-- 注 。分  -->
+		<div class="note"><span>注</span>现在购买，只需要先支付预约金<strong><i>100</i>元</strong></div>
+		<div class="stagin"><span>分</span><i></i>首付预约金，尾款到店补</div>
+		<!-- 商品属性 -->
+		<div class="goods-pro"><p class="">选择套餐：<span>玫瑰金+定制版</span></p></div>
+		<!-- 商品标签 -->
+		<div class="ability">
+			<span>手法娴</span>
+			<span>水润秘籍</span>
+			<span>活好</span>
+			<span>无可挑剔</span>
+		</div>
+		<!-- 店铺地址 -->
+		<div class="shop-address">
+			<a href="">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/p2.jpg}" alt=""></dt>
+					<dd class="brand">可诺丹婷</dd>
+					<dd>电话：010-8768940</dd>
+					<dd class="address">地址：北京市朝阳区哪里哪里</dd>
+				</dl>
+			</a>
+			<div class="menu">
+				<a href="tel:010-8768940"></a>
+				<a href="http://map.baidu.com/mobile/webapp/search/search/qt=s&amp;wd=大望路华贸公寓4号楼/newmap=1&amp;ie=utf-8">
+			</div>
+			<a href="" class="address-list">覆盖300多座城市，一次消费，全国通用</a>
+		</div>
+		<!-- 评价 -->
+		<div class="review">
+			<div class="review-top"><i class="icon-review"></i>评价1999条</div>
+			<div class="com-item">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/p2.jpg}" alt=""></dt>
+					<dd class="uname">
+						<i>用户132</i>
+						<span class="levels"><i>Lv</i>5</span>
+						<span class="score"><span class="score-inner" style="width:70%"></span></span>
+					</dd>
+					<dd class="times">2016-05-28 </dd>
+				</dl>
+				<div class="comment">
+					<p>舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了舒服……做完肚子小小了</p>
+					<div class="gallery">
+						<span class="slide"><img th:src="@{/store/wap/images/p2.jpg}" alt=""></span>
+						<span class="slide"><img th:src="@{/store/wap/images/banner6.jpg}" alt=""></span>
+						<span class="slide"><img th:src="@{/store/wap/images/1.jpg}" alt=""></span>
+					</div>
+				</div>
+				<div class="replay">
+					<p>客服回复：谢谢亲的支持，每天美耶一直努力让您开心快乐并幸福~~o(*￣▽￣*)ブ</p>
+					<p class="replay-times">2016-12-12</p>
+				</div>
+			</div>
+			<a href="" class="more-review">查看全部评价</a>
+		</div>
+		<!-- 都来说 -->
+		<a href="" class="evaluate">
+			<div class="heading">大家都来说</div>
+			<p><i>说</i>这家店美容师活好么？这家店美容师活多么？</p>
+		</a>
+		<!-- 图文 -->
+		<div class="detail-area">
+			<div class="offers">
+				<p class="titles"><span>商品详情</span></p>
+			</div>
+			<img th:src="@{/store/wap/images/banner3.jpg}" alt="">
+			<img th:src="@{/store/wap/images/banner4.jpg}" alt="">
+			<img th:src="@{/store/wap/images/banner5.jpg}" alt="">
+		</div>
+		<!-- 流程 -->
+		<div class="process">
+			<h3>操作流程</h3>
+			<div class="scroller-item">
+				<div class="scroller-inner">
+					<div class="scroller">
+						<i>第1步</i>
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<p>描述信息文字（5分钟）</p>
+					</div>
+					<div class="scroller">
+						<i>第2步</i>
+						<img th:src="@{/store/wap/images/mall03_03.jpg}" alt="">
+						<p>描述信息文字+鱼子面膜以内描述信息文字（5-10分钟）</p>
+					</div>
+					<div class="scroller">
+						<i>第3步</i>
+						<img th:src="@{/store/wap/images/mall03_03.jpg}" alt="">
+						<p>描述信息文字，保持在20个字符以内描述信息文字，保持在20个字符以内</p>
+					</div>
+					<div class="scroller">
+						<i>第4步</i>
+						<img th:src="@{/store/wap/images/mall03_16.jpg}" alt="">
+						<p>描述信息文字，保持在20个字符以内描述信息文字，保持在20个字符以内</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 推荐商品 -->
+		<div class="offers">
+			<p class="titles"><span>推荐商品</span></p>
+			<div class="hot-items">
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<a href="">
+							<h3>奥马生机海洋精粹舒缓露奥马生机海洋精粹舒缓露</h3>
+							<p class="prise"><span>¥<i>1680</i></span><del>¥289</del></p>
+							<p class="features">
+								<span class="score"><span class="score-inner" style="width:70%"></span></span>
+								<span class="sales">100</span>
+								<span class="comment">88</span>
+							</p>
+						</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt><img th:src="@{/store/wap/images/mall03_16.jpg}" alt=""></dt>
+					<dd>
+						<a href="">
+							<h3>奥马生机海洋精粹舒缓露奥马生机海洋精粹舒缓露</h3>
+							<p class="prise"><span>¥<i>1680</i></span><del>¥289</del></p>
+							<p class="features">
+								<span class="score"><span class="score-inner" style="width:70%"></span></span>
+								<span class="sales">100</span>
+								<span class="comment">88</span>
+							</p>
+						</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<!-- sku属性弹层 -->
+	<div class="sku-detail">
+		<div class="property-head">
+			<img th:src="@{/store/wap/images/mall03_03.jpg}" alt="" class="property-pic">
+			<p class="price-num">500</p>
+			<p>库存<span class="stock-num">500</span>件</p>
+		</div>
+		<div class="property-main">
+			<div>
+				<h3>分类组合：</h3>
+				<div>
+					<button class="attr-item spec1" id="spec10" key="米色">米色</button>
+					<button class="attr-item spec1" id="spec11" disabled="disabled" key="灰色">灰色</button>
+					<button class="attr-item spec1" id="spec12" key="藏青色">藏青色</button>
+				</div>
+				<h3>购买数量：</h3>
+				<p class="customize">
+					<i class="minus"></i>
+					<input type="tel" class="iscount" value="1" disabled="disabled">
+					<i class="add">+</i>
+				</p>
+			</div>
+		</div>
+		<div class="property-closed"></div>
+	</div>
+	<!-- sku end -->
+	<div class="detail-appointment">
+		<span>预约金：<i>¥100.00</i></span>　　<span>到店付：<i>¥900.00</i></span>
+	</div>
+	<div class="detail-appointment-alert"></div>
+	<footer class="virtual">
+		<a href="" class="service">
+			<i></i>
+			<span>联系客服</span>
+		</a>
+		<span class="collect">
+			<i></i>
+			<span>收藏</span>
+		</span>
+		<button class="to-buy">立即购买</button>
+	</footer>
+	<!-- 抢购footer -->
+	<!-- <footer class="virtual rush-to-buy">
+		<a href="" class="service">
+			<i></i>
+			<span>联系客服</span>
+		</a>
+		<span class="collect">
+			<i></i>
+			<span>收藏</span>
+		</span>
+		<button class="to-buy soldout">商品下架了！下次再来吧～</button>
+	</footer> -->
+</body>
+<script type="text/javascript" th:src="@{/store/wap/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/store/wap/js/slider.js}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.banner.flexslider').flexslider({
+			animation: "slide",
+			slideDirection: "horizontal"
+		});
+		// 流程
+		$('.scroller-item').each(function(){
+			var len = $(this).find('.scroller').length;
+			$(this).wrap('<div class="scroller-wrap"></div>')
+			$(this).find('.scroller-inner').css({'width':(len*114)+'px'})
+		});
+
+		$('.loading').hide();
+
+		// 弹出组合层
+		$('.goods-pro').click(function(){
+			$('.sku-detail').addClass('show');
+			$('body').append('<div class="cover-decision"></div>');
+		});
+		// 关闭组合层
+		$('.sku-detail .property-closed, .cover-decision').click(function(){
+			$('.sku-detail').removeClass('show');
+			$('.cover-decision').remove();
+		});
+
+		//商品数量+1
+		$('.customize .add').on('click tap',function(){
+			var $val = Number($(this).siblings('.iscount').val()) + 1 ;
+			$(this).siblings('.iscount').val($val);
+			console.log($(this).siblings('.iscount').val())
+		});
+		
+		//商品数量-1
+		$('.customize .minus').on('click tap',function(){
+			var $val = Number($(this).siblings('.iscount').val());
+			if ($val > 1) {
+				$val--;
+				$(this).siblings('.iscount').val($val);
+			}
+		});
+		// 点击收藏
+		$('footer .collect').click(function(){
+			if(!$(this).hasClass('active')){
+				//ajax
+				$(this).addClass('active');
+			}
+		});
+		//
+		$('.detail-appointment').click(function(){$('.detail-appointment-alert').show()});
+		$('.detail-appointment-alert').click(function(){$(this).hide()});
+
+		//抢购倒计时
+		if ($('.coutdown').attr('starTime')){
+			updateStarTime();
+		} else{
+			updateEndTime();
+		};
+
+		/* 
+		 * sku 算法略
+		*/
+
+
+	});
+
+
+	/*倒计时*/
+	function updateEndTime(){
+		var date = new Date();
+		var time = date.getTime(); 
+
+	    $(".coutdown").each(function(i){
+	        var endDate =this.getAttribute("endTime");
+	        var endDate1 = eval('new Date(' + endDate.replace(/\d+(?=-[^-]+$)/, function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) +')');
+	        var endTime = endDate1.getTime();
+	        var lag = (endTime - time) / 1000;
+	        if(lag > 0){
+	            var second = Math.floor(lag % 60); 
+	            var minite = Math.floor((lag / 60) % 60);
+	            var hour = Math.floor((lag / 3600) % 24);
+	            // var day = Math.floor((lag / 3600) / 24);
+	            $(this).html('<i>'+subelement(hour)+'</i>时<i>'+subelement(minite)+'</i>分<i>'+subelement(second)+'</i>秒');
+	            
+	        }else{
+	            $(this).removeClass("settime");
+	            $(this).html('<i>00</i>时<i>00</i>分<i>00</i>秒');
+	        }
+	    });
+	    setTimeout("updateEndTime()",1000);
+	}
+
+	function updateStarTime(){
+		var date = new Date();
+		var time = date.getTime(); 
+
+	    $(".coutdown").each(function(i){
+	        var endDate = this.getAttribute("starTime");
+	        var endDate1 = eval('new Date(' + endDate.replace(/\d+(?=-[^-]+$)/, function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) +')');
+	        var endTime = endDate1.getTime();
+	        var lag = (endTime - time) / 1000;
+	        if(lag > 0){
+	            var second = Math.floor(lag % 60); 
+	            var minite = Math.floor((lag / 60) % 60);
+	            var hour = Math.floor((lag / 3600) % 24);
+	            // var day = Math.floor((lag / 3600) / 24);
+	            $(this).html('<i>'+subelement(hour)+'</i>时<i>'+subelement(minite)+'</i>分<i>'+subelement(second)+'</i>秒');
+	            
+	        }else{
+	        	$('.endtime').html('距抢购结束:');
+	            updateEndTime();
+	        }
+	    });
+	    setTimeout("updateStarTime()",1000);
+	}
+
+	function subelement(s) {
+		return s < 10 ? '0' + s: s;
+	}
+
+</script>
+</html>
