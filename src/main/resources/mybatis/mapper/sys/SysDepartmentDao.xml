@@ -6,7 +6,7 @@
         delete from sys_department
     </delete>
     <insert id="save" parameterType="ml.idream.manage.sys.department.SysDepartment" useGeneratedKeys="true" keyProperty="id">
-        insert into sys_department (name) values (#{name})
+        insert into sys_department (name,del_flag) values (#{name},#{delFlag})
     </insert>
     <select id="findDepartmentByUserId" parameterType="Long" resultType="ml.idream.manage.sys.department.SysDepartment">
       SELECT d.* FROM

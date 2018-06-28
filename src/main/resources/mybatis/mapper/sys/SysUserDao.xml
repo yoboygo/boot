@@ -9,6 +9,7 @@
         <result property="password" column="password"></result>
         <result property="email" column="email"></result>
         <result property="createdate" column="createdate"></result>
+        <result property="delFlag" column="del_flag"></result>
         <association property="sysDepartment" column="id" select="ml.idream.manage.sys.department.SysDepartmentDao.findDepartmentByUserId" />
         <association property="roles" column="id" select="ml.idream.manage.sys.role.SysRoleDao.findRoleByUserId" />
     </resultMap>
@@ -17,7 +18,7 @@
         select * from sys_user where name = #{name}
     </select>
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
-        insert into sys_user (name,password,email) values (#{name},#{password},#{email})
+        insert into sys_user (name,password,email,del_flag) values (#{name},#{password},#{email},#{delFlag})
     </insert>
     <insert id="saveUserRole" parameterType="List">
         insert into sys_user_role (user_id,role_id)
@@ -40,4 +41,7 @@
       VALUES
       (#{userId},#{departmentId})
     </insert>
+    <select id="findAllUsers" resultType="ml.idream.manage.sys.user.SysUser">
+      SELECT * FROM SYS_USER
+    </select>
 </mapper>

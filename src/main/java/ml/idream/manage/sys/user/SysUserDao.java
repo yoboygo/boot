@@ -21,4 +21,6 @@ public interface SysUserDao{
     void deleteAllUserRole();
 
     void deleteAllUserDepartment();
+
+    List<SysUser> findAllUsers();
 }

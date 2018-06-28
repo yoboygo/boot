@@ -1,5 +1,7 @@
 package ml.idream.manage.sys.permission;
 
+import ml.idream.global.GlobalConst;
+
 //sys_permission
 public class SysPermission {
     private Long id;
@@ -7,6 +9,7 @@ public class SysPermission {
     private String description;
     private String url;
     private Integer pid;
+    private String delFlag = GlobalConst.FLAG_UNDEL;
 
     public Long getId() {
         return id;
@@ -48,4 +51,11 @@ public class SysPermission {
         this.pid = pid;
     }
 
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
+    }
 }

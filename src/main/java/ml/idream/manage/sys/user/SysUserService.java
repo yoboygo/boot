@@ -1,7 +1,9 @@
 package ml.idream.manage.sys.user;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import ml.idream.global.GloablePager;
 import ml.idream.manage.sys.department.SysDepartment;
-import ml.idream.manage.sys.department.SysDepartmentDao;
 import ml.idream.manage.sys.department.SysDepartmentService;
 import ml.idream.manage.sys.role.SysRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,5 +71,14 @@ public class SysUserService {
 
     public SysUser findByNameEquals(String username) {
         return sysUserDao.findByNameEquals(username);
+    }
+
+    /*
+    * 查询用户
+    * */
+    public List<SysUser> findUsers(GloablePager gloablePager) {
+        Page page = PageHelper.startPage(gloablePager.getStart()).setPageSize(gloablePager.getPageSize()).setPageNum(gloablePager.getPageNum()s).setCount(true);
+        List<SysUser> ret =  sysUserDao.findAllUsers();
+        return ret;
     }
 }

@@ -1,5 +1,6 @@
 package ml.idream.manage.sys.user;
 
+import ml.idream.global.GlobalConst;
 import ml.idream.manage.sys.department.SysDepartment;
 import ml.idream.manage.sys.role.SysRole;
 
@@ -26,6 +27,8 @@ public class SysUser implements Serializable {
     private SysDepartment sysDepartment;
 
     private List<SysRole> roles = new ArrayList<SysRole>();
+
+    private String delFlag = GlobalConst.FLAG_UNDEL;
 
     public SysUser(){
 
@@ -87,6 +90,14 @@ public class SysUser implements Serializable {
         this.email = email;
     }
 
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
+    }
+
     /*建造者*/
     public static class Builder{
         private SysUser user;
@@ -111,4 +122,5 @@ public class SysUser implements Serializable {
             return user;
         }
     }
+
 }

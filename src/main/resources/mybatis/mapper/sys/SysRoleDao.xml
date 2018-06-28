@@ -6,6 +6,7 @@
     <resultMap id="SysRole" type="ml.idream.manage.sys.role.SysRole">
         <result property="id" column="id"></result>
         <result property="name" column="name"></result>
+        <result property="delFlag" column="del_flag"></result>
         <association property="permissions" column="id" select="ml.idream.manage.sys.permission.SysPermissionDao.findPermissionByRoleId" />
     </resultMap>
     
@@ -16,7 +17,7 @@
         delete from sys_role_permission
     </delete>
     <insert id="save" parameterType="ml.idream.manage.sys.role.SysRole" useGeneratedKeys="true" keyProperty="id">
-        insert into sys_role (name) values (#{name})
+        insert into sys_role (name,del_flag) values (#{name},#{delFlag})
     </insert>
     <select id="findAll" resultMap="SysRole" >
         select * from sys_role

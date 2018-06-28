@@ -1,13 +1,14 @@
 package ml.idream.manage.sys.user;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import ml.idream.log.DreamLog;
+import ml.idream.global.GloablePager;
+import ml.idream.global.ResBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -30,5 +31,16 @@ public class SysUserCtl {
         userService.addUser(username,password,email);
         System.out.println( "username:" + username + " password:" + password );
         return "redirect:/login";
+    }
+
+    /*
+    * 查询用户列表
+    * */
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public ResBean list(GloablePager gloablePager){
+        ResBean ret = new ResBean();
+        List<SysUser> users = userService.findUsers(gloablePager);
+        ret.setDatas(users);
+        return ret;
     }
 }

@@ -10,9 +10,9 @@
       Select p.* from sys_permission p join sys_role_permission m on m.permission_id = p.id where m.role_id = #{roleId}
     </select>
     <insert id="save" parameterType="ml.idream.manage.sys.permission.SysPermission" useGeneratedKeys="true" keyProperty="id">
-      INSERT INTO SYS_PERMISSION (name,url,description)
+      INSERT INTO SYS_PERMISSION (name,url,description,del_flag)
       values
-      (#{name},#{url},#{description})
+      (#{name},#{url},#{description},#{delFlag})
     </insert>
     <delete id="deletAll">
       DELETE FROM sys_permission

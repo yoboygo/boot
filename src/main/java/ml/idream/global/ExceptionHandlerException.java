@@ -1,12 +1,11 @@
 package ml.idream.global;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.exceptions.TemplateInputException;
@@ -17,15 +16,18 @@ import org.thymeleaf.exceptions.TemplateInputException;
 @ControllerAdvice
 public class ExceptionHandlerException {
 
+    private Logger logger = LoggerFactory.getLogger(ExceptionHandlerException.class);
     /*
     * 全局异常处理
     * */
+    @ResponseBody
     @ExceptionHandler(value = Exception.class)
-    public ModelAndView exception(Exception e, WebRequest request){
-        ModelAndView modelAndView = new ModelAndView("/error/error");
-        modelAndView.addObject("title","错误");
-        modelAndView.addObject("message",e.getMessage());
-        return modelAndView;
+    public ResBean exception(Exception e, WebRequest request){
+        ResBean ret = new ResBean();
+        ret.setCode(GlobalConst.CODE_REQUEST_ERROR);
+        ret.setMsg(GlobalConst.MSG_REQUEST_ERROR);
+        logger.error("请求失败！",e);
+        return ret;
     }
 
     /*

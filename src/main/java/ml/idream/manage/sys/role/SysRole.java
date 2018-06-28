@@ -1,5 +1,6 @@
 package ml.idream.manage.sys.role;
 
+import ml.idream.global.GlobalConst;
 import ml.idream.manage.sys.permission.SysPermission;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.util.List;
 public class SysRole implements Serializable {
     private Long id;
     private String name;
+    private String delFlag = GlobalConst.FLAG_UNDEL;
 
     private List<SysPermission> permissions = new ArrayList<SysPermission>();
 
@@ -39,5 +41,13 @@ public class SysRole implements Serializable {
 
     public void setPermissions(List<SysPermission> permissions) {
         this.permissions = permissions;
+    }
+
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
     }
 }
