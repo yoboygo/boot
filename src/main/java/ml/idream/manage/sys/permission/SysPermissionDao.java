@@ -6,7 +6,11 @@ import java.util.List;
 
 public interface SysPermissionDao{
 
-    public SysPermission findPermissionById(@Param("id") Integer id);
+    SysPermission findPermissionById(@Param("id") Long id);
 
-    public List<SysPermission> findPermissionByRoleId(@Param("roleId") Integer roleId);
+    List<SysPermission> findPermissionByRoleId(@Param("roleId") Long roleId);
+
+    void deletAll();
+
+    void save(SysPermission sysPermission);
 }

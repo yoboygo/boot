@@ -12,18 +12,30 @@
     <delete id="deleteAll">
         delete from sys_role
     </delete>
+    <delete id="deleteAllRolePermission">
+        delete from sys_role_permission
+    </delete>
     <insert id="save" parameterType="ml.idream.manage.sys.role.SysRole" useGeneratedKeys="true" keyProperty="id">
         insert into sys_role (name) values (#{name})
     </insert>
     <select id="findAll" resultMap="SysRole" >
         select * from sys_role
     </select>
+    
     <insert id="saveRolePermission" parameterType="List">
-        insert into sys_role_permissioin (role_id,permission_id)
+        insert into sys_role_permission (role_id,permission_id)
         values
          <foreach collection="list" item="item" separator=",">
              (#{item.roleId},#{item.permissionId})
          </foreach>
 
     </insert>
+    <select id="findRoleByUserId" parameterType="Long" resultMap="SysRole">
+      SELECT
+            R.*
+        FROM
+            sys_role R
+            LEFT JOIN sys_user_role M ON M.role_id = R.id
+      WHERE M.USER_ID = #{userId}
+    </select>
 </mapper>

@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
         <title>注册</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="ThemeDesign" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="shortcut icon" th:href="@{/manage/images/faviicon.png}">
+        <link type="text/css" rel="shortcut icon" th:href="@{/manage/images/faviicon.png}"/>
 
-        <link th:href="@{/manage/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
-        <link th:href="@{/manage/css/icons.css}" rel="stylesheet" type="text/css">
-        <link th:href="@{/manage/css/style.css}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" th:href="@{/manage/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/manage/css/icons.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/manage/css/style.css}"/>
 
     </head>
 
@@ -34,7 +34,7 @@
                     <h4 class="text-muted text-center font-18"><b>注册</b></h4>
 
                     <div class="p-3">
-                        <form class="form-horizontal m-t-20" th:action="@{/signup}" th:method="POST" >
+                        <form class="form-horizontal m-t-20" th:action="@{/user/signup}" th:method="POST" >
 
                             <div class="form-group row">
                                 <div class="col-12">
@@ -71,7 +71,7 @@
 
                             <div class="form-group m-t-10 mb-0 row">
                                 <div class="col-12 m-t-20 text-center">
-                                    <a href="pages-login.html" class="text-muted">已经有账户了?</a>
+                                    <a th:href="@{/login}" class="text-muted">已经有账户了?</a>
                                 </div>
                             </div>
                         </form>

@@ -36,6 +36,7 @@ public class SysRoleService {
 
     public void deleteAll() {
         sysRoleDao.deleteAll();
+        sysRoleDao.deleteAllRolePermission();
     }
 
     /*

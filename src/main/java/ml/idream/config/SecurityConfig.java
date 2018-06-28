@@ -24,16 +24,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SysUserDetailService sysUserDetailService;
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**",
-                        "/configuration/security", "/swagger-ui.html","/index","/","/home","/error",
-                        "/signup","/dy/**","/css/**","/js/**","/images/**","/fonts/**",
-                        "/manage/**","/webjars/**","/blog/**",
-                        "/**/css/**","/**/scripts/**","/**/image/**","/**/styles/**","/**/fronts/**",//通用静态资源路径
-                        "/store/**")
+                .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**","/configuration/security", "/swagger-ui.html",
+                        "/index","/","/home","/error/**","/signup","/login",
+//                        "/css/**","/images/**","/fonts/**",
+                        "/**/css/**/*","/**/styles/**/*","/**/scripts/**/*","/**/js/**/*","/**/images/**/*","/**/fonts/**/*",//通用静态资源路径
+                        "/webjars/**","/blog/**",
+                        "/store/**","/dynamic/**")
                 .permitAll()
                 .and()
                 .formLogin()

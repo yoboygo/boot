@@ -30,9 +30,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("/home");
         registry.addViewController("/home").setViewName("/home");
         registry.addViewController("/login").setViewName("/login");
+        registry.addViewController("/signup").setViewName("/signup");
         registry.addViewController("/error").setViewName("/error");
-        registry.addViewController("/manager/toUpload").setViewName("/manager/upload");
-        registry.addViewController("/manager").setViewName("/manager/manager");
+        registry.addViewController("/manage/toUpload").setViewName("/manager/upload");
+        registry.addViewController("/manage").setViewName("/manager/manager");
         registry.addViewController("/dy/activity/add").setViewName("/idengyun/activity/main");
     }
 

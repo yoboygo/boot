@@ -13,5 +13,9 @@ public interface SysRoleDao{
 
     void save(SysRole role);
 
+    List<SysRole> findRoleByUserId(Long userId);
+
     void saveRolePermission(List<Map<String,Object>> rolePermission);
+
+    void deleteAllRolePermission();
 }

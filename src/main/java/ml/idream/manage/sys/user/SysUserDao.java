@@ -15,4 +15,10 @@ public interface SysUserDao{
     void saveUserRole(List<Map<String,Object>> userRole);
 
     void deleteAll();
+
+    void saveUserDepartment(Map<String,Object> userDepartmentMapper);
+
+    void deleteAllUserRole();
+
+    void deleteAllUserDepartment();
 }

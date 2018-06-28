@@ -14,6 +14,7 @@ spring:
     prefix: classpath:/templates
     suffix: .html
     excluded-view-names: /**/swagger-ui.html,/swagger,/**/api
+#    check-template: true
   datasource:
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver

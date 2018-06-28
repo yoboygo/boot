@@ -2,7 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ml.idream.manage.sys.user.SysUserDao">
-    <select id="findByNameEquals" parameterType="String" resultType="ml.idream.manage.sys.user.SysUser">
+
+    <resultMap id="SysUser" type="ml.idream.manage.sys.user.SysUser">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="password" column="password"></result>
+        <result property="email" column="email"></result>
+        <result property="createdate" column="createdate"></result>
+        <association property="sysDepartment" column="id" select="ml.idream.manage.sys.department.SysDepartmentDao.findDepartmentByUserId" />
+        <association property="roles" column="id" select="ml.idream.manage.sys.role.SysRoleDao.findRoleByUserId" />
+    </resultMap>
+
+    <select id="findByNameEquals" parameterType="String" resultMap="SysUser">
         select * from sys_user where name = #{name}
     </select>
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
@@ -18,4 +29,15 @@
     <delete id="deleteAll">
         delete from sys_user
     </delete>
+    <delete id="deleteAllUserRole">
+        delete from sys_user_role
+    </delete>
+    <delete id="deleteAllUserDepartment">
+        delete from sys_user_department
+    </delete>
+    <insert id="saveUserDepartment" parameterType="HashMap">
+      INSERT INTO SYS_USER_DEPARTMENT (USER_ID,DEPARTMENT_ID)
+      VALUES
+      (#{userId},#{departmentId})
+    </insert>
 </mapper>

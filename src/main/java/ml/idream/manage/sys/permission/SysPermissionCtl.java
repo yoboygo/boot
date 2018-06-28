@@ -16,6 +16,6 @@ public class SysPermissionCtl {
 
     @RequestMapping("/list")
     public String toPermission(){
-        return "/manager/permission/list";
+        return "/manage/permission-list";
     }
 }

@@ -1,5 +1,8 @@
 package ml.idream.manage.sys.user;
 
+import ml.idream.manage.sys.department.SysDepartment;
+import ml.idream.manage.sys.department.SysDepartmentDao;
+import ml.idream.manage.sys.department.SysDepartmentService;
 import ml.idream.manage.sys.role.SysRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +19,8 @@ public class SysUserService {
 
     @Autowired
     private SysUserDao sysUserDao;
+    @Autowired
+    private SysDepartmentService sysDepartmentService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -29,6 +34,8 @@ public class SysUserService {
 
     public void deleteAll() {
         sysUserDao.deleteAll();
+        sysUserDao.deleteAllUserRole();
+        sysUserDao.deleteAllUserDepartment();
     }
 
     @Transactional
@@ -46,6 +53,17 @@ public class SysUserService {
         if(userRole.size() > 0){
             sysUserDao.saveUserRole(userRole);
         }
+
+        //插入部门
+        SysDepartment department = user.getSysDepartment();
+        if(department != null){
+            //用户部门关联
+            Map<String,Object> userDepartmentMapper = new HashMap<String,Object>();
+            userDepartmentMapper.put("userId",user.getId());
+            userDepartmentMapper.put("departmentId",department.getId());
+            sysUserDao.saveUserDepartment(userDepartmentMapper);
+        }
+
         return user;
     }
 

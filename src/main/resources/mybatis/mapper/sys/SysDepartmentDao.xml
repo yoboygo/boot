@@ -8,4 +8,10 @@
     <insert id="save" parameterType="ml.idream.manage.sys.department.SysDepartment" useGeneratedKeys="true" keyProperty="id">
         insert into sys_department (name) values (#{name})
     </insert>
+    <select id="findDepartmentByUserId" parameterType="Long" resultType="ml.idream.manage.sys.department.SysDepartment">
+      SELECT d.* FROM
+        sys_department d
+        LEFT JOIN sys_user_department m on m.department_id = d.id
+      WHERE m.user_id = #{userId}
+    </select>
 </mapper>
