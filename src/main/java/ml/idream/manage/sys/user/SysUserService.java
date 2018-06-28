@@ -77,7 +77,7 @@ public class SysUserService {
     * 查询用户
     * */
     public List<SysUser> findUsers(GloablePager gloablePager) {
-        Page page = PageHelper.startPage(gloablePager.getStart()).setPageSize(gloablePager.getPageSize()).setPageNum(gloablePager.getPageNum()s).setCount(true);
+        Page page = PageHelper.startPage(gloablePager.getStart()).setPageSize(gloablePager.getPageSize()).setPageNum(gloablePager.getPageNum()).setCount(true);
         List<SysUser> ret =  sysUserDao.findAllUsers();
         return ret;
     }

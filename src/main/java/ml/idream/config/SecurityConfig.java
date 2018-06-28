@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**","/configuration/security", "/swagger-ui.html",
                         "/index","/","/home","/error/**","/signup","/login",
 //                        "/css/**","/images/**","/fonts/**",
-                        "/**/css/**/*","/**/styles/**/*","/**/scripts/**/*","/**/js/**/*","/**/images/**/*","/**/fonts/**/*",//通用静态资源路径
+                        "/**/css/**","/**/styles/**","/**/scripts/**","/**/js/**","/**/images/**","/**/fonts/**","/**/pages/**","/**/plugins/**",//通用静态资源路径
                         "/webjars/**","/blog/**",
                         "/store/**","/dynamic/**")
                 .permitAll()
