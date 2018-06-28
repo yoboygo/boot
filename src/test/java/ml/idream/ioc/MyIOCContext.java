@@ -50,7 +50,6 @@ public class MyIOCContext {
         try {
             String basePath = cl.getResource("").getPath()
                 .replaceFirst("/","").replace("/",File.separator);
-            String absolutePath = baseFile.getAbsolutePath();
             String beanPackage = baseFile.getAbsolutePath().replace(basePath,"")
                     .replace(File.separator,".").replace(".class","");
             Class<?> clazz = cl.loadClass(beanPackage);
