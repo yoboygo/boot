@@ -3,7 +3,7 @@ package ml.idream.ioc;
 public class Main {
 
     public static void main(String[] args) {
-        ApplicationContext ac =  new ApplicationContext();
+        MyIOCContext ac =  new MyIOCContext();
         Book book = (Book) ac.getBean("book");
         book.setId(1L);
         book.setName("你好！");

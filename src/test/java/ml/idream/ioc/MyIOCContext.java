@@ -2,24 +2,19 @@ package ml.idream.ioc;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ApplicationContext {
+public class MyIOCContext {
     private ClassLoader cl = ClassLoader.getSystemClassLoader();
     private Map<String,Object> beanMap = new HashMap<String,Object>();
     private String basePackage;
 
-    public ApplicationContext(){
+    public MyIOCContext(){
 
     }
-    public ApplicationContext(String basePackage) {
+    public MyIOCContext(String basePackage) {
         this.basePackage = basePackage;
     }
 
