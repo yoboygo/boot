@@ -1,6 +1,6 @@
 package ml.idream.model.decorator;
 /*
-* 饮料
+* 饮料基类
 * */
 public abstract class Beverage {
     String description = "Unknown Beverage";
@@ -8,4 +8,8 @@ public abstract class Beverage {
         return description;
     }
     public abstract double cost();
+
+    protected void setDescription(String description){
+        this.description = description;
+    }
 }

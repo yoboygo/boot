@@ -1,4 +1,5 @@
 package ml.idream.ioc;
+
 @MyBean("book")
 public class Book {
     private Long id;
