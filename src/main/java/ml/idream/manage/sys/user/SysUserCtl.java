@@ -8,21 +8,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/user")
 public class SysUserCtl {
 
     @Autowired
     private SysUserService userService;
 
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public String toList(){
-
-        return "/manage/user/user-list";
+    /*
+     * 跳转到注册页面
+     * */
+    @RequestMapping(value = "/signup",method = RequestMethod.GET)
+    public String toSignUp(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//        System.out.println( "username:" + username + " password:" + password );
+        return "/signup";
     }
-
     /*
      * 注册新用户
      * */
@@ -33,10 +36,17 @@ public class SysUserCtl {
         return "redirect:/login";
     }
 
+
+    @RequestMapping(value = "/user/list",method = RequestMethod.GET)
+    public String toList(){
+
+        return "/manage/user/user-list";
+    }
+
     /*
     * 查询用户列表
     * */
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/list", method = RequestMethod.POST)
     public ResBean list(GloablePager gloablePager){
         ResBean ret = new ResBean();
         List<SysUser> users = userService.findUsers(gloablePager);

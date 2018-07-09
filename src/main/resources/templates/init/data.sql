@@ -43,8 +43,8 @@ INSERT INTO `sys_role` (`id`,`name`,`del_flag`) VALUES (2, 'ROLE_USER',1);
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` (`id`,`createdate`,`name`,`password`,`email`,`status` ,`del_flag`) VALUES (1, '2018-05-26 08:21:43', 'admin', '$10$xzd3rbD5bcGws7ZiYMhckOD/nsT7VOk08GQzrHLcNS5tqFZtjC5ji', 'admin@idream.com','1','1');
-INSERT INTO `sys_user` (`id`,`createdate`,`name`,`password`,`email`,`status` ,`del_flag`) VALUES (2, '2018-05-27 08:06:20', 'user', '$10$xzd3rbD5bcGws7ZiYMhckOD/nsT7VOk08GQzrHLcNS5tqFZtjC5ji', 'user@idream.com','1','1');
+INSERT INTO `sys_user` (`id`,`createdate`,`name`,`password`,`email`,`status` ,`del_flag`) VALUES (1, '2018-05-26 08:21:43', 'admin', '$2a$10$fTVH/G/82pT2kXVyxWWHbOZg6Gonb4DBAZmtTJ4fgo1RZXuB1ugYC', 'admin@idream.com','1','1');
+INSERT INTO `sys_user` (`id`,`createdate`,`name`,`password`,`email`,`status` ,`del_flag`) VALUES (2, '2018-05-27 08:06:20', 'user', '$2a$10$fTVH/G/82pT2kXVyxWWHbOZg6Gonb4DBAZmtTJ4fgo1RZXuB1ugYC', 'user@idream.com','1','1');
 
 -- ----------------------------
 -- Records of user_role

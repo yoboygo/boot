@@ -31,6 +31,9 @@ spring:
         cacheServerConfiguration: true
         elideSetAutoCommits: true
         maintainTimeStats: true
+#      schema: classpath:init/boot.sql
+#      connection-init-sql: classpath:init/data.sql
+    sql-script-encoding: utf-8
 logging:
   level:
     root: debug
