@@ -3,6 +3,7 @@ package ml.idream.global;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class GlobalCtl {
 
-    @RequestMapping("/dynamic/**")
+    @RequestMapping(value = "/dynamic/**",method = RequestMethod.GET)
     public String dynamicPage(HttpServletRequest request, HttpServletResponse response){
         String ctx = request.getContextPath();
         String urlTmp = request.getRequestURI();
@@ -21,7 +22,7 @@ public class GlobalCtl {
         return page;
     }
 
-    @RequestMapping("/error/{errorPage}")
+    @RequestMapping(value = "/error/{errorPage}",method = RequestMethod.GET)
     public String errorPage(@PathVariable("errorPage") String errorPage){
 
         return "/error/" + errorPage;

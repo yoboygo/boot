@@ -79,17 +79,17 @@ public class MySQLTest {
         /*权限*/
         SysPermission permissionManage = new SysPermission();
         permissionManage.setName("管理员");
-        permissionManage.setUrl("/manage");
+        permissionManage.setUrlPattern("/manage");
         permissionManage.setDescription("管理员权限");
         sysPermissionService.save(permissionManage);
         SysPermission permissionStore = new SysPermission();
         permissionStore.setName("商店");
-        permissionStore.setUrl("/store");
+        permissionStore.setUrlPattern("/store");
         permissionStore.setDescription("商店权限");
         sysPermissionService.save(permissionStore);
         SysPermission permissionBlog = new SysPermission();
         permissionBlog.setName("博客");
-        permissionBlog.setUrl("/blog");
+        permissionBlog.setUrlPattern("/blog");
         permissionBlog.setDescription("博客权限");
         sysPermissionService.save(permissionBlog);
 

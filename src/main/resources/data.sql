@@ -17,34 +17,34 @@
 -- ----------------------------
 -- Records of sys_deparment
 -- ----------------------------
-INSERT INTO `sys_deparment` VALUES (1, '开发部');
-INSERT INTO `sys_deparment` VALUES (2, '测试部');
+INSERT INTO `sys_deparment` (`id`,`name`,`del_flag`) VALUES (1, '开发部',1);
+INSERT INTO `sys_deparment` (`id`,`name`,`del_flag`) VALUES (2, '测试部',1);
 
 -- ----------------------------
 -- Records of sys_permission
 -- ----------------------------
-INSERT INTO `sys_permission` VALUES (1, '管理', '管理', NULL, '/manage/**');
-INSERT INTO `sys_permission` VALUES (2, '用户', '用户', NULL, '/user/**');
+INSERT INTO `sys_permission` (`id`,`description`,`name`,`pid`,`url_pattern`,`del_flag`) VALUES (1, '管理', '管理', NULL, '/manage/**',1);
+INSERT INTO `sys_permission` (`id`,`description`,`name`,`pid`,`url_pattern`,`del_flag`) VALUES (2, '用户', '用户', NULL, '/user/**',1);
 
 -- ----------------------------
 -- Records of sys_permission_role
 -- ----------------------------
-INSERT INTO `sys_permission_role` VALUES (1, 1);
-INSERT INTO `sys_permission_role` VALUES (1, 2);
-INSERT INTO `sys_permission_role` VALUES (2, 1);
-INSERT INTO `sys_permission_role` VALUES (2, 2);
+INSERT INTO `sys_role_permission` (`role_id`,`permission_id`) VALUES (1, 1);
+INSERT INTO `sys_role_permission` (`role_id`,`permission_id`) VALUES (1, 2);
+INSERT INTO `sys_role_permission` (`role_id`,`permission_id`) VALUES (2, 1);
+INSERT INTO `sys_role_permission` (`role_id`,`permission_id`) VALUES (2, 2);
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES (1, 'ROLE_ADMIN');
-INSERT INTO `sys_role` VALUES (2, 'ROLE_USER');
+INSERT INTO `sys_role` (`id`,`name`,`del_flag`) VALUES (1, 'ROLE_ADMIN',1);
+INSERT INTO `sys_role` (`id`,`name`,`del_flag`) VALUES (2, 'ROLE_USER',1);
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, '2018-05-26 08:21:43', 'admin', '$10$xzd3rbD5bcGws7ZiYMhckOD/nsT7VOk08GQzrHLcNS5tqFZtjC5ji', '1');
-INSERT INTO `sys_user` VALUES (2, '2018-05-27 08:06:20', 'user', '$10$xzd3rbD5bcGws7ZiYMhckOD/nsT7VOk08GQzrHLcNS5tqFZtjC5ji', '2');
+INSERT INTO `sys_user` (`id`,`createdate`,`name`,`password`,`email`,`status` ,`del_flag`) VALUES (1, '2018-05-26 08:21:43', 'admin', '$10$xzd3rbD5bcGws7ZiYMhckOD/nsT7VOk08GQzrHLcNS5tqFZtjC5ji', 'admin@idream.com','1','1');
+INSERT INTO `sys_user` (`id`,`createdate`,`name`,`password`,`email`,`status` ,`del_flag`) VALUES (2, '2018-05-27 08:06:20', 'user', '$10$xzd3rbD5bcGws7ZiYMhckOD/nsT7VOk08GQzrHLcNS5tqFZtjC5ji', 'user@idream.com','1','1');
 
 -- ----------------------------
 -- Records of user_role

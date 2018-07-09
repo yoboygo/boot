@@ -7,7 +7,7 @@ public class SysPermission {
     private Long id;
     private String name;
     private String description;
-    private String url;
+    private String urlPattern;
     private Integer pid;
     private String delFlag = GlobalConst.FLAG_UNDEL;
 
@@ -35,12 +35,12 @@ public class SysPermission {
         this.description = description;
     }
 
-    public String getUrl() {
-        return url;
+    public String getUrlPattern() {
+        return urlPattern;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setUrlPattern(String urlPattern) {
+        this.urlPattern = urlPattern;
     }
 
     public Integer getPid() {

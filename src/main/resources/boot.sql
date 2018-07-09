@@ -21,35 +21,35 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for sys_department
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_department`;
-CREATE TABLE `sys_department`  (
+CREATE TABLE `sys_department` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) NOT NULL COMMENT '部门名称',
+  `del_flag` tinyint(1) DEFAULT NULL COMMENT '删除标志：1，正常，0，删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统部门表';
 -- ----------------------------
 -- Table structure for sys_permission
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_permission`;
-CREATE TABLE `sys_permission`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `pid` int(11) NULL DEFAULT NULL,
-  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+CREATE TABLE `sys_permission` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) DEFAULT NULL COMMENT '描述',
+  `name` varchar(255) NOT NULL COMMENT '权限名称',
+  `pid` int(20) DEFAULT NULL COMMENT '父id',
+  `url_pattern` varchar(255) NOT NULL COMMENT 'url pattern',
+  `del_flag` tinyint(1) DEFAULT 1 COMMENT '删除标志：1，正常，0，删除；',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM  CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统权限表';
 -- ----------------------------
 -- Table structure for sys_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
-CREATE TABLE `sys_role`  (
+CREATE TABLE `sys_role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) NOT NULL COMMENT '角色名称',
+  `del_flag` tinyint(1) DEFAULT '1' COMMENT '删除标志:1,正常，0，删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统角色表';
 -- ----------------------------
 -- Table structure for sys_role_permission
 -- ----------------------------
@@ -65,17 +65,18 @@ CREATE TABLE `sys_role_permission`  (
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
-CREATE TABLE `sys_user`  (
+CREATE TABLE `sys_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `createdate` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `did` bigint(20) NULL DEFAULT NULL,
+  `createdate` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间，默认为当前时间',
+  `name` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
+  `status` tinyint(1) DEFAULT '1' COMMENT '状态标记位：1，启用，0，禁用;默认启用',
+  `del_flag` tinyint(1) DEFAULT '1' COMMENT '删除标志：1，正常，0，删除；默认正常',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `uk-name`(`name`) USING BTREE,
-  INDEX `FKa1on9mgwjf26n6xdl0tg3durc`(`did`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
+  UNIQUE KEY `uk-name` (`name`) USING BTREE,
+  KEY `FKa1on9mgwjf26n6xdl0tg3durc` (`email`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMI CCOMMENT='系统用户表';
 -- ----------------------------
 -- Table structure for sys_user_role
 -- ----------------------------

@@ -31,25 +31,4 @@ public class LogAspectConfig {
         }
     }
 
-    @Bean
-    public Docket createRestApi(){
-        return new Docket(DocumentationType.SWAGGER_2)
-//                .produces(Sets.newHashSet("application/json"))
-//                .consumes(Sets.newHashSet("application/json"))
-//                .protocols(Sets.newHashSet("http","https"))
-//                .forCodeGeneration(true)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("ml.idream"))
-                .paths(PathSelectors.any())
-                .build();
-    }
-
-    private ApiInfo apiInfo(){
-        return new ApiInfoBuilder()
-                .title("SpringBoot利用swagger构建API文档")
-                .description("简单优雅的restfun风格")
-                .version("2.8.0")
-                .build();
-    }
 }

@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping(value = "/user")
 public class SysUserCtl {
 
     @Autowired
     private SysUserService userService;
 
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String toList(){
 
         return "/manage/user/user-list";

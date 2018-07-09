@@ -11,7 +11,7 @@ import java.io.File;
 @RequestMapping("/advice")
 public class GlobalAdviceController {
 
-    @RequestMapping("/err")
+    @RequestMapping(value = "/err",method = RequestMethod.GET)
     public String getSomething(@ModelAttribute("msg") String msg, DemoAdvice demoAdvice, String demo) throws Exception{
         System.out.println("advice error");
         throw new IllegalAccessException("非常抱歉，参数有误/" + "来自@ModelAttribute:" + msg + " address:" + demoAdvice.getAddress() + " demo" + demo);

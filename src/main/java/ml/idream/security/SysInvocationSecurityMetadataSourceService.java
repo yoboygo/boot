@@ -29,14 +29,14 @@ public class SysInvocationSecurityMetadataSourceService implements FilterInvocat
         if(roles == null)  return;
         for (SysRole role : roles) {
             role.getPermissions().forEach( p -> {
-                Collection<ConfigAttribute> caList = rightMap.get(p.getUrl());
+                Collection<ConfigAttribute> caList = rightMap.get(p.getUrlPattern());
                 if(caList == null){
                     caList = new ArrayList<>();
                 }
                 SecurityConfig sc = new SecurityConfig(role.getName());
                 if(!caList.contains(sc)){
                     caList.add(sc);
-                    rightMap.put(p.getUrl(),caList);
+                    rightMap.put(p.getUrlPattern(),caList);
                 }
             });
         }
