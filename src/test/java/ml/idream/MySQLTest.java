@@ -1,5 +1,6 @@
 package ml.idream;
 
+import ml.idream.blog.BlogService;
 import ml.idream.manage.sys.department.SysDepartment;
 import ml.idream.manage.sys.department.SysDepartmentService;
 import ml.idream.manage.sys.permission.SysPermission;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -26,10 +28,14 @@ import org.springframework.util.Assert;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableAutoConfiguration
+@EnableAsync
 @MapperScan(basePackages = "ml.idream")
 @ComponentScan(basePackages = "ml.idream")
 public class MySQLTest {
@@ -46,9 +52,18 @@ public class MySQLTest {
     private SysPermissionService sysPermissionService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private BlogService blogService;
+
+
+    private boolean hasInit = true;
 
     @Before
     public void initData(){
+
+        if(hasInit){
+            return;
+        }
 
         sysUserService.deleteAll();
         sysRoleService.deleteAll();
@@ -137,5 +152,17 @@ public class MySQLTest {
     @Test
     public void findPage(){
         System.out.println("----初始化成功----");
+    }
+
+
+    @Test
+    public void testAsync() throws InterruptedException, ExecutionException {
+        System.out.println( Thread.currentThread().getName() + " --- 开始 ---");
+        Future<Map<String,Object>> ret = blogService.printMsg("哈哈");
+        for (Map.Entry<String,Object> entry : ret.get().entrySet()){
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+        System.out.println( Thread.currentThread().getName() + " --- 结束 ---");
+
     }
 }
