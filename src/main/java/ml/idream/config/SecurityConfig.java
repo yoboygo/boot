@@ -24,6 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SysUserDetailService sysUserDetailService;
 
+    @Autowired
+    private SysLoginSuccessHandler sysLoginSuccessHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -37,7 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .successHandler(new SysLoginSuccessHandler("/home?login"))
+                .successHandler(sysLoginSuccessHandler)
+//                .successHandler(new SysLoginSuccessHandler("/home?login"))
                 .failureUrl("/login?error").permitAll()
                 .and()
                 .logout().logoutSuccessHandler(new SysLogoutSuccessHandler("/home?logout"))
