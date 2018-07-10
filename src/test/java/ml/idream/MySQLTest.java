@@ -12,7 +12,6 @@ import ml.idream.manage.sys.user.SysUserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
@@ -36,7 +34,6 @@ import java.util.concurrent.Future;
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableAutoConfiguration
 @EnableAsync
-@MapperScan(basePackages = "ml.idream")
 @ComponentScan(basePackages = "ml.idream")
 public class MySQLTest {
 

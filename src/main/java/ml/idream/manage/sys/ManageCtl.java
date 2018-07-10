@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ManageCtl {
 
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String manage(){
 
         return "/manage/manage-index";
