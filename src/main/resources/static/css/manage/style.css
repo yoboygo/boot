@@ -2729,7 +2729,7 @@ Invoice
   Account Pages
 ===================*/
 .accountbg {
-  background: url("../images/bg-1.jpg");
+  background: url("../../images/manage/bg-1.jpg");
   position: absolute;
   height: 100%;
   width: 100%;

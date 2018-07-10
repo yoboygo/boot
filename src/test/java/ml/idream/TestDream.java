@@ -3,6 +3,7 @@ package ml.idream;
 import ml.idream.config.DreamClassLoaser;
 import ml.idream.manage.sys.user.SysUser;
 import org.junit.Test;
+import org.springframework.util.AntPathMatcher;
 
 public class TestDream {
 
@@ -18,5 +19,12 @@ public class TestDream {
         Class<?> clazz2 = dLoader.loadClass(path);
         System.out.println(clazz.equals(clazz2));
 
+    }
+
+    @Test
+    public void testAntMatcher(){
+        AntPathMatcher managermatcher = new AntPathMatcher();
+        String path = "/css/manage/index.css";
+        System.out.println(managermatcher.match("/manage/**",path));
     }
 }
