@@ -41,7 +41,7 @@ public class SysLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandle
         for(SysRole role : sysUser.getRoles()){
            for(SysPermission permission : role.getPermissions()){
                 if(adminMatcher.match("/manage/**",permission.getUrlPattern())){
-                    successUrl = "/admin";
+                    successUrl = "/manage";
                 }
            }
         }

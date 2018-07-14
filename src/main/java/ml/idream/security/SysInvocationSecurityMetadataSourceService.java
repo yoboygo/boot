@@ -7,8 +7,10 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -44,10 +46,11 @@ public class SysInvocationSecurityMetadataSourceService implements FilterInvocat
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
-        init();
+//        init();
         HttpServletRequest request = ((FilterInvocation)object).getHttpRequest();
         for(Map.Entry<String,Collection<ConfigAttribute>> entry : rightMap.entrySet()){
-            AntPathRequestMatcher matcher = new AntPathRequestMatcher(entry.getKey());
+            MvcRequestMatcher matcher = new MvcRequestMatcher(new HandlerMappingIntrospector(),entry.getKey());
+
             if(matcher.matches(request)){
                 return entry.getValue();
             }
