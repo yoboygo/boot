@@ -1,9 +1,17 @@
 package ml.idream;
 
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class TestRandom {
@@ -61,5 +69,27 @@ public class TestRandom {
 
         }
 
+    }
+
+    /*
+    *
+    * */
+    @Test
+    public void testInterface() throws IOException {
+        String url = "http://10.10.8.22:8081/web-train-interface/SysFranchisee/querySysFranchiseeAll.do";
+        HttpClient hc = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost(url);
+        HttpResponse response = hc.execute(post);
+        String ret = EntityUtils.toString(response.getEntity());
+        System.out.println(ret);
+    }
+
+    @Test
+    public void testTime(){
+        Calendar cal = Calendar.getInstance();
+        Date date = new Date();
+        date.getTime();
+        System.out.println(cal.getTimeInMillis());
+        System.out.println(cal.getTime().getTime());
     }
 }

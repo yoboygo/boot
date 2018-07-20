@@ -50,7 +50,7 @@ public class SysInvocationSecurityMetadataSourceService implements FilterInvocat
         HttpServletRequest request = ((FilterInvocation)object).getHttpRequest();
         for(Map.Entry<String,Collection<ConfigAttribute>> entry : rightMap.entrySet()){
             MvcRequestMatcher matcher = new MvcRequestMatcher(new HandlerMappingIntrospector(),entry.getKey());
-
+            System.out.println("--->" + request.getRequestURL());
             if(matcher.matches(request)){
                 return entry.getValue();
             }

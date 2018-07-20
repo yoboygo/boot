@@ -1,85 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
-        <title>注册</title>
-        <meta content="Admin Dashboard" name="description" />
-        <meta content="ThemeDesign" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<head>
+	<meta charset="UTF-8">
+	<title>后台登录-X-admin2.0</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-        <link type="text/css" rel="shortcut icon" th:href="@{/images/manage/faviicon.png}"/>
+    <link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon" />
+    <link rel="stylesheet" th:href="@{/css/xadmin/font.css}">
+	<link rel="stylesheet" th:href="@{/css/xadmin/xadmin.css}">
+    <!--<script type="text/javascript" th:src="@{/js/common/jquery-3.3.1.js}"></script>-->
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/js/xadmin/xadmin.js}"></script>
 
-        <link rel="stylesheet" type="text/css" th:href="@{/css/manage/bootstrap.min.css}"/>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/manage/icons.css}"/>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/manage/style.css}"/>
+</head>
+<body class="login-bg">
+    
+    <div class="login layui-anim layui-anim-up">
+        <form method="post" class="layui-form" th:action="@{/signup}">
+            <input name="email" placeholder="邮箱"  type="text" lay-verify="required|email" class="layui-input" >
+            <hr class="hr15">
+            <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+            <hr class="hr15">
+            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input value="注册" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <hr class="hr20" >
+        </form>
+    </div>
 
-    </head>
+    <script>
+        $(function  () {
+            layui.use('form', function(){
+              var form = layui.form;
+              // layer.msg('玩命卖萌中', function(){
+              //   //关闭后的操作
+              //   });
+              //监听提交
+              form.on('submit(login)', function(data){
+                // alert(888)
+                layer.msg(JSON.stringify(data.field),function(){
+                    location.href='index.html'
+                });
+                return false;
+              });
+            });
+        });
 
+        
+    </script>
 
-    <body>
-
-        <!-- Begin page -->
-        <div class="accountbg"></div>
-        <div class="wrapper-page">
-
-            <div class="card">
-                <div class="card-body">
-
-                    <h3 class="text-center mt-0 m-b-15">
-                        <a href="index.html" class="logo logo-admin"><img th:src="@{/images/manage/logo.png}" height="30" alt="logo"></a>
-                    </h3>
-
-                    <h4 class="text-muted text-center font-18"><b>注册</b></h4>
-
-                    <div class="p-3">
-                        <form class="form-horizontal m-t-20" th:action="@{/signup}" th:method="POST" >
-
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <input class="form-control" type="email" required="" placeholder="邮箱" th:name="email">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <input class="form-control" type="text" required="" placeholder="用户名" th:name="username">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <input class="form-control" type="password" required="" placeholder="密码" th:name="password">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label font-weight-normal" for="customCheck1">我接受 <a href="#" class="text-muted">用户服务条款</a></label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group text-center row m-t-20">
-                                <div class="col-12">
-                                    <button class="btn btn-info btn-block waves-effect waves-light" type="submit">注册</button>
-                                </div>
-                            </div>
-
-                            <div class="form-group m-t-10 mb-0 row">
-                                <div class="col-12 m-t-20 text-center">
-                                    <a th:href="@{/login}" class="text-muted">已经有账户了?</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </body>
+    
+    <!-- 底部结束 -->
+    <script>
+    //百度统计可去掉
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
 </html>
