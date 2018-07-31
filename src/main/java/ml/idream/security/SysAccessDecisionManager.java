@@ -24,6 +24,9 @@ public class SysAccessDecisionManager implements AccessDecisionManager {
         for(Iterator<ConfigAttribute> iter = configAttributes.iterator();iter.hasNext();){
             ConfigAttribute c = iter.next();
             String needRole = c.getAttribute();
+            if("ROLE_ADMIN".equals(needRole)){//可以访问所有地址
+                return;
+            }
             for(GrantedAuthority ga : authentication.getAuthorities()){
                 if(needRole.equals(ga.getAuthority())){
                     return ;

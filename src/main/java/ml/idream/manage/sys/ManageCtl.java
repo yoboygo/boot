@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 import java.util.Set;
 
@@ -34,5 +36,14 @@ public class ManageCtl {
         }
 
         return "/manage/manage-index";
+    }
+
+    /*
+    * 管理员欢迎界面
+    * */
+    @RequestMapping(value = "/welcome",method = RequestMethod.GET)
+    public String welcome(HttpServletRequest request, HttpServletResponse response){
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
+        return "/manage/welcome";
     }
 }
