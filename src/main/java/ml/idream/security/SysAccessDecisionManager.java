@@ -1,5 +1,7 @@
 package ml.idream.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
@@ -13,6 +15,10 @@ import java.util.Iterator;
 
 @Service
 public class SysAccessDecisionManager implements AccessDecisionManager {
+
+    @Autowired
+    private Environment environment;
+
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
 
@@ -24,7 +30,8 @@ public class SysAccessDecisionManager implements AccessDecisionManager {
         for(Iterator<ConfigAttribute> iter = configAttributes.iterator();iter.hasNext();){
             ConfigAttribute c = iter.next();
             String needRole = c.getAttribute();
-            if("ROLE_ADMIN".equals(needRole)){//可以访问所有地址
+            String rootRole = environment.getProperty("sys.root.role");
+            if(rootRole != null && rootRole.equals(needRole)){//可以访问所有地址
                 return;
             }
             for(GrantedAuthority ga : authentication.getAuthorities()){

@@ -40,3 +40,7 @@ logging:
 mybatis:
   mapper-locations: classpath:mybatis/mapper/**/*.xml
   config-location: classpath:mybatis/mybatis-config.xml
+#系统最高权限的角色，可以访问所有的资源
+sys:
+  root:
+    role:ROLE_ADMIN

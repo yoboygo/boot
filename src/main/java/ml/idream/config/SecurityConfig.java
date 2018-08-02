@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/index","/","/home","/error/**","/signup","/login",
                         "/js/**","/css/**","/images/**","/fonts/**","/pages/**","/plugins/**",
 //                        "/**/css/**","/**/styles/**","/**/scripts/**","/**/js/**","/**/images/**","/**/fonts/**","/**/pages/**","/**/plugins/**",//通用静态资源路径
-                        "/webjars/**","/blog/**",
+                        "/webjars/**","/blog/**","/layui/**",
                         "/store/**","/dynamic/**")
                 .permitAll()
                 .and()
@@ -43,6 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(sysLoginSuccessHandler)
 //                .successHandler(new SysLoginSuccessHandler("/home?login"))
                 .failureUrl("/login?error").permitAll()
+                .and()
+                .headers().frameOptions().disable()
                 .and()
                 .logout().logoutSuccessHandler(new SysLogoutSuccessHandler("/home?logout"))
                 .and().authorizeRequests().anyRequest().authenticated();

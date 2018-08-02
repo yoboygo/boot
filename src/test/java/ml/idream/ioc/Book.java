@@ -1,5 +1,7 @@
 package ml.idream.ioc;
 
+import org.aspectj.lang.annotation.Before;
+
 @MyBean("book")
 public class Book {
     private Long id;
