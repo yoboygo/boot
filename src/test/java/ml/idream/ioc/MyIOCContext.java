@@ -1,14 +1,20 @@
 package ml.idream.ioc;
 
+import ml.idream.ioc.aop.BeforeDynamicProxy;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MyIOCContext {
     private ClassLoader cl = ClassLoader.getSystemClassLoader();
     private Map<String,Object> beanMap = new HashMap<String,Object>();
+    private Map<String,Object> aspectBeanMap = new HashMap<String,Object>();
     private String basePackage;
 
     public MyIOCContext(){
@@ -53,16 +59,23 @@ public class MyIOCContext {
             String beanPackage = baseFile.getAbsolutePath().replace(basePath,"")
                     .replace(File.separator,".").replace(".class","");
             Class<?> clazz = cl.loadClass(beanPackage);
-            Annotation[] annotations = clazz.getAnnotations();
-            for(Annotation an : annotations){
-                if(an instanceof MyBean){
-                    MyBean myBean = (MyBean) an;
-                    Object object = clazz.newInstance();
-                    String beanName = myBean.value();
-                    beanMap.put(beanName,object);
-                }
+            MyBean myBean = clazz.getAnnotation(MyBean.class);
+            if(myBean != null){
+
+                Object object = clazz.newInstance();
+                String beanName = myBean.value();
+                beanMap.put(beanName,object);
             }
 
+            Aspect aspect = clazz.getAnnotation(Aspect.class);
+            if(aspect != null){
+                for(Method method : clazz.getDeclaredMethods()){
+                    Before before = method.getDeclaredAnnotation(Before.class);
+                    if(before != null){
+
+                    }
+                }
+            }
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
