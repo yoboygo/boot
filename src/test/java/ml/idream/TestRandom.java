@@ -9,6 +9,7 @@ import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -91,5 +92,24 @@ public class TestRandom {
         date.getTime();
         System.out.println(cal.getTimeInMillis());
         System.out.println(cal.getTime().getTime());
+    }
+
+    @Test
+    public void testTimeCalculate(){
+
+        Calendar calStart = Calendar.getInstance();
+        calStart.set(Calendar.MONTH,8);
+        calStart.set(Calendar.DAY_OF_MONTH,5);
+
+        Calendar calEnd = Calendar.getInstance();
+        calEnd.set(Calendar.MONTH,9);
+        calEnd.set(Calendar.DAY_OF_MONTH,1);
+
+        while(calEnd.getTime().after(calStart.getTime())){
+            calStart.add(Calendar.DAY_OF_MONTH,4);
+            System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(calStart.getTime()));
+        }
+        System.out.println("最后的日期为:" + new SimpleDateFormat("yyyy-MM-dd").format(calStart.getTime()));
+
     }
 }
