@@ -27,6 +27,16 @@ CREATE TABLE `sys_department` (
   `del_flag` tinyint(1) DEFAULT NULL COMMENT '删除标志：1，正常，0，删除',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统部门表';
+
+-- ----------------------------
+-- Table structure for sys_user_department
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user_department`;
+CREATE TABLE `sys_user_department`  (
+  `user_id` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL,
+  UNIQUE INDEX `uk_user_department`(`user_id`, `department_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 -- ----------------------------
 -- Table structure for sys_permission
 -- ----------------------------
@@ -76,7 +86,7 @@ CREATE TABLE `sys_user` (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `uk-name` (`name`) USING BTREE,
   KEY `FKa1on9mgwjf26n6xdl0tg3durc` (`email`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMI CCOMMENT='系统用户表';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统用户表';
 -- ----------------------------
 -- Table structure for sys_user_role
 -- ----------------------------

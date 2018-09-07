@@ -17,8 +17,8 @@
 -- ----------------------------
 -- Records of sys_deparment
 -- ----------------------------
-INSERT INTO `sys_deparment` (`id`,`name`,`del_flag`) VALUES (1, '开发部',1);
-INSERT INTO `sys_deparment` (`id`,`name`,`del_flag`) VALUES (2, '测试部',1);
+INSERT INTO `sys_department` (`id`,`name`,`del_flag`) VALUES (1, '开发部',1);
+INSERT INTO `sys_department` (`id`,`name`,`del_flag`) VALUES (2, '测试部',1);
 
 -- ----------------------------
 -- Records of sys_permission
