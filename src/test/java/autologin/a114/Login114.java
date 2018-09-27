@@ -1,7 +1,7 @@
 package autologin.a114;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @Description 登陆114
@@ -10,11 +10,14 @@ import java.net.URISyntaxException;
  **/
 public class Login114 {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    private static final Logger logger = LoggerFactory.getLogger(Login114.class);
+
+    public static void main(String[] args) throws Exception {
+
         Login114Processer processer = new Login114Processer(new Login114Config());
         boolean flag = processer.login();
         if(flag){
-            System.out.println("登陆成功！！");
+            logger.info("登陆成功！！");
         }
     }
 }
