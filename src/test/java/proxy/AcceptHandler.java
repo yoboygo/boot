@@ -44,7 +44,7 @@ public class AcceptHandler implements Runnable{
             //建立代理服务器与目标服务器的连接
             Socket serviceSocket = ProxyUtils.getServiceSocket(headers);
             serviceSocket.setKeepAlive(true);
-            serviceSocket.setSoTimeout(10000);
+            serviceSocket.setSoTimeout(3000);
             serviceInputStream = serviceSocket.getInputStream();
             serviceOutputStream = serviceSocket.getOutputStream();
 
