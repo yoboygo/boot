@@ -58,7 +58,11 @@ public class AcceptHandler implements Runnable{
 //            serviceOutputStream.flush();
             //将服务器返回的数据转发到浏览器
             pipe(clientInputStream,clientOutputStream,serviceInputStream,serviceOutputStream);
+
+            clientSocket.close();
+
             logger.info(firstLine + "--->执行结束");
+
         } catch (Exception e) {
             logger.error("代理服务器异常",e);
         }

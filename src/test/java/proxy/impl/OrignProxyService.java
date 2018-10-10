@@ -1,6 +1,6 @@
 package proxy.impl;
 
-import proxy.AbstractProxyService;
+import proxy.bio.AbstractBioProxyService;
 import proxy.ProxyConfig;
 
 /**
@@ -8,7 +8,7 @@ import proxy.ProxyConfig;
  * @Author Aimy
  * @Date 2018/9/28 9:32
  **/
-public class OrignProxyService extends AbstractProxyService{
+public class OrignProxyService extends AbstractBioProxyService {
 
     public OrignProxyService(ProxyConfig proxyConfig) {
         super(proxyConfig);

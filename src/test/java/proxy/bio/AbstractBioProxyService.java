@@ -1,7 +1,11 @@
-package proxy;
+package proxy.bio;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import proxy.AcceptHandler;
+import proxy.IProxyService;
+import proxy.ProxyConfig;
+import proxy.ProxyUtils;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,16 +15,16 @@ import java.net.Socket;
  * @Author Aimy
  * @Date 2018/9/28 9:40
  **/
-public abstract class AbstractProxyService implements IProxyService {
+public abstract class AbstractBioProxyService implements IProxyService {
 
-    private static final Logger logger = LoggerFactory.getLogger(AbstractProxyService.class);
+    private static final Logger logger = LoggerFactory.getLogger(AbstractBioProxyService.class);
 
     private ProxyConfig proxyConfig;
 
     private boolean isShutdown = false;
     private ServerSocket proxySocket;
 
-    public AbstractProxyService(ProxyConfig proxyConfig) {
+    public AbstractBioProxyService(ProxyConfig proxyConfig) {
         this.proxyConfig = proxyConfig;
     }
 

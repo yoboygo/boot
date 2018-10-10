@@ -91,7 +91,7 @@ public class ProxyUtils {
         byte[] buffer = new byte[2048];
         int len = 0;
         try {
-            while((len = inputStream.read(buffer)) > 0){
+            while((len = inputStream.read(buffer)) >= 0){
                 outputStream.write(buffer,0,len);
             }
             outputStream.flush();

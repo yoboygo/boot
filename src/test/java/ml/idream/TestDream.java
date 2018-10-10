@@ -2,6 +2,8 @@ package ml.idream;
 
 import ml.idream.config.DreamClassLoaser;
 import ml.idream.manage.sys.user.SysUser;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 import org.apache.coyote.InputBuffer;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -18,6 +20,7 @@ import org.springframework.util.AntPathMatcher;
 import java.io.*;
 import java.net.URI;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -112,5 +115,31 @@ public class TestDream {
         for(int i = 0; i < 10 ; ++i){
             downLoadCheckCode(client,baseHost + urlCheckCode);
         }
+    }
+
+    /**
+     * @Description 日期转换
+     * @Param []
+     * @return void
+     * @Author Aimy
+     * @Date
+     **/
+    @Test
+    public void testJson() throws IOException{
+
+        Map<String,Object> datas = new HashMap<>();
+        Calendar calendar = Calendar.getInstance();
+        datas.put("source",calendar.getTimeInMillis());
+        datas.put("date",calendar.getTime());
+        datas.put("long",calendar.getTimeInMillis());
+
+        JsonConfig config = new JsonConfig();
+        config.registerJsonValueProcessor(Date.class,new MyDateProcessor());
+        config.registerJsonValueProcessor("long",new MyDateProcessor());
+        JSONObject json = JSONObject.fromObject(datas,config);
+
+        System.out.println(json.toString());
+
+
     }
 }
