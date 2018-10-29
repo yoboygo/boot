@@ -8,8 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -62,7 +67,7 @@ public class ProxyUtils {
      * @Date
      **/
     public static Socket getServiceSocket(Header[] headers) throws Exception{
-        logger.info(String.format("获取目标服务器的Socket"));
+        logger.info("获取目标服务器的Socket");
         Socket socket = null;
         for(Header header : headers){
             if(header.getName().equals(HttpHeaders.HOST)){
@@ -72,12 +77,37 @@ public class ProxyUtils {
                 String hostName = StringUtils.substringBefore(host,":").trim();
                 InetAddress ip = InetAddress.getByName(hostName);
                 portStr = StringUtils.isBlank(portStr) ? "80" : portStr;
-                logger.info(String.format("Host:%s, HostName:%s, Port:%s",host,hostName,portStr));
-
+                logger.info("Host:{}, HostName:{}, Port:{}",host,hostName,portStr);
                 socket = new Socket(ip,Integer.parseInt(portStr));
+                break;
             }
         }
         return socket;
+    }
+    /**
+     * @Description 生成
+     * @Param [headers]
+     * @return java.net.InetSocketAddress
+     * @Author SongJianlong
+     * @Date
+     **/
+    public static InetSocketAddress getInetSocketAddress(Header[] headers) throws Exception{
+        logger.info("获取目标服务器的Socket");
+        InetSocketAddress inetSocketAddress = null;
+        for(Header header : headers){
+            if(header.getName().equals(HttpHeaders.HOST)){
+
+                String host = header.getValue().trim();
+                String portStr = StringUtils.substringAfter(host,":").trim();
+                String hostName = StringUtils.substringBefore(host,":").trim();
+                InetAddress ip = InetAddress.getByName(hostName);
+                portStr = StringUtils.isBlank(portStr) ? "80" : portStr;
+                logger.info("Host:{}, HostName:{}, Port:{}",host,hostName,portStr);
+                inetSocketAddress = new InetSocketAddress(ip,Integer.parseInt(portStr));
+                break;
+            }
+        }
+        return inetSocketAddress;
     }
 
     /**
@@ -123,6 +153,25 @@ public class ProxyUtils {
             ret.append(line).append("\n");
         }
         logger.info("读取header--结束");
+        return ret.toString();
+    }
+
+    /**
+     * @Description 读取socketchannel中的请求数据
+     * @Param [inputStream]
+     * @return java.lang.String
+     * @Author SongJianlong
+     * @Date  
+     **/
+    public static String readRequest(SocketChannel sc) throws IOException {
+        ByteBuffer datas = ByteBuffer.allocate(1024);
+        StringBuilder ret = new StringBuilder();
+        int len = 0;
+        logger.info("读取socket--开始");
+        while ((len = sc.read(datas)) > 0){
+            ret.append(new String(datas.array(), Charset.forName("UTF-8")));
+        }
+        logger.info("读取header--结束:{}",ret.toString());
         return ret.toString();
     }
 

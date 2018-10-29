@@ -9,7 +9,7 @@ import java.nio.charset.Charset;
 /**
  * NIO UDP实现
  * @page 8
- * @author songjianlong
+ * @author Aimy
  *
  */
 public class BioUdpClient extends AbstractBioUdpBase{

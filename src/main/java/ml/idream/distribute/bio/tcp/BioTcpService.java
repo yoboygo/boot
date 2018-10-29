@@ -11,7 +11,7 @@ import java.nio.charset.Charset;
 /**
  * TCP/IP BIO 服务端
  * @page 4
- * @author songjianlong
+ * @author Aimy
  *
  */
 public class BioTcpService extends BioTcpBase{

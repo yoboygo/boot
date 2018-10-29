@@ -14,15 +14,15 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 import org.junit.Test;
 import org.springframework.util.AntPathMatcher;
 
 import java.io.*;
 import java.net.URI;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TestDream {
 
@@ -141,5 +141,21 @@ public class TestDream {
         System.out.println(json.toString());
 
 
+    }
+
+    @Test
+    public void testZkService() throws IOException, KeeperException, InterruptedException {
+        ZooKeeper zooKeeper = new ZooKeeper("172.16.163.51:2181",20000,null);
+        List<String> dubboRoot = zooKeeper.getChildren("/dubbo",false);
+        for(String serviceName : dubboRoot){
+            if(serviceName.indexOf("PofCombinationService") != -1){
+                System.err.println("dubbo服务：" + serviceName);
+            }else{
+                System.out.println("dubbo服务：" + serviceName);
+            }
+        }
+
+        Stat stat = zooKeeper.exists("/dubbo/com.chtwm.pof.manage.api.external.PofCombinationService",null);
+        System.out.println(stat);
     }
 }

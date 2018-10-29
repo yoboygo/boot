@@ -12,7 +12,7 @@ import java.util.Calendar;
 /**
  * TCP/IP BIO 客户端
  * @page 4
- * @author songjianlong
+ * @author Aimy
  *
  */
 public class BioTcpClient extends BioTcpBase{

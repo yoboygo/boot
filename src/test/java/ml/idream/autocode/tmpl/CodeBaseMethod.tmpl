@@ -1,0 +1,16 @@
+	
+	/**
+	 * ${methodDesc}
+	 * @param json
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/${methodName}")
+	public @ResponseBody ControllerResponseBody<${responseClass}> ${methodName}(@RequestBody String json, HttpSession session) throws InterruptedException, ExecutionException{
+		ControllerResponseBody<${responseClass}> controllerResponseBody = new ControllerResponseBody<${responseClass}>();
+		${paramClass} param = PofRequestJsonToBean.requestJsonToBean(json, ${paramClass}.class,session);
+		ServiceResponseBody<${responseClass}> serviceResult = ${serviceName}.${methodName}(param);
+		controllerResponseBody.setData(serviceResult.getData());
+		PofControllerBodyUtils.setControllerResponseBodyBasicInfo(controllerResponseBody, serviceResult);
+		return controllerResponseBody;
+	}

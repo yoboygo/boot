@@ -18,7 +18,7 @@ import org.apache.http.util.EntityUtils;
 
 /**
  * 工具类
- * @author songjianlong
+ * @author Aimy
  *
  */
 public class CodeUtils {

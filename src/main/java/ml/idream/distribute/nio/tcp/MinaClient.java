@@ -13,7 +13,7 @@ import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
 /**
  * @page 11 
- * @author songjianlong
+ * @author Aimy
  *
  */
 public class MinaClient extends NioTcpBase{

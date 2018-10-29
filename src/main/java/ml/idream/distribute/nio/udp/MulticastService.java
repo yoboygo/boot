@@ -6,7 +6,7 @@ import java.net.MulticastSocket;
 
 /**
  * 多播服务
- * @author songjianlong
+ * @author Aimy
  *
  */
 public class MulticastService {

@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.net.URL;
 /**
  * @Description TODO
- * @Author SongJianlong
+ * @Author Aimy
  * @Date 2018/9/29 16:46
  **/
 public class MyProxyServer {

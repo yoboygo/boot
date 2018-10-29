@@ -9,7 +9,7 @@ public class ProxyConfig {
 //    提供服务的端口
     private int servicePort = 9091;
 //    提供服务的地址
-    private String serviceIp= "127.0.0.1";
+    private String serviceIp= "0.0.0.0";
 
     public int getServicePort() {
         return servicePort;

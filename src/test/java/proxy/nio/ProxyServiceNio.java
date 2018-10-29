@@ -24,7 +24,7 @@ import java.util.Set;
 public class ProxyServiceNio implements IProxyService {
 
     private ProxyConfig proxyConfig;
-    private boolean isShutdown = false;
+    private volatile boolean isShutdown = false;
 
     private static final Logger logger = LoggerFactory.getLogger(ProxyServiceNio.class);
 
@@ -39,6 +39,7 @@ public class ProxyServiceNio implements IProxyService {
         ){
             //绑定监听端口
             serverSocket.bind(new InetSocketAddress(proxyConfig.getServiceIp(),proxyConfig.getServicePort()));
+            ssc.configureBlocking(false);
             Selector selector = Selector.open();
             //注册感兴趣的连接事件
             ssc.register(selector, SelectionKey.OP_ACCEPT);
@@ -54,41 +55,40 @@ public class ProxyServiceNio implements IProxyService {
                             logger.info("Server 建立连接");
                             ServerSocketChannel serverSocketChannel = (ServerSocketChannel) key.channel();
                             try{
-                                SocketChannel channel = serverSocketChannel.accept();
-                                if(channel == null){
+                                SocketChannel clientChannel = serverSocketChannel.accept();
+                                if(clientChannel == null){
                                     return ;
                                 }
-                                channel.configureBlocking(false);
-                                channel.finishConnect();
+                                clientChannel.configureBlocking(false);
+                                clientChannel.finishConnect();
                                 iterator.remove();
                                 //返回浏览器success
-                                channel.write(ByteBuffer.wrap("success".getBytes(Charset.forName("UTF-8"))));
-                                //注册可读时间
-                                channel.register(selector,SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+                                clientChannel.write(ByteBuffer.wrap("success".getBytes(Charset.forName("UTF-8"))));
+                                //注册可读事件，以及处理当前请求的处理器
+                                clientChannel.register(selector,SelectionKey.OP_READ | SelectionKey.OP_WRITE,new ProxyProcesser(selector,clientChannel));
                             }catch(Exception e){
                                 logger.error("Server建立连接失败！",e);
                             }
                         }else if(key.isReadable()){//可读
                             logger.info("Service 读入数据...");
-                            ByteBuffer buffer = ByteBuffer.allocate(1024);
+                            SocketChannel clientChannel = (SocketChannel) key.channel();
+                            //获取到当前请求的处理器
+                            ProxyProcesser proxyProcesser = (ProxyProcesser) key.attachment();
+                            //将数据读取出来
+                            proxyProcesser.read(clientChannel);
+                            iterator.remove();
+                        }else if(key.isWritable()){//可写
+                            logger.info("Service 写入数据...");
+                            SocketChannel clientChannel = (SocketChannel) key.channel();
+                            ProxyProcesser proxyProcesser = (ProxyProcesser) key.attachment();
+                            proxyProcesser.write(clientChannel);
+                            iterator.remove();
+                        }else if(key.isConnectable()){//可供连接
                             SocketChannel sc = (SocketChannel) key.channel();
-                            int len = 0;
-                            StringBuilder readInfo =  new StringBuilder();
-                            //读取目前可读的流，sc.read返回的为成功复制到bytebuffer中的字节数，此步骤为阻塞操作，值为0；
-                            //当已经是流的结尾时，返回-1
-                            try{
-                                while((len = sc.read(buffer)) >= 0){
-                                    String datas = new String(buffer.array(),Charset.forName("UTF-8"));
-                                    readInfo.append(datas);
-                                }
-                                //读取请求第一行，并将数据发送给远程服务器
-                                key.attachment();
-                                //读取数据的剩余部分，将数据发送给远程服务器
-                            }catch (Exception e){
-                                logger.error("从浏览器读数据失败",e);
-                            }finally {
-                                buffer.flip();
+                            if(sc.isConnectionPending()){//关闭连接
+                                sc.finishConnect();
                             }
+                            iterator.remove();
                         }
                     }
                 }

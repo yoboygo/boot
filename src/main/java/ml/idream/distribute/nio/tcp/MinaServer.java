@@ -5,7 +5,7 @@ import org.apache.mina.core.service.IoAcceptor;
 /**
  * Mina Server
  * @page 11 
- * @author songjianlong
+ * @author Aimy
  *
  */
 public class MinaServer {

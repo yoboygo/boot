@@ -10,7 +10,7 @@ import java.nio.channels.Selector;
 /**
  * UDP NIO
  * @page 9 
- * @author songjianlong
+ * @author Aimy
  *
  */
 public class NioUdpClient {

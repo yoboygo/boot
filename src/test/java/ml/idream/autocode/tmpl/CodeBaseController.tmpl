@@ -1,0 +1,33 @@
+package ${controllerPackage};
+
+import com.chtwm.mall.commons.ControllerResponseBody;
+import com.hengtianjf.business.pof.entities.params.*;
+import com.hengtianjf.business.pof.entities.results.*;
+import com.hengtianjf.pojo.pof.domian.ServiceResponseBody;
+import com.hengtianjf.sdk.controller.app.pof.domain.PofRequestJsonToBean;
+import com.hengtianjf.sdk.controller.app.pof.utils.PofControllerBodyUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import javax.servlet.http.HttpSession;
+import java.util.concurrent.ExecutionException;
+
+import ${servicePackage};
+
+/**
+ * ${desc}
+ * @author ${author}
+ * @Time ${timestamp}
+ */
+@Controller
+@RequestMapping("${url}")
+public class ${controllerClass} {
+	
+	@Autowired
+	private ${serviceClass} ${serviceName};
+
+	${methods}
+
+}

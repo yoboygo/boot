@@ -15,7 +15,7 @@ import java.util.Set;
 /**
  * TCP NIO Service
  * @page 7
- * @author songjianlong
+ * @author Aimy
  *
  */
 public class NioTcpService extends NioTcpBase {
