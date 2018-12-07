@@ -1,5 +1,6 @@
 package ml.idream;
 
+import com.sun.javafx.binding.StringFormatter;
 import ml.idream.config.DreamClassLoaser;
 import ml.idream.manage.sys.user.SysUser;
 import net.sf.json.JSONObject;
@@ -14,14 +15,21 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 import org.junit.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.util.AntPathMatcher;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.net.URI;
+import java.text.DecimalFormat;
+import java.text.MessageFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestDream {
@@ -157,5 +165,124 @@ public class TestDream {
 
         Stat stat = zooKeeper.exists("/dubbo/com.chtwm.pof.manage.api.external.PofCombinationService",null);
         System.out.println(stat);
+    }
+
+    @Test
+    public void testDate() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat sdfw = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String abc = "15:28:05";
+        Date date = sdf.parse(abc);
+        date.setTime(1540857693000L);
+        System.out.println(sdf.format(date.getTime()));
+        System.out.println(sdfw.format(date.getTime()));
+    }
+
+    /**
+     * @Description 10瓶水，4个空瓶换一个，2个瓶盖换一个。最后能喝多少瓶。
+     * @Param []
+     * @return void
+     * @Author Aimy
+     * @Date  
+     **/
+    @Test
+    public void calculateBottle(){
+        int total = 10;
+        System.out.println("总共喝掉了：" + caculate(10,0,0) + "瓶水！");
+    }
+
+    public int caculate(int bottal, int leftpz, int leftgz){
+
+        int pz = (bottal + leftpz);
+        int gz = (bottal + leftgz);
+
+        int leftb =  pz / 4 + gz / 2;
+
+        leftpz = pz % 4;
+        leftgz = gz % 2;
+
+        System.out.println(String.format("本轮共喝掉%d瓶水，用%d瓶子和%d瓶盖换了%d瓶水，剩余%d瓶子，%d瓶盖！",bottal,pz,gz,leftb,leftpz,leftgz));
+        if(leftb + leftpz < 4 && leftb + leftgz < 2){
+            return bottal;
+        }
+
+        return bottal + caculate(leftb,leftpz,leftgz);
+    }
+
+    @Test
+    public void testBigDecimal(){
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,##0.00");
+        System.out.println(decimalFormat.format(0.01));
+    }
+
+    @Test
+    public void testBeanCopy(){
+        Source s = new Source();
+        s.setNo(100);
+        s.setRadio(new BigDecimal(1.0));
+        s.setStartTime(new Date());
+
+        Target t = new Target();
+
+        BeanUtils.copyProperties(s,t);
+        System.out.println(t.getNo() + t.getRadio() + t.getStartTime());
+    }
+}
+class Source{
+    private Date startTime;
+    private BigDecimal radio;
+    private Integer no;
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public BigDecimal getRadio() {
+        return radio;
+    }
+
+    public void setRadio(BigDecimal radio) {
+        this.radio = radio;
+    }
+
+    public Integer getNo() {
+        return no;
+    }
+
+    public void setNo(Integer no) {
+        this.no = no;
+    }
+}
+class Target{
+    private String startTime;
+    private String radio;
+    private Integer no;
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getRadio() {
+        return radio;
+    }
+
+    public void setRadio(String radio) {
+        this.radio = radio;
+    }
+
+    public Integer getNo() {
+        return no;
+    }
+
+    public void setNo(Integer no) {
+        this.no = no;
     }
 }

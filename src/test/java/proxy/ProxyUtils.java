@@ -88,7 +88,7 @@ public class ProxyUtils {
      * @Description 生成
      * @Param [headers]
      * @return java.net.InetSocketAddress
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date
      **/
     public static InetSocketAddress getInetSocketAddress(Header[] headers) throws Exception{
@@ -160,7 +160,7 @@ public class ProxyUtils {
      * @Description 读取socketchannel中的请求数据
      * @Param [inputStream]
      * @return java.lang.String
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     public static String readRequest(SocketChannel sc) throws IOException {

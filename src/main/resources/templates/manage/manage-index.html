@@ -45,7 +45,7 @@
           </li>
           <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
         </ul>
-        
+
     </div>
     <form id="form_logout" th:action="@{/logout}" th:method="POST" th:class="hide-right"></form>
     <!-- 顶部结束 -->
@@ -65,7 +65,7 @@
                         <a _href="/user/user-list.html">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员列表</cite>
-                            
+
                         </a>
                     </li >
                     <li>
@@ -92,24 +92,23 @@
                                 <a _href="xxx.html">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>会员列表</cite>
-                                    
+
                                 </a>
                             </li >
                             <li>
                                 <a _href="xx.html">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>会员删除</cite>
-                                    
+
                                 </a>
                             </li>
                             <li>
                                 <a _href="xx.html">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>等级管理</cite>
-                                    
+
                                 </a>
                             </li>
-                            
                         </ul>
                     </li>
                 </ul>
@@ -264,6 +263,21 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe69b;</i>
+                    <cite>Smart</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a th:_href="@{/dynamic/manage/smart/qq}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>QQ</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
         </ul>
       </div>
     </div>
@@ -287,7 +301,7 @@
     <!-- 中部结束 -->
     <!-- 底部开始 -->
     <div class="footer">
-        <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>  
+        <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>
     </div>
     <!-- 底部结束 -->
     <script>
@@ -296,7 +310,7 @@
     (function() {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-      var s = document.getElementsByTagName("script")[0]; 
+      var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
