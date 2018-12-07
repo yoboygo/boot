@@ -36,7 +36,17 @@ public class BaseResponse {
                 BasicClientCookie cookie = new BasicClientCookie("name","value");
                 Matcher matcher = patternCookie.matcher(header.getValue());
                 while (matcher.find()){
-                    cookie.setAttribute(matcher.group(1),matcher.group(2));
+                    String key = matcher.group(1);
+                    if(key.equals("Domain")){
+                        cookie.setDomain(matcher.group(2));
+                        continue;
+                    }
+                    if(key.equals("Path")){
+                        cookie.setPath(matcher.group(2));
+                        continue;
+                    }
+                    cookie.setAttribute(key,matcher.group(2));
+
                 }
                 getCookieStore().addCookie(cookie);
             }
