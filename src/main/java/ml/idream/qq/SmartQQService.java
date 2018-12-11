@@ -78,7 +78,7 @@ public class SmartQQService extends Thread {
      * @Description 将qrsig转换成token
      * @Param [qrsig]
      * @return int
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     public int getQrpttoken(String qrsig){
@@ -123,7 +123,7 @@ public class SmartQQService extends Thread {
      * @Description 1、获取二维码，存放到指定目录
      * 2、每隔1s轮询二维码是否过期，如果过期重新拉取，如果有人扫码，跳转到指定页面，然后请求个人信息
      * @Param []
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date
      **/
     @Override
@@ -151,7 +151,7 @@ public class SmartQQService extends Thread {
      * @return void
      * @Description 获取个人信息
      * @Param []
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date
      **/
     private void getUserInfo() {
@@ -162,7 +162,7 @@ public class SmartQQService extends Thread {
      * @return
      * @Description 检查二维码是否被扫过
      * @Param
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date
      **/
     private boolean checkScand() throws IOException {
