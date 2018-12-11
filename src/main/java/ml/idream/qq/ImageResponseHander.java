@@ -3,13 +3,14 @@ package ml.idream.qq;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.CookieStore;
 import org.apache.http.client.ResponseHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Calendar;
 
 /**
@@ -21,24 +22,21 @@ public class ImageResponseHander implements ResponseHandler<ImageResponseBody> {
 
     private static final Logger logger = LoggerFactory.getLogger(ImageResponseHander.class);
 
-    private CookieStore cookieStore;
     private String path;
 
-    public ImageResponseHander(String path,CookieStore cookieStore) {
+    public ImageResponseHander(String path) {
         this.path = path;
-        this.cookieStore = cookieStore;
     }
 
     @Override
     public ImageResponseBody handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
-        ImageResponseBody result = new ImageResponseBody(cookieStore);
+        ImageResponseBody result = new ImageResponseBody();
         int status = response.getStatusLine().getStatusCode();
         String fileName = Calendar.getInstance().getTimeInMillis() + ".png";
         String filePath = path + "\\" + fileName;
 
         logger.info("filePath:{}",filePath);
         result.setFilePath(filePath);
-        result.setHeaders(response.getAllHeaders());
 
         try(InputStream inputStream = response.getEntity().getContent();
             OutputStream out = new FileOutputStream(filePath);){
