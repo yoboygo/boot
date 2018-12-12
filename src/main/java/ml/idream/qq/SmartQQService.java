@@ -1,11 +1,11 @@
 package ml.idream.qq;
 
+import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.config.ConnectionConfig;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
@@ -22,14 +22,11 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import springfox.documentation.spring.web.json.Json;
 
 import javax.net.ssl.SSLContext;
-import javax.script.ScriptContext;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.SimpleScriptContext;
 import java.io.IOException;
-import java.util.regex.Pattern;
+import java.util.Calendar;
 
 /**
  * @Description SmartQQ业务类
@@ -67,11 +64,18 @@ public class SmartQQService extends Thread {
                 .setConnectionManager(connectionManager).setConnectionManagerShared(true).build();
     }
 
+    /**
+     * @Description 获取本地登陆的LoginSig
+     * @Param []
+     * @return void
+     * @Author AimyAimy
+     * @Date  
+     **/
     public void getLoginSig() throws IOException {
-        logger.info("【准备获取LoginSig】");
+        logger.info("准备获取【LoginSig】...");
         HttpGet method = new HttpGet(SmartQQConfig.URL_LOGIN_SIG);
         getGlobleClient().execute(method,new StringResponseHandler());
-        logger.info("【获取LoginSig成功】");
+        logger.info("获取【LoginSig】成功！");
     }
 
     /**
@@ -97,11 +101,11 @@ public class SmartQQService extends Thread {
      * @Date
      **/
     public void getEwm() throws IOException {
-        logger.info("【开始拉取二维码】");
+        logger.info("开始拉取二维码...");
         HttpGet method = new HttpGet(SmartQQConfig.URL_EWM);
         getGlobleClient().execute(method, new ImageResponseHander("d:\\ewm"));
 //        client.execute(method);
-        logger.info("【拉取二维码完成】");
+        logger.info("拉取二维码完成!");
 
     }
 
@@ -114,7 +118,6 @@ public class SmartQQService extends Thread {
         SmartQQService qqLogin = new SmartQQService();
         qqLogin.start();
 
-//        System.out.println(qqLogin.getQrpttoken("ctS6SCAobnpJkamJLtvQOYFP3x5PH0mP5eiLosLIvO-gO4iUAhoahm6f4eJiusvA"));
     }
 
 
@@ -130,7 +133,7 @@ public class SmartQQService extends Thread {
     public void run() {
         try {
 
-            getLoginSig();
+//            getLoginSig();
             //获取二维码
             getEwm();
             //是否有人扫过码
@@ -154,8 +157,34 @@ public class SmartQQService extends Thread {
      * @Author Aimy
      * @Date
      **/
-    private void getUserInfo() {
-        logger.info("------登陆成功，获取个人信息-------");
+    private void getUserInfo() throws IOException {
+        logger.info("登陆成功，获取个人信息...");
+        HttpGet methodGet = new HttpGet(SmartQQConfig.URL_GET_USERINFO + "?t=" + Calendar.getInstance().getTimeInMillis());
+        methodGet.setHeader("referer","https://d1.web2.qq.com/proxy.html?v=20151105001&callback=1&id=2");
+        String result = getGlobleClient().execute(methodGet,new StringResponseHandler());
+        logger.info("获取到的个人信息为：【{}】",result);
+    }
+
+    /**
+     * @Description 获取vfwebqq
+     * @Param []
+     * @return java.lang.String
+     * @Author AimyAimy
+     * @Date  
+     **/
+    private String getVFWebQQ() throws IOException {
+        logger.info("获取VFWebQQ...");
+        HttpGet methodGet = new HttpGet(SmartQQConfig.URL_GET_VFWEBQQ);
+        methodGet.setHeader("referer","https://s.web2.qq.com/proxy.html?v=20130916001&callback=1&id=1");
+        String result = getGlobleClient().execute(methodGet,new StringResponseHandler());
+        logger.info("获取到的VFWebQQ信息为：【{}】",result);
+        JSONObject vfwebqq = JSONObject.fromObject(result);
+        if(0 == vfwebqq.getInt("retcode")){
+            return vfwebqq.getJSONObject("result").getString("vfwebqq");
+        }else {
+            logger.error("获取vfwebqq失败！");
+        }
+        return "";
     }
 
     /**
@@ -166,21 +195,19 @@ public class SmartQQService extends Thread {
      * @Date
      **/
     private boolean checkScand() throws IOException {
-        logger.info("------检查二维码是否过期-------");
+        logger.info("检查二维码是否过期...");
         HttpGet getMethod = new HttpGet(getCheckLoginUrl());
         RequestConfig requestConfig = RequestConfig.custom().setRedirectsEnabled(true).setCircularRedirectsAllowed(true).build();
         getMethod.setConfig(requestConfig);
-//        getMethod.setHeader(":authority","ssl.ptlogin2.qq.com");
-//        getMethod.setHeader(":method","GET");
-//        getMethod.setHeader(":path",getCheckLoginUrl());
-//        getMethod.setHeader(":scheme","https");
-//        getMethod.setHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36");
-//        getMethod.setHeader("referer", "https://xui.ptlogin2.qq.com/cgi-bin/xlogin?daid=164&target=self&style=40&pt_disable_pwd=1&mibao_css=m_webqq&appid=501004106&enable_qlogin=0&no_verifyimg=1&s_url=https%3A%2F%2Fweb2.qq.com%2Fproxy.html&f_url=loginerroralert&strong_login=1&login_state=10&t=20131024001");
-        String loginSigUrl = getGlobleClient().execute(getMethod, new StringResponseHandler());
-        logger.info("-------{}", loginSigUrl);
-        String _url = SmartQQConfig.scanSuccessUrl(loginSigUrl);
+        String loginCheckResponse = getGlobleClient().execute(getMethod, new StringResponseHandler());
+        logger.info("【{}】", loginCheckResponse);
+        if(SmartQQConfig.isLagel(loginCheckResponse)){/**二维码失效，重新获取二维码 */
+            getEwm();
+            return false;
+        }
+        String _url = SmartQQConfig.scanSuccessUrl(loginCheckResponse);
         if (StringUtils.isNotBlank(_url)) {//扫码失败返回的_url是""
-            logger.info("------扫码成功！-------");
+            logger.info("扫码成功，请求check地址【{}】！",_url);
             //扫码成功之后，请求_url
             getMethod = new HttpGet(_url);
             HttpResponse response = getGlobleClient().execute(getMethod);

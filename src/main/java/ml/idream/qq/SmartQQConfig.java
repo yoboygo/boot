@@ -20,11 +20,24 @@ public class SmartQQConfig {
     public static final String URL_CHECK_LOGIN = "https://ssl.ptlogin2.qq.com/ptqrlogin?u1=https%3A%2F%2Fweb2.qq.com%2Fproxy.html&ptqrtoken=1201068004&ptredirect=0&h=1&t=1&g=1&from_ui=1&ptlang=2052&action=0-0-1543973642632&js_ver=10289&js_type=1&login_sig=&pt_uistyle=40&aid=501004106&daid=164&mibao_css=m_webqq&";
 
     //获取用户信息
-    public static final String URL_GET_USERINFO = "https://ptlogin2.web2.qq.com/check_sig?pttype=1&uin=3314287521&service=ptqrlogin&nodirect=0&ptsigx=3e00960e16210d0ff84f5850ed6bff14cd59ac715e34982b54f63687776e764541da1349a8a6ba45b84faf2310897a0e05e8a60fee9d0536f97c4316364a9178&s_url=https%3A%2F%2Fweb2.qq.com%2Fproxy.html&f_url=&ptlang=2052&ptredirect=100&aid=501004106&daid=164&j_later=0&low_login_hour=0&regmaster=0&pt_login_type=3&pt_aid=0&pt_aaid=16&pt_light=0&pt_3rd_aid=0";
+    public static final String URL_GET_USERINFO = "https://s.web2.qq.com/api/get_self_info2";
+
+    public static final String URL_GET_VFWEBQQ = "https://s.web2.qq.com/api/getvfwebqq?ptwebqq=&clientid=53999199&psessionid=&t=1544521686056";
 
     /**解析扫码之后的返回值**/
     public static final Pattern patternScan = Pattern.compile("ptuiCB\\('(\\d+)'\\,'(\\d+)','(.*?)?','(\\d+)','(.*?)?', '(.*?)'?\\)");
 
+    /**判断二维码是否有效*/
+    public static boolean isLagel(String value){
+        Matcher matcher = patternScan.matcher(value);
+        if(matcher.find()){
+            String flag = matcher.group(1);
+            return "65".equals(flag);
+        }
+        return false;
+    }
+
+    /** 获得扫码成功之后的URL*/
     public static String scanSuccessUrl(String value){
         Matcher matcher = patternScan.matcher(value);
         if(matcher.find()){

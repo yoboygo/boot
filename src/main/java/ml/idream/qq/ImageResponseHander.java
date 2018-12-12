@@ -35,7 +35,7 @@ public class ImageResponseHander implements ResponseHandler<ImageResponseBody> {
         String fileName = Calendar.getInstance().getTimeInMillis() + ".png";
         String filePath = path + "\\" + fileName;
 
-        logger.info("filePath:{}",filePath);
+        logger.info("filePath:【{}】",filePath);
         result.setFilePath(filePath);
 
         try(InputStream inputStream = response.getEntity().getContent();
