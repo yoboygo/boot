@@ -1,4 +1,4 @@
-package ml.idream.qq;
+package ml.idream.qq.entity;
 
 /**
  * @Description 返回结果

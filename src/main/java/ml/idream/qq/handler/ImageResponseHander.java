@@ -1,6 +1,8 @@
-package ml.idream.qq;
+package ml.idream.qq.handler;
 
 
+import ml.idream.qq.entity.ImageResponseBody;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
@@ -23,16 +25,22 @@ public class ImageResponseHander implements ResponseHandler<ImageResponseBody> {
     private static final Logger logger = LoggerFactory.getLogger(ImageResponseHander.class);
 
     private String path;
+    private String filePrefix;
 
     public ImageResponseHander(String path) {
         this.path = path;
+    }
+
+    public ImageResponseHander(String path, String filePrefix) {
+        this.path = path;
+        this.filePrefix = filePrefix;
     }
 
     @Override
     public ImageResponseBody handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
         ImageResponseBody result = new ImageResponseBody();
         int status = response.getStatusLine().getStatusCode();
-        String fileName = Calendar.getInstance().getTimeInMillis() + ".png";
+        String fileName = (StringUtils.isBlank(filePrefix) ? "" : (filePrefix + "_")) + Calendar.getInstance().getTimeInMillis() + ".png";
         String filePath = path + "\\" + fileName;
 
         logger.info("filePath:【{}】",filePath);
@@ -51,5 +59,21 @@ public class ImageResponseHander implements ResponseHandler<ImageResponseBody> {
                 throw new ClientProtocolException("Unexpected response status: " + status);
             }
         }
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getFilePrefix() {
+        return filePrefix;
+    }
+
+    public void setFilePrefix(String filePrefix) {
+        this.filePrefix = filePrefix;
     }
 }

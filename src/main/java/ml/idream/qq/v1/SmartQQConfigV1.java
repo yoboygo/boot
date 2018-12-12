@@ -1,4 +1,4 @@
-package ml.idream.qq;
+package ml.idream.qq.v1;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * @Author Aimy
  * @Date 2018/12/5 10:23
  **/
-public class SmartQQConfig {
+public class SmartQQConfigV1 {
 
     /**获取pt_login_sig**/
     public static final String URL_LOGIN_SIG = "https://xui.ptlogin2.qq.com/cgi-bin/xlogin?daid=164&target=self&style=40&pt_disable_pwd=1&mibao_css=m_webqq&appid=501004106&enable_qlogin=0&no_verifyimg=1&s_url=https%3A%2F%2Fweb2.qq.com%2Fproxy.html&f_url=loginerroralert&strong_login=1&login_state=10&t=20131024001";

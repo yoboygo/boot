@@ -1,11 +1,14 @@
-package ml.idream.qq;
+package ml.idream.qq.v1;
 
+import ml.idream.qq.handler.ImageResponseHander;
+import ml.idream.qq.handler.StringResponseHandler;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
@@ -19,12 +22,13 @@ import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.HTMLLayout;
 import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import springfox.documentation.spring.web.json.Json;
 
 import javax.net.ssl.SSLContext;
+import javax.xml.ws.spi.http.HttpContext;
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -40,9 +44,9 @@ import java.util.Calendar;
  * @Author Aimy
  * @Date 2018/12/5 10:23
  **/
-public class SmartQQService extends Thread {
+public class SmartQQServiceV1 extends Thread {
 
-    private static final Logger logger = LoggerFactory.getLogger(SmartQQService.class);
+    private static final Logger logger = LoggerFactory.getLogger(SmartQQServiceV1.class);
     //请求的上下文环境
     private SSLContext context;
     //全局客户端
@@ -51,7 +55,7 @@ public class SmartQQService extends Thread {
     /**cookieStore*/
     private CookieStore cookieStore;
 
-    public SmartQQService() {
+    public SmartQQServiceV1() {
         this.context = SSLContexts.createSystemDefault();
         this.cookieStore = new BasicCookieStore();
         Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
@@ -73,7 +77,7 @@ public class SmartQQService extends Thread {
      **/
     public void getLoginSig() throws IOException {
         logger.info("准备获取【LoginSig】...");
-        HttpGet method = new HttpGet(SmartQQConfig.URL_LOGIN_SIG);
+        HttpGet method = new HttpGet(SmartQQConfigV1.URL_LOGIN_SIG);
         getGlobleClient().execute(method,new StringResponseHandler());
         logger.info("获取【LoginSig】成功！");
     }
@@ -102,7 +106,7 @@ public class SmartQQService extends Thread {
      **/
     public void getEwm() throws IOException {
         logger.info("开始拉取二维码...");
-        HttpGet method = new HttpGet(SmartQQConfig.URL_EWM);
+        HttpGet method = new HttpGet(SmartQQConfigV1.URL_EWM);
         getGlobleClient().execute(method, new ImageResponseHander("d:\\ewm"));
 //        client.execute(method);
         logger.info("拉取二维码完成!");
@@ -112,10 +116,10 @@ public class SmartQQService extends Thread {
 
     public static void main(String[] args) throws IOException {
         BasicConfigurator.configure();
-        String path = SmartQQService.class.getClassLoader().getResource("").getPath();
+        String path = SmartQQServiceV1.class.getClassLoader().getResource("").getPath();
         PropertyConfigurator.configure(path + "/log4j2.yml");
 
-        SmartQQService qqLogin = new SmartQQService();
+        SmartQQServiceV1 qqLogin = new SmartQQServiceV1();
         qqLogin.start();
 
     }
@@ -159,7 +163,7 @@ public class SmartQQService extends Thread {
      **/
     private void getUserInfo() throws IOException {
         logger.info("登陆成功，获取个人信息...");
-        HttpGet methodGet = new HttpGet(SmartQQConfig.URL_GET_USERINFO + "?t=" + Calendar.getInstance().getTimeInMillis());
+        HttpGet methodGet = new HttpGet(SmartQQConfigV1.URL_GET_USERINFO + "?t=" + Calendar.getInstance().getTimeInMillis());
         methodGet.setHeader("referer","https://d1.web2.qq.com/proxy.html?v=20151105001&callback=1&id=2");
         String result = getGlobleClient().execute(methodGet,new StringResponseHandler());
         logger.info("获取到的个人信息为：【{}】",result);
@@ -174,7 +178,7 @@ public class SmartQQService extends Thread {
      **/
     private String getVFWebQQ() throws IOException {
         logger.info("获取VFWebQQ...");
-        HttpGet methodGet = new HttpGet(SmartQQConfig.URL_GET_VFWEBQQ);
+        HttpGet methodGet = new HttpGet(SmartQQConfigV1.URL_GET_VFWEBQQ);
         methodGet.setHeader("referer","https://s.web2.qq.com/proxy.html?v=20130916001&callback=1&id=1");
         String result = getGlobleClient().execute(methodGet,new StringResponseHandler());
         logger.info("获取到的VFWebQQ信息为：【{}】",result);
@@ -201,11 +205,11 @@ public class SmartQQService extends Thread {
         getMethod.setConfig(requestConfig);
         String loginCheckResponse = getGlobleClient().execute(getMethod, new StringResponseHandler());
         logger.info("【{}】", loginCheckResponse);
-        if(SmartQQConfig.isLagel(loginCheckResponse)){/**二维码失效，重新获取二维码 */
+        if(SmartQQConfigV1.isLagel(loginCheckResponse)){/**二维码失效，重新获取二维码 */
             getEwm();
             return false;
         }
-        String _url = SmartQQConfig.scanSuccessUrl(loginCheckResponse);
+        String _url = SmartQQConfigV1.scanSuccessUrl(loginCheckResponse);
         if (StringUtils.isNotBlank(_url)) {//扫码失败返回的_url是""
             logger.info("扫码成功，请求check地址【{}】！",_url);
             //扫码成功之后，请求_url
@@ -219,7 +223,7 @@ public class SmartQQService extends Thread {
 
     /**替换掉url中的loginSig*/
     public String getCheckLoginUrl(){
-        String _url = SmartQQConfig.URL_CHECK_LOGIN;
+        String _url = SmartQQConfigV1.URL_CHECK_LOGIN;
         for(Cookie cookie : this.cookieStore.getCookies()){
             if(cookie.getName().equals("pt_login_sig")){
                 _url = _url.replaceAll("(login_sig=)(.*?)&","$1" + cookie.getValue() + "&");
