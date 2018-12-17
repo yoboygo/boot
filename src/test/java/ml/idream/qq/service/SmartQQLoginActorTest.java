@@ -3,10 +3,11 @@ package ml.idream.qq.service;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Test;
+import org.springframework.util.Base64Utils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * @Description QQ登陆测试类
@@ -28,5 +29,23 @@ public class SmartQQLoginActorTest {
 
         SmartQQLoginActor actor = new SmartQQLoginActor();
         actor.doLogin();
+    }
+
+    /**
+     * @Description 图片Base64编码
+     * @Param []
+     * @return void
+     * @Author Aimy
+     * @Date  
+     **/
+    @Test
+    public void pngBase64() throws IOException {
+        String path = "D:\\QRCode\\3314287521_1545038162703.png";
+        File image = new File(path);
+        FileInputStream fis = new FileInputStream(image);
+        byte[] bytes = new byte[fis.available()];
+        fis.read(bytes,0,bytes.length);
+        String value = Base64Utils.encodeToString(bytes);
+        System.out.println(value);
     }
 }
