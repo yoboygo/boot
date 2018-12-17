@@ -1,7 +1,9 @@
 package ml.idream.qq.v1;
 
+import ml.idream.qq.entity.StringResponseBody;
 import ml.idream.qq.handler.ImageResponseHander;
 import ml.idream.qq.handler.StringResponseHandler;
+import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
@@ -165,8 +167,8 @@ public class SmartQQServiceV1 extends Thread {
         logger.info("登陆成功，获取个人信息...");
         HttpGet methodGet = new HttpGet(SmartQQConfigV1.URL_GET_USERINFO + "?t=" + Calendar.getInstance().getTimeInMillis());
         methodGet.setHeader("referer","https://d1.web2.qq.com/proxy.html?v=20151105001&callback=1&id=2");
-        String result = getGlobleClient().execute(methodGet,new StringResponseHandler());
-        logger.info("获取到的个人信息为：【{}】",result);
+        StringResponseBody result = getGlobleClient().execute(methodGet,new StringResponseHandler());
+        logger.info("获取到的个人信息为：【{}】",JSONObject.fromObject(result));
     }
 
     /**
@@ -180,9 +182,9 @@ public class SmartQQServiceV1 extends Thread {
         logger.info("获取VFWebQQ...");
         HttpGet methodGet = new HttpGet(SmartQQConfigV1.URL_GET_VFWEBQQ);
         methodGet.setHeader("referer","https://s.web2.qq.com/proxy.html?v=20130916001&callback=1&id=1");
-        String result = getGlobleClient().execute(methodGet,new StringResponseHandler());
-        logger.info("获取到的VFWebQQ信息为：【{}】",result);
+        StringResponseBody result = getGlobleClient().execute(methodGet,new StringResponseHandler());
         JSONObject vfwebqq = JSONObject.fromObject(result);
+        logger.info("获取到的VFWebQQ信息为：【{}】",vfwebqq);
         if(0 == vfwebqq.getInt("retcode")){
             return vfwebqq.getJSONObject("result").getString("vfwebqq");
         }else {
@@ -203,13 +205,13 @@ public class SmartQQServiceV1 extends Thread {
         HttpGet getMethod = new HttpGet(getCheckLoginUrl());
         RequestConfig requestConfig = RequestConfig.custom().setRedirectsEnabled(true).setCircularRedirectsAllowed(true).build();
         getMethod.setConfig(requestConfig);
-        String loginCheckResponse = getGlobleClient().execute(getMethod, new StringResponseHandler());
+        StringResponseBody loginCheckResponse = getGlobleClient().execute(getMethod, new StringResponseHandler());
         logger.info("【{}】", loginCheckResponse);
-        if(SmartQQConfigV1.isLagel(loginCheckResponse)){/**二维码失效，重新获取二维码 */
+        if(SmartQQConfigV1.isLagel(loginCheckResponse.getValue())){/**二维码失效，重新获取二维码 */
             getEwm();
             return false;
         }
-        String _url = SmartQQConfigV1.scanSuccessUrl(loginCheckResponse);
+        String _url = SmartQQConfigV1.scanSuccessUrl(loginCheckResponse.getValue());
         if (StringUtils.isNotBlank(_url)) {//扫码失败返回的_url是""
             logger.info("扫码成功，请求check地址【{}】！",_url);
             //扫码成功之后，请求_url

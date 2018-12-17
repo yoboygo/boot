@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Description 待登陆的账号列表
- * @Author SongJianlong
+ * @Author Aimy
  * @Date 2018/12/12 15:33
  **/
 public class SmartQQAccountList {
@@ -16,7 +16,7 @@ public class SmartQQAccountList {
 
     public static ConcurrentHashMap<String,SmartQQAccount> getInstance(){
         if(smartQQAccountList == null){
-            synchronized (smartQQAccountList){
+            synchronized (SmartQQAccountList.class){
                 if(smartQQAccountList == null){
                     smartQQAccountList = new ConcurrentHashMap();
                 }
@@ -26,12 +26,12 @@ public class SmartQQAccountList {
     }
 
     /**将账号新信息加入循环列表*/
-    public void setSmartQQAccount(SmartQQAccount smartQQAccount){
+    public static void setSmartQQAccount(SmartQQAccount smartQQAccount){
         SmartQQAccountList.getInstance().put(smartQQAccount.getAccount(),smartQQAccount);
     }
 
     /**获取循环列表中的指定账号*/
-    public SmartQQAccount getSmartQQAccount(String account){
+    public static SmartQQAccount getSmartQQAccount(String account){
         return SmartQQAccountList.getInstance().get(account);
     }
 }

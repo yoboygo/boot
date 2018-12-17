@@ -5,7 +5,7 @@ import org.apache.http.client.protocol.HttpClientContext;
 
 /**
  * @Description 账号基本信息
- * @Author SongJianlong
+ * @Author Aimy
  * @Date 2018/12/12 15:34
  **/
 public class SmartQQAccount {

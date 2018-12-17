@@ -1,6 +1,6 @@
 package ml.idream.qq.handler;
 
-import org.apache.http.HttpEntity;
+import ml.idream.qq.entity.StringResponseBody;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
@@ -16,19 +16,20 @@ import java.nio.charset.Charset;
  * @Author Aimy
  * @Date 2018/12/7 11:40
  **/
-public class StringResponseHandler implements ResponseHandler<String> {
+public class StringResponseHandler implements ResponseHandler<StringResponseBody> {
     private static final Logger logger = LoggerFactory.getLogger(StringResponseHandler.class);
 
     @Override
-    public String handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
-        int status =  response.getStatusLine().getStatusCode();
-        if(status >= 200 && status < 300){
-            HttpEntity entity = response.getEntity();
-            String responseString = EntityUtils.toString(entity, Charset.forName("UTF-8"));
-            logger.info("将返回值转换为字符串：【{}】",responseString);
-            return entity == null ? null : responseString;
-        }else{
-            throw new ClientProtocolException("Unexpected response status: " + status);
+    public StringResponseBody handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
+        StringResponseBody result = new StringResponseBody();
+        result.setStatusLine(response.getStatusLine());
+        try{
+            String responseString = EntityUtils.toString(response.getEntity(), Charset.forName("UTF-8"));
+            result.setValue(responseString);
+        }catch (Exception e){
+            throw new ClientProtocolException("Unexoected response values:" + e.getMessage());
         }
+
+        return result;
     }
 }
