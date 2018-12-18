@@ -1,6 +1,7 @@
-package ml.idream.qq.service;
+package ml.idream.qq.entity;
 
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * @Description 待登陆的账号列表
@@ -9,16 +10,17 @@ import java.util.concurrent.ConcurrentHashMap;
  **/
 public class SmartQQAccountList {
 
-    private static ConcurrentHashMap<String,SmartQQAccount> smartQQAccountList;
+//    private static ConcurrentHashMap<String, SmartQQAccount> smartQQAccountList;
+    private static LinkedBlockingDeque<SmartQQAccount> smartQQAccountList;
 
     private SmartQQAccountList() {
     }
 
-    public static ConcurrentHashMap<String,SmartQQAccount> getInstance(){
+    public static LinkedBlockingDeque<SmartQQAccount> getInstance(){
         if(smartQQAccountList == null){
             synchronized (SmartQQAccountList.class){
                 if(smartQQAccountList == null){
-                    smartQQAccountList = new ConcurrentHashMap();
+                    smartQQAccountList = new LinkedBlockingDeque<>();
                 }
             }
         }
@@ -27,11 +29,7 @@ public class SmartQQAccountList {
 
     /**将账号新信息加入循环列表*/
     public static void setSmartQQAccount(SmartQQAccount smartQQAccount){
-        SmartQQAccountList.getInstance().put(smartQQAccount.getAccount(),smartQQAccount);
+        SmartQQAccountList.getInstance().add(smartQQAccount);
     }
 
-    /**获取循环列表中的指定账号*/
-    public static SmartQQAccount getSmartQQAccount(String account){
-        return SmartQQAccountList.getInstance().get(account);
-    }
 }

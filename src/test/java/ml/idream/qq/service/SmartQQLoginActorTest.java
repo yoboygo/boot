@@ -1,5 +1,7 @@
 package ml.idream.qq.service;
 
+import ml.idream.qq.entity.SmartQQAccount;
+import ml.idream.qq.entity.SmartQQAccountList;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Test;
@@ -20,11 +22,11 @@ public class SmartQQLoginActorTest {
     public void doLogin() throws IOException, InterruptedException {
         BasicConfigurator.configure();
         String path = SmartQQLoginActor.class.getClassLoader().getResource("").getPath();
-        PropertyConfigurator.configure(path + "/log4j2.yml");
+        PropertyConfigurator.configure(path + "log4j2.yml");
 
         /** 测试数据*/
         SmartQQAccount account = new SmartQQAccount();
-        account.setAccount("3314287521");
+//        account.setAccount("3314287521");
         SmartQQAccountList.setSmartQQAccount(account);
 
         SmartQQLoginActor actor = new SmartQQLoginActor();

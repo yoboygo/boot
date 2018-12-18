@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:data="http://www.w3.org/1999/xhtml">
+<head th:replace="~{/fragment/base :: header(~{::title},~{},~{})}">
+    <title>二维码</title>
+</head>
+<body>
+<img id="imgQRCode" src="" data=""/>
+<script language="JavaScript">
+    $(function(){
+        $.ajax({
+            url:"/smart/qq/QRCode",
+            method:"GET",
+            data:{},
+            success:function(response){
+                if(response.code == '0'){
+                    var val = response.data;
+                    $("#imgQRCode").attr("data","/png;base64," + val);
+                }
+            }
+        });
+    });
+(</script>
+</body>
+</html>

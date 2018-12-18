@@ -1,6 +1,8 @@
 package ml.idream.qq.service;
 
 import ml.idream.qq.common.QRCodeStatus;
+import ml.idream.qq.entity.SmartQQAccount;
+import ml.idream.qq.entity.SmartQQAccountList;
 import org.apache.http.client.CookieStore;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
@@ -15,20 +17,36 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContexts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import javax.net.ssl.SSLContext;
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.Map;
 
 /**
  * @Description QQ登陆入口
  * @Author Aimy
  * @Date 2018/12/12 15:56
  **/
+@Service
 public class SmartQQLoginActor {
 
     private static Logger logger = LoggerFactory.getLogger(SmartQQLoginActor.class);
+
+    private CloseableHttpClient client;
+
+    public SmartQQLoginActor() {
+        CookieStore cookieStore = new BasicCookieStore();
+        SSLContext context = SSLContexts.createSystemDefault();
+        Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
+                .register("http", new PlainConnectionSocketFactory())
+                .register("https", new SSLConnectionSocketFactory(context))
+                .build();
+        PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(registry);
+        this.client = HttpClients.custom().setDefaultCookieStore(cookieStore)
+                .setRedirectStrategy(new LaxRedirectStrategy())
+                .setConnectionManager(connectionManager).setConnectionManagerShared(true).build();
+    }
 
     /**
      * @Description 登陆入口
@@ -39,36 +57,25 @@ public class SmartQQLoginActor {
      **/
     public void doLogin() throws IOException, InterruptedException {
 
-        CookieStore cookieStore = new BasicCookieStore();
-        SSLContext context = SSLContexts.createSystemDefault();
-        Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
-                .register("http", new PlainConnectionSocketFactory())
-                .register("https", new SSLConnectionSocketFactory(context))
-                .build();
-        PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(registry);
-        CloseableHttpClient client = HttpClients.custom().setDefaultCookieStore(cookieStore)
-                .setRedirectStrategy(new LaxRedirectStrategy())
-                .setConnectionManager(connectionManager).setConnectionManagerShared(true).build();
-
         while(true){
-            Iterator<Map.Entry<String, SmartQQAccount>> iterator = SmartQQAccountList.getInstance().entrySet().iterator();
+            Iterator<SmartQQAccount> iterator = SmartQQAccountList.getInstance().iterator();
             while (iterator.hasNext()) {
-                Map.Entry<String, SmartQQAccount> entry = iterator.next();
-                logger.info("【{}】",entry.getKey());
-                SmartQQLoginService smartQQLoginService = new SmartQQLoginService(client,entry.getValue());
+               SmartQQAccount entry = iterator.next();
+                logger.info("【{}】",entry.getAccount());
+                SmartQQLoginService smartQQLoginService = new SmartQQLoginService(client,entry);
 
                 if(smartQQLoginService.checkLogin()){
-                    entry.getValue().setLogin(true);
+                    entry.setLogin(true);
 
                 }else{/**如果没有登陆*/
-                    logger.info("【{}】没有登陆，请扫描二维码登陆！",entry.getKey());
+                    logger.info("【{}】没有登陆，请扫描二维码登陆！",entry.getAccount());
                     QRCodeStatus flag = smartQQLoginService.checkQRCode();
                     if(flag.equals(QRCodeStatus.UNEFFECTIVITY) || flag.equals(QRCodeStatus.NONE)){
                         smartQQLoginService.getQRCode();
-                        entry.getValue().setLogin(false);
+                        entry.setLogin(false);
                     }else{
                         if(flag.equals(QRCodeStatus.LOGIN)){
-                            entry.getValue().setLogin(true);
+                            entry.setLogin(true);
                             String userInfo = smartQQLoginService.getUserInfo();
                             logger.info("获取到用户详细信息：【{}】",userInfo);
                         }
@@ -81,5 +88,15 @@ public class SmartQQLoginActor {
             Thread.sleep(1000 * 10);
         }
 
+    }
+
+
+
+    public CloseableHttpClient getClient() {
+        return client;
+    }
+
+    public void setClient(CloseableHttpClient client) {
+        this.client = client;
     }
 }

@@ -1,4 +1,4 @@
-package ml.idream.qq.service;
+package ml.idream.qq.entity;
 
 
 import org.apache.http.client.protocol.HttpClientContext;

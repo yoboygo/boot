@@ -2,6 +2,7 @@ package ml.idream.qq.service;
 
 import ml.idream.qq.common.QRCodeStatus;
 import ml.idream.qq.common.SmartQQCommon;
+import ml.idream.qq.entity.SmartQQAccount;
 import ml.idream.qq.entity.StringResponseBody;
 import ml.idream.qq.handler.ImageResponseHander;
 import ml.idream.qq.handler.StringResponseHandler;
@@ -50,6 +51,7 @@ public class SmartQQLoginService {
     public boolean checkLogin() throws IOException {
         JSONObject userInfo = JSONObject.fromObject(getUserInfo());
         if(0 == userInfo.getInt("retcode")){
+            smartQQAccount.setAccount(userInfo.getJSONObject("result").getString("account"));
             logger.info("用户【{}】已经登陆！",smartQQAccount.getAccount());
             return true;
         }
@@ -68,7 +70,7 @@ public class SmartQQLoginService {
     public QRCodeStatus checkQRCode() throws IOException {
 
         if(!cookiesHas("qrsig")){
-            logger.info("当前账号【{}】没有获取过二维码！",smartQQAccount.getAccount());
+            logger.info("没有获取过二维码！");
             return QRCodeStatus.NONE;
         }
 
@@ -88,7 +90,7 @@ public class SmartQQLoginService {
 
         /**二维码失效*/
         if(SmartQQCommon.isLagel(loginCheckResponse.getValue())){
-            logger.info("【{}】二维码未失效！",smartQQAccount.getAccount());
+            logger.info("二维码未失效！");
             return QRCodeStatus.EFFECTIVITY;
         }
 
@@ -121,7 +123,7 @@ public class SmartQQLoginService {
     public void getQRCode() throws IOException {
         logger.info("开始拉取二维码...");
         HttpGet method = new HttpGet(SmartQQCommon.URL_QRCODE);
-        getGlobleClient().execute(method, new ImageResponseHander("d:\\QRCode",smartQQAccount.getAccount()),smartQQAccount.getHttpClientContext());
+        getGlobleClient().execute(method, new ImageResponseHander("d:\\QRCode"),smartQQAccount.getHttpClientContext());
         logger.info("拉取二维码完成!");
 
     }
