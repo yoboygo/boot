@@ -2,7 +2,7 @@ package ml.idream.common;
 
 /**
  * @Description 返回点枚举类
- * @Author SongJianlong
+ * @Author Aimy
  * @Date 2018/12/18 11:39
  **/
 public enum DreamResponseCode {

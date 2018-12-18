@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Description TODO
- * @Author SongJianlong
+ * @Author Aimy
  * @Date 2018/12/18 11:36
  **/
 @Controller
