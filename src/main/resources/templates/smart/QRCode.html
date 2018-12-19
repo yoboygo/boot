@@ -4,21 +4,62 @@
     <title>二维码</title>
 </head>
 <body>
-<img id="imgQRCode" src="" data=""/>
+<img id="imgQRCode" src="" data="" style="margin-left: auto;"/>
 <script language="JavaScript">
-    $(function(){
+
+    $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+        options.xhrFields = {
+            withCredentials: true
+        }
+    });
+
+    function getQRCode(){
         $.ajax({
-            url:"/smart/qq/QRCode",
+            url:"/smart/qq/QRCodeBase64",
             method:"GET",
+            async:false,
             data:{},
             success:function(response){
                 if(response.code == '0'){
                     var val = response.data;
-                    $("#imgQRCode").attr("data","/png;base64," + val);
+                    $("#imgQRCode").attr("src","data:image/png;base64," + val);
                 }
             }
         });
+    }
+
+    function checkQRCode(){
+        timerFlag = false;
+        console.debug("检查二维码是否过期...")
+        $.ajax({
+            url:"/smart/qq/isLogin",
+            method:"GET",
+            data:{},
+            success:function(response){
+                if(response.code == '0'){
+                    timerFlag = true;
+                    if(response.data){
+                        clearInterval(timerId);
+                    }
+                }
+            }
+        });
+    }
+
+    var timerFlag = true;
+    var timerId = null;
+    $(function(){
+
+        getQRCode();
+        timerId = setInterval(function(){
+            if(timerFlag){
+                checkQRCode();
+            }
+        },2000);
+
+
     });
-(</script>
+
+</script>
 </body>
 </html>

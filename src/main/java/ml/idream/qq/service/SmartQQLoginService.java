@@ -4,6 +4,7 @@ import ml.idream.qq.common.QRCodeStatus;
 import ml.idream.qq.common.SmartQQCommon;
 import ml.idream.qq.entity.SmartQQAccount;
 import ml.idream.qq.entity.StringResponseBody;
+import ml.idream.qq.handler.Base64ResponseHandler;
 import ml.idream.qq.handler.ImageResponseHander;
 import ml.idream.qq.handler.StringResponseHandler;
 import net.sf.json.JSONObject;
@@ -126,6 +127,15 @@ public class SmartQQLoginService {
         getGlobleClient().execute(method, new ImageResponseHander("d:\\QRCode"),smartQQAccount.getHttpClientContext());
         logger.info("拉取二维码完成!");
 
+    }
+
+
+    public String getQRCodeBase64() throws IOException {
+        logger.info("开始拉取二维码...");
+        HttpGet method = new HttpGet(SmartQQCommon.URL_QRCODE);
+        String qrCode = getGlobleClient().execute(method, new Base64ResponseHandler(),smartQQAccount.getHttpClientContext());
+        logger.info("拉取二维码完成!");
+        return qrCode;
     }
 
     /**

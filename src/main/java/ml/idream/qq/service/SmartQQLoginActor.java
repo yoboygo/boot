@@ -4,6 +4,7 @@ import ml.idream.qq.common.QRCodeStatus;
 import ml.idream.qq.entity.SmartQQAccount;
 import ml.idream.qq.entity.SmartQQAccountList;
 import org.apache.http.client.CookieStore;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
@@ -14,12 +15,14 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.ssl.SSLContexts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.net.ssl.SSLContext;
+import javax.servlet.http.Cookie;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -90,7 +93,45 @@ public class SmartQQLoginActor {
 
     }
 
-
+    /**
+     * @Description 获取二维码
+     * @Param [cookieStore]
+     * @return java.lang.String
+     * @Author SongJianlong
+     * @Date  
+     **/
+    public String getQRCodeBase64(CookieStore cookieStore) throws IOException {
+        SmartQQAccount smartQQAccount = new SmartQQAccount();
+        smartQQAccount.getHttpClientContext().setCookieStore(cookieStore);
+        SmartQQLoginService smartQQLoginService = new SmartQQLoginService(this.client,smartQQAccount);
+        return smartQQLoginService.getQRCodeBase64();
+    }
+    /**
+     * @Description 检查二维码状态
+     * @Param [cookieStore]
+     * @return java.lang.Boolean
+     * @Author SongJianlong
+     * @Date  
+     **/
+    public Boolean checkQRCode(CookieStore cookieStore){
+        HttpClientContext context = new HttpClientContext();
+        context.setCookieStore(cookieStore);
+        return false;
+    }
+    /**
+     * @Description 检查是否登陆
+     * @Param [cookieStore]
+     * @return java.lang.Boolean
+     * @Author SongJianlong
+     * @Date  
+     **/
+    public Boolean isLogin(CookieStore cookieStore) throws IOException {
+        SmartQQAccount smartQQAccount = new SmartQQAccount();
+        smartQQAccount.getHttpClientContext().setCookieStore(cookieStore);
+        SmartQQLoginService smartQQLoginService = new SmartQQLoginService(getClient(),smartQQAccount);
+        QRCodeStatus status = smartQQLoginService.checkQRCode();
+        return status.equals(QRCodeStatus.LOGIN);
+    }
 
     public CloseableHttpClient getClient() {
         return client;
@@ -99,4 +140,6 @@ public class SmartQQLoginActor {
     public void setClient(CloseableHttpClient client) {
         this.client = client;
     }
+
+
 }

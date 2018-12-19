@@ -24,8 +24,13 @@ public class DreamResponse<T> implements Serializable {
     }
 
     public static <E> DreamResponse defaultSuccess(){
-        return new DreamResponse<E>();
+        return new DreamResponse<E>(DreamResponseCode.SUCCESS.getValue(),DreamResponseCode.SUCCESS.getFlag());
     }
+
+    public static <E> DreamResponse defaultFault(){
+        return new DreamResponse<E>(DreamResponseCode.FAULT.getValue(),DreamResponseCode.FAULT.getFlag());
+    }
+
 
     public int getCode() {
         return code;

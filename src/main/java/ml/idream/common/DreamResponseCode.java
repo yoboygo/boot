@@ -17,4 +17,18 @@ public enum DreamResponseCode {
         this.flag = flag;
     }
 
-}
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }}
