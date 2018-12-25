@@ -22,6 +22,16 @@ public class SmartQQCommon {
 
     public static final String URL_USERINFO_REFERER = "https://d1.web2.qq.com/proxy.html?v=20151105001&callback=1&id=2";
 
+
+    public static final String URL_GET_VFWEBQQ = "https://s.web2.qq.com/api/getvfwebqq?ptwebqq=&clientid=53999199&psessionid=&t=1545721819334";
+    public static final String URL_GET_VFWEBQQ_REFERER = "https://s.web2.qq.com/proxy.html?v=20130916001&callback=1&id=1";
+
+    public static final String URL_POST_LOGIN2 = "https://d1.web2.qq.com/channel/login2";
+    public static final String URL_POST_LOGIN2_REFERER = "https://d1.web2.qq.com/proxy.html?v=20151105001&callback=1&id=2";
+
+    public static final String URL_USER_FRIENDS = "https://s.web2.qq.com/api/get_user_friends2";
+    public static final String URL_USER_FRIENDS_REFERER = "https://s.web2.qq.com/proxy.html?v=20130916001&callback=1&id=1";
+
     /**解析扫码之后的返回值**/
     public static final Pattern patternScan = Pattern.compile("ptuiCB\\('(\\d+)'\\,'(\\d+)','(.*?)?','(\\d+)','(.*?)?', '(.*?)'?\\)");
 
@@ -29,8 +39,8 @@ public class SmartQQCommon {
     public static boolean isLagel(String value){
         Matcher matcher = patternScan.matcher(value);
         if(matcher.find()){
-            String flag = matcher.group(1);
-            return "66".equals(flag);
+            int flag = Integer.parseInt(matcher.group(1));
+            return flag == QRCodeStatus.EFFECTIVITY.getValue() || flag == QRCodeStatus.CHECKING.getValue();
         }
         return false;
     }
@@ -46,7 +56,8 @@ public class SmartQQCommon {
     }
 
     public static void main(String[] args) {
-        String value = "ptuiCB('66','0','','0','二维码未失效。(3996152704)', '')";
+        String value = "ptuiCB('67','0','','0',''二维码认证中(3996152704)', '')";
+//        String value = "ptuiCB('66','0','','0','二维码未失效。(3996152704)', '')";
         System.out.println(SmartQQCommon.isLagel(value));
     }
 }

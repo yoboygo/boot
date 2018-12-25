@@ -57,16 +57,19 @@ public class SmartQQController {
      * @Description 将cookie 转换为 cookieStore
      * @Param
      * @return
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date
      **/
     private CookieStore convertCookieStore(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
         CookieStore cookieStore = new BasicCookieStore();
         for(Cookie cookie : cookies){
+            if(!"qrsig".equals(cookie.getName())){
+                continue;
+            }
             BasicClientCookie item = new BasicClientCookie(cookie.getName(),cookie.getValue());
             item.setPath(StringUtils.isBlank(cookie.getPath()) ? "/" : cookie.getPath());
-            item.setDomain(StringUtils.isBlank(cookie.getDomain()) ? "web2.qq.com" : cookie.getDomain());
+            item.setDomain(StringUtils.isBlank(cookie.getDomain()) ? "ptlogin2.qq.com" : cookie.getDomain());
             item.setVersion(cookie.getVersion());
             cookieStore.addCookie(item);
         }
@@ -77,16 +80,17 @@ public class SmartQQController {
      * @Description set-cookie
      * @Param [cookies, request]
      * @return void
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     private void setCookies(CookieStore cookieStore,HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Credentials","true");
         for(org.apache.http.cookie.Cookie cookie : cookieStore.getCookies()){
             Cookie item = new Cookie(cookie.getName(),cookie.getValue());
-            item.setDomain(cookie.getDomain());
-            item.setPath(cookie.getPath());
-            item.setVersion(cookie.getVersion());
-            item.setComment(cookie.getComment());
+//            item.setDomain(cookie.getDomain());
+//            item.setPath(cookie.getPath());
+//            item.setVersion(cookie.getVersion());
+//            item.setComment(cookie.getComment());
             response.addCookie(item);
         }
     }

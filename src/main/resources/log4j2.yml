@@ -22,6 +22,7 @@ Configuration:
           level: error
   Loggers:
     logger:
+      -
        name: org.apache.logging.log4j.test1
        level: debug
        additivity: false
@@ -31,12 +32,21 @@ Configuration:
             value: 123
        AppenderRef:
           ref: STDOUT
-        name: org.apache.logging.log4j.test2
-        level: debug
-        additivity: false
-        AppenderRef:
+      -
+       name: org.apache.logging.log4j.test2
+       level: debug
+       additivity: false
+       AppenderRef:
           ref: File
+      -
+       name: org.apache.logging.log4j.ml.idream
+       level: debug
+       additivity: true
+        AppenderRef:
+          ref: STDOUT
+
+
     Root:
-      level: error
+      level: debug
       AppenderRef:
         ref: STDOUT

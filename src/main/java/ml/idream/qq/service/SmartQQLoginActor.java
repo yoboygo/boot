@@ -3,6 +3,7 @@ package ml.idream.qq.service;
 import ml.idream.qq.common.QRCodeStatus;
 import ml.idream.qq.entity.SmartQQAccount;
 import ml.idream.qq.entity.SmartQQAccountList;
+import net.sf.json.JSONObject;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
@@ -10,19 +11,16 @@ import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.ssl.SSLContexts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.net.ssl.SSLContext;
-import javax.servlet.http.Cookie;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -36,19 +34,23 @@ public class SmartQQLoginActor {
 
     private static Logger logger = LoggerFactory.getLogger(SmartQQLoginActor.class);
 
-    private CloseableHttpClient client;
+    private HttpClientBuilder clientBuilder;
 
     public SmartQQLoginActor() {
-        CookieStore cookieStore = new BasicCookieStore();
+//        CookieStore cookieStore = new BasicCookieStore();
         SSLContext context = SSLContexts.createSystemDefault();
         Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
                 .register("http", new PlainConnectionSocketFactory())
                 .register("https", new SSLConnectionSocketFactory(context))
                 .build();
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(registry);
-        this.client = HttpClients.custom().setDefaultCookieStore(cookieStore)
+        connectionManager.setMaxTotal(50);
+        connectionManager.setValidateAfterInactivity(5 * 1000);
+        connectionManager.setDefaultMaxPerRoute(10);
+        this.clientBuilder = HttpClients.custom()
+//                .setDefaultCookieStore(cookieStore)
                 .setRedirectStrategy(new LaxRedirectStrategy())
-                .setConnectionManager(connectionManager).setConnectionManagerShared(true).build();
+                .setConnectionManager(connectionManager).setConnectionManagerShared(true);
     }
 
     /**
@@ -58,18 +60,19 @@ public class SmartQQLoginActor {
      * @Author Aimy
      * @Date  
      **/
-    public void doLogin() throws IOException, InterruptedException {
+    public void doLogin() throws Exception {
 
         while(true){
-            Iterator<SmartQQAccount> iterator = SmartQQAccountList.getInstance().iterator();
+            Iterator<SmartQQAccount> iterator = SmartQQAccountList.INSTANCE.getSmartQQAccountList().iterator();
+            int index = 0;
             while (iterator.hasNext()) {
                SmartQQAccount entry = iterator.next();
-                logger.info("【{}】",entry.getAccount());
-                SmartQQLoginService smartQQLoginService = new SmartQQLoginService(client,entry);
+                logger.info("【{}】", ++index);
+                SmartQQLoginService smartQQLoginService = new SmartQQLoginService(clientBuilder.build(),entry);
 
                 if(smartQQLoginService.checkLogin()){
                     entry.setLogin(true);
-
+                    String friends = smartQQLoginService.getFriends();
                 }else{/**如果没有登陆*/
                     logger.info("【{}】没有登陆，请扫描二维码登陆！",entry.getAccount());
                     QRCodeStatus flag = smartQQLoginService.checkQRCode();
@@ -79,12 +82,14 @@ public class SmartQQLoginActor {
                     }else{
                         if(flag.equals(QRCodeStatus.LOGIN)){
                             entry.setLogin(true);
-                            String userInfo = smartQQLoginService.getUserInfo();
-                            logger.info("获取到用户详细信息：【{}】",userInfo);
+                            JSONObject login2 = smartQQLoginService.login2();
+                            logger.info("获取到用户详细信息：【{}】",login2.toString());
+                            String friends = smartQQLoginService.getFriends();
                         }
                     }
 
                 }
+                smartQQLoginService.closeClient();
             }
             logger.info("休眠10s...");
             /** 30s轮询一次 */
@@ -97,20 +102,20 @@ public class SmartQQLoginActor {
      * @Description 获取二维码
      * @Param [cookieStore]
      * @return java.lang.String
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     public String getQRCodeBase64(CookieStore cookieStore) throws IOException {
         SmartQQAccount smartQQAccount = new SmartQQAccount();
         smartQQAccount.getHttpClientContext().setCookieStore(cookieStore);
-        SmartQQLoginService smartQQLoginService = new SmartQQLoginService(this.client,smartQQAccount);
+        SmartQQLoginService smartQQLoginService = new SmartQQLoginService(this.clientBuilder.build(),smartQQAccount);
         return smartQQLoginService.getQRCodeBase64();
     }
     /**
      * @Description 检查二维码状态
      * @Param [cookieStore]
      * @return java.lang.Boolean
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     public Boolean checkQRCode(CookieStore cookieStore){
@@ -122,23 +127,15 @@ public class SmartQQLoginActor {
      * @Description 检查是否登陆
      * @Param [cookieStore]
      * @return java.lang.Boolean
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     public Boolean isLogin(CookieStore cookieStore) throws IOException {
         SmartQQAccount smartQQAccount = new SmartQQAccount();
         smartQQAccount.getHttpClientContext().setCookieStore(cookieStore);
-        SmartQQLoginService smartQQLoginService = new SmartQQLoginService(getClient(),smartQQAccount);
+        SmartQQLoginService smartQQLoginService = new SmartQQLoginService(clientBuilder.build(),smartQQAccount);
         QRCodeStatus status = smartQQLoginService.checkQRCode();
         return status.equals(QRCodeStatus.LOGIN);
-    }
-
-    public CloseableHttpClient getClient() {
-        return client;
-    }
-
-    public void setClient(CloseableHttpClient client) {
-        this.client = client;
     }
 
 

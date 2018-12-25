@@ -1,6 +1,5 @@
 package ml.idream.qq.entity;
 
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
@@ -8,28 +7,22 @@ import java.util.concurrent.LinkedBlockingDeque;
  * @Author Aimy
  * @Date 2018/12/12 15:33
  **/
-public class SmartQQAccountList {
+public enum SmartQQAccountList {
 
-//    private static ConcurrentHashMap<String, SmartQQAccount> smartQQAccountList;
-    private static LinkedBlockingDeque<SmartQQAccount> smartQQAccountList;
+    INSTANCE;
 
-    private SmartQQAccountList() {
+    private LinkedBlockingDeque<SmartQQAccount> smartQQAccountList = new LinkedBlockingDeque<SmartQQAccount>();
+
+    /**将账号新信息加入循环列表*/
+    public static void addSmartQQAccount(SmartQQAccount smartQQAccount){
+        SmartQQAccountList.INSTANCE.getSmartQQAccountList().push(smartQQAccount);
     }
 
-    public static LinkedBlockingDeque<SmartQQAccount> getInstance(){
-        if(smartQQAccountList == null){
-            synchronized (SmartQQAccountList.class){
-                if(smartQQAccountList == null){
-                    smartQQAccountList = new LinkedBlockingDeque<>();
-                }
-            }
-        }
+    public LinkedBlockingDeque<SmartQQAccount> getSmartQQAccountList() {
         return smartQQAccountList;
     }
 
-    /**将账号新信息加入循环列表*/
-    public static void setSmartQQAccount(SmartQQAccount smartQQAccount){
-        SmartQQAccountList.getInstance().add(smartQQAccount);
+    public void setSmartQQAccountList(LinkedBlockingDeque<SmartQQAccount> smartQQAccountList) {
+        this.smartQQAccountList = smartQQAccountList;
     }
-
 }

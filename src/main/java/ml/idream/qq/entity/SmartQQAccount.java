@@ -2,6 +2,7 @@ package ml.idream.qq.entity;
 
 
 import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.impl.client.BasicCookieStore;
 
 /**
  * @Description 账号基本信息
@@ -16,8 +17,17 @@ public class SmartQQAccount {
     /** QQ号码*/
     private String account;
 
+    /** 加密后的hash,固定值*/
+    private String hash;
+
+    /** vfwebqq*/
+    private String vfwebqq;
+
     /** 请求上下文*/
     private HttpClientContext httpClientContext = HttpClientContext.create();
+    {
+        httpClientContext.setCookieStore(new BasicCookieStore());
+    }
 
     /** 当前账号是否已经登录*/
     private Boolean isLogin = false;
@@ -52,5 +62,21 @@ public class SmartQQAccount {
 
     public void setLogin(Boolean login) {
         isLogin = login;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public String getVfwebqq() {
+        return vfwebqq;
+    }
+
+    public void setVfwebqq(String vfwebqq) {
+        this.vfwebqq = vfwebqq;
     }
 }

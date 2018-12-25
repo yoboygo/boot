@@ -5,7 +5,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 /**
  * @Description TODO
- * @Author SongJianlong
+ * @Author Aimy
  * @Date 2018/12/19 13:25
  **/
 public abstract class AbstractSmartLogin {
