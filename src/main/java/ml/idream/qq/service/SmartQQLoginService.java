@@ -190,7 +190,7 @@ public class SmartQQLoginService {
      * @Description 获取vfwebqq
      * @Param []
      * @return java.lang.String
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     public String getvfwebqq() throws Exception {
@@ -212,7 +212,7 @@ public class SmartQQLoginService {
      * @Description 获取account
      * @Param []
      * @return 账号
-     * @Author SongJianlong
+     * @Author Aimy
      * 以下为借口返回的数据
      * {
      * 	"result": {
@@ -254,7 +254,7 @@ public class SmartQQLoginService {
      * @Description 获取好友列表
      * @Param []
      * @return java.lang.String
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     private String getFriends(String vfwebqq,String uin){
@@ -283,7 +283,7 @@ public class SmartQQLoginService {
      * @Description 获取好友列表
      * @Param []
      * @return java.lang.String
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     public String getFriends() throws Exception {
@@ -298,7 +298,7 @@ public class SmartQQLoginService {
      * @Description 拼装Entity
      * @Param [key, value]
      * @return org.apache.http.HttpEntity
-     * @Author SongJianlong
+     * @Author Aimy
      * @Date  
      **/
     private HttpEntity getSingleParamEntity(String key, String value){

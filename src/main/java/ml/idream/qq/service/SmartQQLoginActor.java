@@ -72,6 +72,7 @@ public class SmartQQLoginActor {
 
                 if(smartQQLoginService.checkLogin()){
                     entry.setLogin(true);
+                    JSONObject login2 = smartQQLoginService.login2();
                     String friends = smartQQLoginService.getFriends();
                 }else{/**如果没有登陆*/
                     logger.info("【{}】没有登陆，请扫描二维码登陆！",entry.getAccount());
