@@ -64,10 +64,11 @@ public class SmartQQLoginService {
      * @Author Aimy
      * @Date
      **/
-    public boolean checkLogin() throws IOException {
-        JSONObject userInfo = JSONObject.fromObject(getUserInfo());
-        int retCode = userInfo.getInt("retcode");
-        if(0 == retCode || 100003 == retCode){
+    public boolean checkLogin() throws Exception {
+        try{
+            JSONObject userInfo = JSONObject.fromObject(getUserInfo());
+            int retCode = userInfo.getInt("retcode");
+            if(0 == retCode || 100003 == retCode){
             /*JSONObject retObject = userInfo.getJSONObject("result");
             if(retObject.containsKey("account")){
                 smartQQAccount.setAccount(retObject.getString("account"));
@@ -75,7 +76,11 @@ public class SmartQQLoginService {
                 smartQQAccount.setAccount(retObject.getString("vfwebqq"));
             }
             logger.info("用户【{}】已经登陆！",smartQQAccount.getAccount());*/
-            return true;
+                return true;
+            }
+        }catch (Exception e){
+            logger.info("检查用户登录失败!",e);
+            throw new Exception("检查用户登录失败!" + e.getMessage());
         }
         return false;
     }
@@ -89,7 +94,7 @@ public class SmartQQLoginService {
      * @Author Aimy
      * @Date  
      **/
-    public QRCodeStatus checkQRCode() throws IOException {
+    public QRCodeStatus checkQRCode() throws Exception {
 
         try{
 
@@ -114,6 +119,10 @@ public class SmartQQLoginService {
                 //扫码成功之后，请求_url
                 getMethod = new HttpGet(_url);
                 HttpResponse response = getGlobleClient().execute(getMethod,smartQQAccount.getHttpClientContext());
+                int status = response.getStatusLine().getStatusCode();
+                if(status >= 200){
+                    logger.info("扫完码之后跳转url，为获取cookie。。。");
+                }
                 return QRCodeStatus.LOGIN;
             }
 
@@ -126,10 +135,8 @@ public class SmartQQLoginService {
             return QRCodeStatus.UNEFFECTIVITY;
         }catch (Exception e){
             logger.error("检查二维码失败！",e);
-        }finally {
-//            closeClient();
+            throw new Exception("检查二维码失败！" + e.getMessage());
         }
-        return QRCodeStatus.NONE;
     }
 
     /**替换掉url中的loginSig*/
@@ -155,7 +162,7 @@ public class SmartQQLoginService {
      * @Author Aimy
      * @Date
      **/
-    public void getQRCode() throws IOException {
+    public void getQRCode() throws Exception {
         logger.info("开始拉取二维码...");
         try {
             HttpGet method = new HttpGet(SmartQQCommon.URL_QRCODE);
@@ -163,15 +170,21 @@ public class SmartQQLoginService {
             logger.info("拉取二维码完成!");
         }catch (Exception e){
             logger.error("拉取二维码失败！",e);
-        }finally {
-//            closeClient();
+            throw new Exception("拉取二维码失败！" + e.getMessage());
         }
 
 
     }
 
 
-    public String getQRCodeBase64() throws IOException {
+    /**
+     * @Description 获取Base64加密的二维码
+     * @Param []
+     * @return 二维码
+     * @Author Aimy
+     * @Date 2018/12/27 15:03
+     **/
+    public String getQRCodeBase64() throws Exception {
         logger.info("开始拉取二维码...");
         try {
             HttpGet method = new HttpGet(SmartQQCommon.URL_QRCODE);
@@ -180,10 +193,25 @@ public class SmartQQLoginService {
             return qrCode;
         }catch (Exception e){
             logger.error("拉取二维码失败！",e);
-        }finally {
-//            closeClient();
+            throw new Exception("拉取二维码失败！" + e.getMessage());
         }
-        return "";
+    }
+
+   /**
+    * @Description 登陆成功后，获取后期的关键参数
+    * @Param []
+    * @return void
+    * @Author Aimy
+    * @Date 2018/12/27 15:03
+    **/
+    public void affterLogin() throws Exception {
+        JSONObject login2 = login2();
+        String uin = login2.getJSONObject("result").getString("uin");
+        smartQQAccount.setAccount(uin);
+        String vfwebqq = getvfwebqq();
+        smartQQAccount.setVfwebqq(vfwebqq);
+        String hash = getHash(uin,"");
+        smartQQAccount.setHash(hash);
     }
 
     /**
@@ -204,6 +232,7 @@ public class SmartQQLoginService {
             String vfwebqq = JSONObject.fromObject(result.getValue()).getJSONObject("result").getString("vfwebqq");
             return vfwebqq;
         }catch (Exception e){
+            logger.error("获取vfwebqq错误！",e);
             throw new Exception("获取vfwebqq错误！" + e.getMessage());
         }
     }
@@ -241,11 +270,9 @@ public class SmartQQLoginService {
             StringResponseBody result = getGlobleClient().execute(methPost,new StringResponseHandler(),smartQQAccount.getHttpClientContext());
             JSONObject retValue = JSONObject.fromObject(result.getValue());
             logger.info("获取用户信息：【{}】",result.getValue());
-            String account = retValue.getJSONObject("result").getString("uin");
-            //设置account
-            smartQQAccount.setAccount(account);
             return retValue;
         }catch (Exception e){
+            logger.error("Login2失败！",e);
             throw new Exception("Login2失败！" + e.getMessage());
         }
     }
@@ -253,21 +280,20 @@ public class SmartQQLoginService {
     /**
      * @Description 获取好友列表
      * @Param []
-     * @return java.lang.String
+     * @return JSON格式的好友列表
      * @Author Aimy
      * @Date  
      **/
-    private String getFriends(String vfwebqq,String uin){
+    public String getFriends() throws Exception {
         try{
             logger.info("获取好友列表。。。");
             HttpPost methPost = new HttpPost(SmartQQCommon.URL_USER_FRIENDS);
             methPost.addHeader("referer",SmartQQCommon.URL_USER_FRIENDS_REFERER);
             methPost.addHeader(convertCookieToHeader(smartQQAccount.getHttpClientContext().getCookieStore().getCookies()));
 
-            String hash = getHash(uin,"");
             JSONObject pValue = new JSONObject();
-            pValue.put("vfwebqq",vfwebqq);
-            pValue.put("hash",hash);
+            pValue.put("vfwebqq",smartQQAccount.getVfwebqq());
+            pValue.put("hash",smartQQAccount.getHash());
             methPost.setEntity(getSingleParamEntity("r",pValue.toString()));
 
             StringResponseBody result = getGlobleClient().execute(methPost,new StringResponseHandler(),smartQQAccount.getHttpClientContext());
@@ -275,34 +301,19 @@ public class SmartQQLoginService {
             return result.getValue();
         }catch (Exception e){
             logger.error("获取好友信息错误！",e);
+            throw new Exception("获取好友信息错误！" + e.getMessage());
         }
-        return "";
     }
 
     /**
-     * @Description 获取好友列表
-     * @Param []
-     * @return java.lang.String
-     * @Author Aimy
-     * @Date  
-     **/
-    public String getFriends() throws Exception {
-        //参数
-        String vfwebqq = getvfwebqq();
-        JSONObject login2 = login2();
-        String uin = login2.getJSONObject("result").getString("uin");
-        return getFriends(vfwebqq,uin);
-    }
-
-    /**
-     * @Description 拼装Entity
+     * @Description 拼装POST请求的Entity
+     * {"vfwebqq":"33497c2f75077330f0f78dfefbb2de9115f9b6ebdd3e021beb65d0445c2281d295331fafe8169c7e","hash":"007300F000510088"}
      * @Param [key, value]
-     * @return org.apache.http.HttpEntity
+     * @return
      * @Author Aimy
      * @Date  
      **/
     private HttpEntity getSingleParamEntity(String key, String value){
-//        {"vfwebqq":"33497c2f75077330f0f78dfefbb2de9115f9b6ebdd3e021beb65d0445c2281d295331fafe8169c7e","hash":"007300F000510088"}
         NameValuePair valuePair = new BasicNameValuePair(key,value);
         List<NameValuePair> params = new ArrayList<>();
         params.add(valuePair);
@@ -330,12 +341,13 @@ public class SmartQQLoginService {
 
     /**
      * @Description 获取用户的个人信息
+     * 但是返回的格式数据时有不同
      * @Param []
-     * @return java.lang.String
+     * @return JSON格式的用户信息
      * @Author Aimy
      * @Date
      **/
-    public String getUserInfo() throws IOException {
+    public String getUserInfo() throws Exception {
         logger.info("获取个人信息...");
         try {
             HttpGet methodGet = new HttpGet(SmartQQCommon.URL_GET_USERINFO + "?t=" + Calendar.getInstance().getTimeInMillis());
@@ -346,13 +358,10 @@ public class SmartQQLoginService {
 
             logger.info("获取到的个人信息为：【{}】",result.getValue());
             return result.getValue();
-
         }catch (Exception e){
             logger.error("获取个人信息失败！",e);
-        }finally {
-//            closeClient();
+            throw new Exception("获取个人信息失败！" + e.getMessage());
         }
-        return "";
     }
 
     private Header convertCookieToHeader(List<Cookie> cookies ){

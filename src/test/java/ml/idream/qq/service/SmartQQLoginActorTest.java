@@ -30,20 +30,20 @@ public class SmartQQLoginActorTest {
         BasicConfigurator.configure();
         String path = SmartQQLoginActor.class.getClassLoader().getResource("").getPath();
         PropertyConfigurator.configure(path + "log4j2.yml");
-
+        String testKey = "TEST";
         /** 测试数据*/
         SmartQQAccount account = new SmartQQAccount();
 //        account.setAccount("3314287521");
-        SmartQQAccountList.addSmartQQAccount(new SmartQQAccount());
+        SmartQQAccountList.addSmartQQAccount(testKey,new SmartQQAccount());
 //        SmartQQAccountList.addSmartQQAccount(new SmartQQAccount());
 //        SmartQQAccountList.addSmartQQAccount(new SmartQQAccount());
 
         SmartQQLoginActor actor = new SmartQQLoginActor();
-        actor.doLogin();
+        actor.doLogin(testKey);
     }
 
     @Test
-    public void isLogin() throws IOException {
+    public void isLogin() throws Exception {
         BasicConfigurator.configure();
         String path = SmartQQLoginActor.class.getClassLoader().getResource("").getPath();
         PropertyConfigurator.configure(path + "log4j2.yml");
@@ -59,7 +59,7 @@ public class SmartQQLoginActorTest {
         account.getHttpClientContext().setCookieStore(cookieStore);
         
         SmartQQLoginActor smartQQLoginActor = new SmartQQLoginActor();
-        Boolean login = smartQQLoginActor.isLogin(cookieStore);
+        SmartQQAccount smartQQAccount = smartQQLoginActor.isLogin(cookieStore);
 
     }
 

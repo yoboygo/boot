@@ -3,6 +3,7 @@ package ml.idream.qq.handler;
 
 import ml.idream.qq.entity.ImageResponseBody;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
@@ -27,8 +28,17 @@ public class ImageResponseHander implements ResponseHandler<ImageResponseBody> {
     private String path;
     private String filePrefix;
 
+    private String fileNameKey;
+    private boolean overWrite = true;
+
     public ImageResponseHander(String path) {
         this.path = path;
+    }
+
+    public ImageResponseHander(String path, String fileNameKey, boolean overWrite) {
+        this.path = path;
+        this.fileNameKey = fileNameKey;
+        this.overWrite = overWrite;
     }
 
     public ImageResponseHander(String path, String filePrefix) {
@@ -75,5 +85,21 @@ public class ImageResponseHander implements ResponseHandler<ImageResponseBody> {
 
     public void setFilePrefix(String filePrefix) {
         this.filePrefix = filePrefix;
+    }
+
+    public String getFileNameKey() {
+        return fileNameKey;
+    }
+
+    public void setFileNameKey(String fileNameKey) {
+        this.fileNameKey = fileNameKey;
+    }
+
+    public boolean isOverWrite() {
+        return overWrite;
+    }
+
+    public void setOverWrite(boolean overWrite) {
+        this.overWrite = overWrite;
     }
 }
